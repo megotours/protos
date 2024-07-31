@@ -1,4 +1,4 @@
-module antibomberman/mego-proto
+module github.com/antibomberman/mego-protos
 
 go 1.22.5
 
