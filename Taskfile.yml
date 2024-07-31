@@ -1,0 +1,8 @@
+version: '3'
+dotenv: ['./config/local.yaml']
+
+tasks:
+  proto:post:
+    cmds:
+      - protoc -I proto/post proto/post/post.proto --go_out=./gen/go/post --go_opt=paths=source_relative --go-grpc_out=./gen/go/post --go-grpc_opt=paths=source_relative
+    silent: true
