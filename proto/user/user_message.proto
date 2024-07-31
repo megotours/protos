@@ -3,12 +3,65 @@ package user;
 
 option go_package = "proto/user";
 
+message Id { string id = 1; }
+message Token { string token = 1; }
+message Email { string email = 1; }
+message Empty { }
 
-message CreateRequest {
-    string username = 1;
-    string email = 2;
+
+
+message CreateUserRequest {
+    string password = 3;
+    string first_name = 4;
+    string middle_name = 5;
+    string last_name = 6;
+    string email = 7;
+    string phone = 8;
+    string avatar = 9;
 }
-message CreateResponse {
-    string id = 1;
+message UpdateUserRequest {
+    string password = 3;
+    string first_name = 4;
+    string middle_name = 5;
+    string last_name = 6;
+    string email = 7;
+    string phone = 8;
+    string avatar = 9;
 }
-message Empty {}
+message UserDetails {
+    string first_name = 1;
+    string middle_name = 2;
+    string last_name = 3;
+    string email = 4;
+    string phone = 5;
+    string avatar = 6;
+    string created_at = 7;
+    string updated_at = 8;
+    string deleted_at = 9;
+
+    repeated string roles = 10;
+}
+message FindUserRequest{
+    uint32 pageSize = 1;
+    string pageToken = 2;
+    string sort = 3;
+    string search = 4;
+}
+message FindUserResponse{
+    repeated UserDetails users = 1;
+}
+
+message User {
+    string first_name = 1;
+    string middle_name = 2;
+    string last_name = 3;
+    string email = 4;
+    string phone = 5;
+    string avatar = 6;
+    string created_at = 7;
+    string created_by = 8;
+    string updated_at = 9;
+    string updated_by = 10;
+    string deleted_at = 11;
+    string deleted_by = 12;
+}

@@ -4,17 +4,17 @@ package user;
 
 option go_package = "proto/user";
 
-service User{
-  rpc Find(Empty) returns (Empty);
-  rpc GetById(Empty) returns (Empty);
-  rpc GetByEmail(Empty) returns (Empty);
-  rpc GetByToken(Empty) returns (Empty);
-  rpc Create(Empty) returns (Empty);
-  rpc Update(Empty) returns (Empty);
-  rpc Delete(Empty) returns (Empty);
+service UserService{
+  rpc Find(FindUserRequest) returns (FindUserResponse);
+  rpc GetById(Id) returns (UserDetails);
+  rpc GetByEmail(Email) returns (UserDetails);
+  rpc GetByToken(Token) returns (UserDetails);
+  rpc Create(CreateUserRequest) returns (UserDetails);
+  rpc Update(UpdateUserRequest) returns (UserDetails);
+  rpc Delete(Id) returns (UserDetails);
 }
 
-service UserRole{
+service UserRoleService{
   rpc Roles(Empty) returns (Empty);
   rpc Create(Empty) returns (Empty);
   rpc Delete(Empty) returns (Empty);
