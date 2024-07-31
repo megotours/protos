@@ -51,6 +51,7 @@ message FindUserResponse{
     string nexPageToken = 1;
     repeated UserDetails users = 2;
 }
+
 message User {
     string first_name = 1;
     string middle_name = 2;
