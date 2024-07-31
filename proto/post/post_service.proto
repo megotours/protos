@@ -3,10 +3,10 @@ package post;
 
 option go_package = "antibomberman/mego/post";
 import "post_message.proto";
-service PostSrv{
-  rpc Index(IndexRequest) returns (IndexResponse);
-  rpc CreatePost(CreateRequest) returns (CreateResponse);
-  rpc UpdatePost(PostRequest) returns (PostResponse);
-  rpc DeletePost(PostRequest) returns (PostResponse);
-  rpc HidePost(PostRequest) returns (PostResponse);
+service PostService{
+  rpc Find(FindPostRequest) returns (FindPostResponse);
+  rpc CreatePost(CreatePostRequest) returns (PostDetail);
+  rpc UpdatePost(UpdatePostRequest) returns (PostDetail);
+  rpc DeletePost(DeletePostRequest) returns (PostDetail);
+  rpc HidePost(HidePostRequest) returns (PostDetail);
 }
