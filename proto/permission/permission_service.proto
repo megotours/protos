@@ -1,0 +1,12 @@
+syntax = "proto3";
+import "permission_message.proto";
+package permission;
+
+option go_package = "proto/permission";
+
+service Permission{
+  rpc Find(Empty) returns (Empty);
+  rpc Create(Empty) returns (Empty);
+  rpc Update(Empty) returns (Empty);
+  rpc Delete(Empty) returns (Empty);
+}

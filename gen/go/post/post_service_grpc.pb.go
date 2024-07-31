@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v4.25.3
-// source: post.proto
+// source: post_service.proto
 
 package post
 
@@ -24,6 +24,9 @@ const _ = grpc.SupportPackageIsVersion7
 type PostSrvClient interface {
 	Index(ctx context.Context, in *IndexRequest, opts ...grpc.CallOption) (*IndexResponse, error)
 	CreatePost(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
+	UpdatePost(ctx context.Context, in *PostRequest, opts ...grpc.CallOption) (*PostResponse, error)
+	DeletePost(ctx context.Context, in *PostRequest, opts ...grpc.CallOption) (*PostResponse, error)
+	HidePost(ctx context.Context, in *PostRequest, opts ...grpc.CallOption) (*PostResponse, error)
 }
 
 type postSrvClient struct {
@@ -52,12 +55,42 @@ func (c *postSrvClient) CreatePost(ctx context.Context, in *CreateRequest, opts 
 	return out, nil
 }
 
+func (c *postSrvClient) UpdatePost(ctx context.Context, in *PostRequest, opts ...grpc.CallOption) (*PostResponse, error) {
+	out := new(PostResponse)
+	err := c.cc.Invoke(ctx, "/post.PostSrv/UpdatePost", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *postSrvClient) DeletePost(ctx context.Context, in *PostRequest, opts ...grpc.CallOption) (*PostResponse, error) {
+	out := new(PostResponse)
+	err := c.cc.Invoke(ctx, "/post.PostSrv/DeletePost", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *postSrvClient) HidePost(ctx context.Context, in *PostRequest, opts ...grpc.CallOption) (*PostResponse, error) {
+	out := new(PostResponse)
+	err := c.cc.Invoke(ctx, "/post.PostSrv/HidePost", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // PostSrvServer is the server API for PostSrv service.
 // All implementations must embed UnimplementedPostSrvServer
 // for forward compatibility
 type PostSrvServer interface {
 	Index(context.Context, *IndexRequest) (*IndexResponse, error)
 	CreatePost(context.Context, *CreateRequest) (*CreateResponse, error)
+	UpdatePost(context.Context, *PostRequest) (*PostResponse, error)
+	DeletePost(context.Context, *PostRequest) (*PostResponse, error)
+	HidePost(context.Context, *PostRequest) (*PostResponse, error)
 	mustEmbedUnimplementedPostSrvServer()
 }
 
@@ -70,6 +103,15 @@ func (UnimplementedPostSrvServer) Index(context.Context, *IndexRequest) (*IndexR
 }
 func (UnimplementedPostSrvServer) CreatePost(context.Context, *CreateRequest) (*CreateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreatePost not implemented")
+}
+func (UnimplementedPostSrvServer) UpdatePost(context.Context, *PostRequest) (*PostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePost not implemented")
+}
+func (UnimplementedPostSrvServer) DeletePost(context.Context, *PostRequest) (*PostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePost not implemented")
+}
+func (UnimplementedPostSrvServer) HidePost(context.Context, *PostRequest) (*PostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method HidePost not implemented")
 }
 func (UnimplementedPostSrvServer) mustEmbedUnimplementedPostSrvServer() {}
 
@@ -120,6 +162,60 @@ func _PostSrv_CreatePost_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PostSrv_UpdatePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PostSrvServer).UpdatePost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/post.PostSrv/UpdatePost",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PostSrvServer).UpdatePost(ctx, req.(*PostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PostSrv_DeletePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PostSrvServer).DeletePost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/post.PostSrv/DeletePost",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PostSrvServer).DeletePost(ctx, req.(*PostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PostSrv_HidePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PostSrvServer).HidePost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/post.PostSrv/HidePost",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PostSrvServer).HidePost(ctx, req.(*PostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // PostSrv_ServiceDesc is the grpc.ServiceDesc for PostSrv service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -135,7 +231,19 @@ var PostSrv_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "CreatePost",
 			Handler:    _PostSrv_CreatePost_Handler,
 		},
+		{
+			MethodName: "UpdatePost",
+			Handler:    _PostSrv_UpdatePost_Handler,
+		},
+		{
+			MethodName: "DeletePost",
+			Handler:    _PostSrv_DeletePost_Handler,
+		},
+		{
+			MethodName: "HidePost",
+			Handler:    _PostSrv_HidePost_Handler,
+		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "post.proto",
+	Metadata: "post_service.proto",
 }

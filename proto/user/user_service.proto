@@ -1,0 +1,21 @@
+syntax = "proto3";
+import "user_message.proto";
+package user;
+
+option go_package = "proto/user";
+
+service User{
+  rpc Find(Empty) returns (Empty);
+  rpc GetById(Empty) returns (Empty);
+  rpc GetByEmail(Empty) returns (Empty);
+  rpc GetByToken(Empty) returns (Empty);
+  rpc Create(Empty) returns (Empty);
+  rpc Update(Empty) returns (Empty);
+  rpc Delete(Empty) returns (Empty);
+}
+
+service UserRole{
+  rpc Roles(Empty) returns (Empty);
+  rpc Create(Empty) returns (Empty);
+  rpc Delete(Empty) returns (Empty);
+}

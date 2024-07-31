@@ -1,0 +1,25 @@
+syntax = "proto3";
+package post;
+option go_package = "antibomberman/mego/post";
+
+enum MediaType {
+  IMAGE = 0;
+  VIDEO = 1;
+}
+
+enum PostType {
+  TOURIST = 0;
+  GUIDE = 1;
+  OWNER = 2;
+}
+
+
+enum SortOrder {
+  NEWEST = 0;
+  OLDEST = 1;
+  MOST_LIKED = 2;
+  MOST_COMMENTED = 3;
+}
+
+
+

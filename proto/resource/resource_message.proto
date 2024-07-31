@@ -1,0 +1,8 @@
+syntax = "proto3";
+package resource;
+
+option go_package = "proto/resource";
+
+message Empty{
+
+}

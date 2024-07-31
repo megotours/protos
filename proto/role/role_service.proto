@@ -1,0 +1,12 @@
+syntax = "proto3";
+import "role_message.proto";
+package role;
+
+option go_package = "proto/role";
+
+service Role{
+    rpc Find(Empty) returns (Empty);
+    rpc Create(Empty) returns (Empty);
+    rpc Update(Empty) returns (Empty);
+    rpc Delete(Empty) returns (Empty);
+}

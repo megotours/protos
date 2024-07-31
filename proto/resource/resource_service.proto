@@ -1,0 +1,13 @@
+syntax = "proto3";
+import "resource_message.proto";
+package resource;
+
+option go_package = "proto/resource";
+
+service Resource{
+    rpc Find(Empty) returns (Empty);
+    rpc Create(Empty) returns (Empty);
+    rpc Update(Empty) returns (Empty);
+    rpc Delete(Empty) returns (Empty);
+}
+

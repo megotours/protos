@@ -3,13 +3,8 @@ package post;
 
 option go_package = "antibomberman/mego/post";
 import "google/protobuf/timestamp.proto";
-service PostSrv{
-  rpc Index(IndexRequest) returns (IndexResponse);
-    rpc CreatePost(CreateRequest) returns (CreateResponse);
-  //  rpc UpdatePost(PostRequest) returns (PostResponse);
-  //  rpc DeletePost(PostRequest) returns (PostResponse);
-  //  rpc HidePost(PostRequest) returns (PostResponse);
-}
+import "post_enum.proto";
+
 
 message IndexRequest{
   int32 page_size = 1;
@@ -23,8 +18,6 @@ message IndexResponse{
   repeated Post posts = 1;
   string next_page_token = 2;
 }
-
-
 message Post {
   string id = 1;
   string title = 2;
@@ -44,22 +37,18 @@ message Post {
   google.protobuf.Timestamp updated_at = 11;
   google.protobuf.Timestamp deleted_at = 12;
 }
+message PostResponse{
 
+}
 
 message Author {
   string id = 1;
   string username = 2;
   string avatar = 3;
 }
-
-
 message PostRequest{
   string id = 1;
 }
-
-
-
-
 message MediaContents {
   string title = 1;
   string content = 2;
@@ -69,28 +58,6 @@ message MediaContentFiles{
   string url = 1;
   MediaType type = 2;
 }
-
-
-enum MediaType {
-  IMAGE = 0;
-  VIDEO = 1;
-}
-
-enum PostType {
-  TOURIST = 0;
-  GUIDE = 1;
-  OWNER = 2;
-}
-
-
-enum SortOrder {
-  NEWEST = 0;
-  OLDEST = 1;
-  MOST_LIKED = 2;
-  MOST_COMMENTED = 3;
-}
-
-
 
 message CreateRequest{
   string title = 1;

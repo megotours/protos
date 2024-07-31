@@ -1,0 +1,12 @@
+syntax = "proto3";
+package post;
+
+option go_package = "antibomberman/mego/post";
+import "post_message.proto";
+service PostSrv{
+  rpc Index(IndexRequest) returns (IndexResponse);
+  rpc CreatePost(CreateRequest) returns (CreateResponse);
+  rpc UpdatePost(PostRequest) returns (PostResponse);
+  rpc DeletePost(PostRequest) returns (PostResponse);
+  rpc HidePost(PostRequest) returns (PostResponse);
+}

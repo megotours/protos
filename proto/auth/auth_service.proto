@@ -1,0 +1,12 @@
+syntax = "proto3";
+import "auth_message.proto";
+package auth;
+
+option go_package = "proto/auth";
+
+service Auth{
+    rpc Register(RegisterRequest) returns (RegisterResponse);
+    rpc Login(LoginRequest) returns (LoginResponse);
+    rpc Logout(LogoutRequest) returns (LogoutResponse);
+    //PasswordForgot and PasswordReset
+}
