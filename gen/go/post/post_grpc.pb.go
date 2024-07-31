@@ -4,7 +4,7 @@
 // - protoc             v4.25.3
 // source: post.proto
 
-package gen
+package post
 
 import (
 	context "context"
@@ -23,6 +23,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type PostSrvClient interface {
 	Index(ctx context.Context, in *IndexRequest, opts ...grpc.CallOption) (*IndexResponse, error)
+	CreatePost(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
 }
 
 type postSrvClient struct {
@@ -35,7 +36,16 @@ func NewPostSrvClient(cc grpc.ClientConnInterface) PostSrvClient {
 
 func (c *postSrvClient) Index(ctx context.Context, in *IndexRequest, opts ...grpc.CallOption) (*IndexResponse, error) {
 	out := new(IndexResponse)
-	err := c.cc.Invoke(ctx, "/gen.PostSrv/Index", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/post.PostSrv/Index", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *postSrvClient) CreatePost(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error) {
+	out := new(CreateResponse)
+	err := c.cc.Invoke(ctx, "/post.PostSrv/CreatePost", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,6 +57,7 @@ func (c *postSrvClient) Index(ctx context.Context, in *IndexRequest, opts ...grp
 // for forward compatibility
 type PostSrvServer interface {
 	Index(context.Context, *IndexRequest) (*IndexResponse, error)
+	CreatePost(context.Context, *CreateRequest) (*CreateResponse, error)
 	mustEmbedUnimplementedPostSrvServer()
 }
 
@@ -56,6 +67,9 @@ type UnimplementedPostSrvServer struct {
 
 func (UnimplementedPostSrvServer) Index(context.Context, *IndexRequest) (*IndexResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Index not implemented")
+}
+func (UnimplementedPostSrvServer) CreatePost(context.Context, *CreateRequest) (*CreateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreatePost not implemented")
 }
 func (UnimplementedPostSrvServer) mustEmbedUnimplementedPostSrvServer() {}
 
@@ -80,10 +94,28 @@ func _PostSrv_Index_Handler(srv interface{}, ctx context.Context, dec func(inter
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/gen.PostSrv/Index",
+		FullMethod: "/post.PostSrv/Index",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(PostSrvServer).Index(ctx, req.(*IndexRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PostSrv_CreatePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PostSrvServer).CreatePost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/post.PostSrv/CreatePost",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PostSrvServer).CreatePost(ctx, req.(*CreateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -92,12 +124,16 @@ func _PostSrv_Index_Handler(srv interface{}, ctx context.Context, dec func(inter
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var PostSrv_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "gen.PostSrv",
+	ServiceName: "post.PostSrv",
 	HandlerType: (*PostSrvServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Index",
 			Handler:    _PostSrv_Index_Handler,
+		},
+		{
+			MethodName: "CreatePost",
+			Handler:    _PostSrv_CreatePost_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

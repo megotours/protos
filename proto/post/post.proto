@@ -1,11 +1,11 @@
 syntax = "proto3";
-package gen;
+package post;
 
-option go_package = "antibomberman/mego/gen";
+option go_package = "antibomberman/mego/post";
 import "google/protobuf/timestamp.proto";
 service PostSrv{
   rpc Index(IndexRequest) returns (IndexResponse);
-  //  rpc CreatePost(PostRequest) returns (PostResponse);
+    rpc CreatePost(CreateRequest) returns (CreateResponse);
   //  rpc UpdatePost(PostRequest) returns (PostResponse);
   //  rpc DeletePost(PostRequest) returns (PostResponse);
   //  rpc HidePost(PostRequest) returns (PostResponse);
@@ -88,4 +88,15 @@ enum SortOrder {
   OLDEST = 1;
   MOST_LIKED = 2;
   MOST_COMMENTED = 3;
+}
+
+
+message CreateRequest{
+  string title = 1;
+  Author author = 2;
+  MediaContents contents = 3;
+  PostType type = 4;
+}
+message CreateResponse{
+  Post post = 1;
 }
