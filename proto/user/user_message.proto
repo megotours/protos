@@ -48,7 +48,8 @@ message FindUserRequest{
     string search = 4;
 }
 message FindUserResponse{
-    repeated UserDetails users = 1;
+    string nexPageToken = 1;
+    repeated UserDetails users = 2;
 }
 
 message User {
