@@ -8,7 +8,6 @@ service Auth{
     rpc Register(RegisterRequest) returns (RegisterResponse);
     rpc Login(LoginRequest) returns (LoginResponse);
     rpc Logout(LogoutRequest) returns (LogoutResponse);
-    //PasswordForgot and PasswordReset
 }
 service Password{
     rpc ForgotPassword(ForgotPasswordRequest) returns (ForgotPasswordResponse);
