@@ -18,460 +18,460 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// UserClient is the client API for User service.
+// UserServiceClient is the client API for UserService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type UserClient interface {
-	Find(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error)
-	GetById(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error)
-	GetByEmail(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error)
-	GetByToken(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error)
-	Create(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error)
-	Update(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error)
-	Delete(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error)
+type UserServiceClient interface {
+	Find(ctx context.Context, in *FindUserRequest, opts ...grpc.CallOption) (*FindUserResponse, error)
+	GetById(ctx context.Context, in *Id, opts ...grpc.CallOption) (*UserDetails, error)
+	GetByEmail(ctx context.Context, in *Email, opts ...grpc.CallOption) (*UserDetails, error)
+	GetByToken(ctx context.Context, in *Token, opts ...grpc.CallOption) (*UserDetails, error)
+	Create(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*UserDetails, error)
+	Update(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*UserDetails, error)
+	Delete(ctx context.Context, in *Id, opts ...grpc.CallOption) (*UserDetails, error)
 }
 
-type userClient struct {
+type userServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewUserClient(cc grpc.ClientConnInterface) UserClient {
-	return &userClient{cc}
+func NewUserServiceClient(cc grpc.ClientConnInterface) UserServiceClient {
+	return &userServiceClient{cc}
 }
 
-func (c *userClient) Find(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/user.User/Find", in, out, opts...)
+func (c *userServiceClient) Find(ctx context.Context, in *FindUserRequest, opts ...grpc.CallOption) (*FindUserResponse, error) {
+	out := new(FindUserResponse)
+	err := c.cc.Invoke(ctx, "/user.UserService/Find", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userClient) GetById(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/user.User/GetById", in, out, opts...)
+func (c *userServiceClient) GetById(ctx context.Context, in *Id, opts ...grpc.CallOption) (*UserDetails, error) {
+	out := new(UserDetails)
+	err := c.cc.Invoke(ctx, "/user.UserService/GetById", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userClient) GetByEmail(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/user.User/GetByEmail", in, out, opts...)
+func (c *userServiceClient) GetByEmail(ctx context.Context, in *Email, opts ...grpc.CallOption) (*UserDetails, error) {
+	out := new(UserDetails)
+	err := c.cc.Invoke(ctx, "/user.UserService/GetByEmail", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userClient) GetByToken(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/user.User/GetByToken", in, out, opts...)
+func (c *userServiceClient) GetByToken(ctx context.Context, in *Token, opts ...grpc.CallOption) (*UserDetails, error) {
+	out := new(UserDetails)
+	err := c.cc.Invoke(ctx, "/user.UserService/GetByToken", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userClient) Create(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/user.User/Create", in, out, opts...)
+func (c *userServiceClient) Create(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*UserDetails, error) {
+	out := new(UserDetails)
+	err := c.cc.Invoke(ctx, "/user.UserService/Create", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userClient) Update(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/user.User/Update", in, out, opts...)
+func (c *userServiceClient) Update(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*UserDetails, error) {
+	out := new(UserDetails)
+	err := c.cc.Invoke(ctx, "/user.UserService/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userClient) Delete(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/user.User/Delete", in, out, opts...)
+func (c *userServiceClient) Delete(ctx context.Context, in *Id, opts ...grpc.CallOption) (*UserDetails, error) {
+	out := new(UserDetails)
+	err := c.cc.Invoke(ctx, "/user.UserService/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// UserServer is the server API for User service.
-// All implementations must embed UnimplementedUserServer
+// UserServiceServer is the server API for UserService service.
+// All implementations must embed UnimplementedUserServiceServer
 // for forward compatibility
-type UserServer interface {
-	Find(context.Context, *Empty) (*Empty, error)
-	GetById(context.Context, *Empty) (*Empty, error)
-	GetByEmail(context.Context, *Empty) (*Empty, error)
-	GetByToken(context.Context, *Empty) (*Empty, error)
-	Create(context.Context, *Empty) (*Empty, error)
-	Update(context.Context, *Empty) (*Empty, error)
-	Delete(context.Context, *Empty) (*Empty, error)
-	mustEmbedUnimplementedUserServer()
+type UserServiceServer interface {
+	Find(context.Context, *FindUserRequest) (*FindUserResponse, error)
+	GetById(context.Context, *Id) (*UserDetails, error)
+	GetByEmail(context.Context, *Email) (*UserDetails, error)
+	GetByToken(context.Context, *Token) (*UserDetails, error)
+	Create(context.Context, *CreateUserRequest) (*UserDetails, error)
+	Update(context.Context, *UpdateUserRequest) (*UserDetails, error)
+	Delete(context.Context, *Id) (*UserDetails, error)
+	mustEmbedUnimplementedUserServiceServer()
 }
 
-// UnimplementedUserServer must be embedded to have forward compatible implementations.
-type UnimplementedUserServer struct {
+// UnimplementedUserServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedUserServiceServer struct {
 }
 
-func (UnimplementedUserServer) Find(context.Context, *Empty) (*Empty, error) {
+func (UnimplementedUserServiceServer) Find(context.Context, *FindUserRequest) (*FindUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Find not implemented")
 }
-func (UnimplementedUserServer) GetById(context.Context, *Empty) (*Empty, error) {
+func (UnimplementedUserServiceServer) GetById(context.Context, *Id) (*UserDetails, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetById not implemented")
 }
-func (UnimplementedUserServer) GetByEmail(context.Context, *Empty) (*Empty, error) {
+func (UnimplementedUserServiceServer) GetByEmail(context.Context, *Email) (*UserDetails, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetByEmail not implemented")
 }
-func (UnimplementedUserServer) GetByToken(context.Context, *Empty) (*Empty, error) {
+func (UnimplementedUserServiceServer) GetByToken(context.Context, *Token) (*UserDetails, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetByToken not implemented")
 }
-func (UnimplementedUserServer) Create(context.Context, *Empty) (*Empty, error) {
+func (UnimplementedUserServiceServer) Create(context.Context, *CreateUserRequest) (*UserDetails, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
-func (UnimplementedUserServer) Update(context.Context, *Empty) (*Empty, error) {
+func (UnimplementedUserServiceServer) Update(context.Context, *UpdateUserRequest) (*UserDetails, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
-func (UnimplementedUserServer) Delete(context.Context, *Empty) (*Empty, error) {
+func (UnimplementedUserServiceServer) Delete(context.Context, *Id) (*UserDetails, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
-func (UnimplementedUserServer) mustEmbedUnimplementedUserServer() {}
+func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
 
-// UnsafeUserServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to UserServer will
+// UnsafeUserServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to UserServiceServer will
 // result in compilation errors.
-type UnsafeUserServer interface {
-	mustEmbedUnimplementedUserServer()
+type UnsafeUserServiceServer interface {
+	mustEmbedUnimplementedUserServiceServer()
 }
 
-func RegisterUserServer(s grpc.ServiceRegistrar, srv UserServer) {
-	s.RegisterService(&User_ServiceDesc, srv)
+func RegisterUserServiceServer(s grpc.ServiceRegistrar, srv UserServiceServer) {
+	s.RegisterService(&UserService_ServiceDesc, srv)
 }
 
-func _User_Find_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
+func _UserService_Find_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FindUserRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServer).Find(ctx, in)
+		return srv.(UserServiceServer).Find(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.User/Find",
+		FullMethod: "/user.UserService/Find",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServer).Find(ctx, req.(*Empty))
+		return srv.(UserServiceServer).Find(ctx, req.(*FindUserRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _User_GetById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
+func _UserService_GetById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Id)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServer).GetById(ctx, in)
+		return srv.(UserServiceServer).GetById(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.User/GetById",
+		FullMethod: "/user.UserService/GetById",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServer).GetById(ctx, req.(*Empty))
+		return srv.(UserServiceServer).GetById(ctx, req.(*Id))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _User_GetByEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
+func _UserService_GetByEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Email)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServer).GetByEmail(ctx, in)
+		return srv.(UserServiceServer).GetByEmail(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.User/GetByEmail",
+		FullMethod: "/user.UserService/GetByEmail",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServer).GetByEmail(ctx, req.(*Empty))
+		return srv.(UserServiceServer).GetByEmail(ctx, req.(*Email))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _User_GetByToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
+func _UserService_GetByToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Token)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServer).GetByToken(ctx, in)
+		return srv.(UserServiceServer).GetByToken(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.User/GetByToken",
+		FullMethod: "/user.UserService/GetByToken",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServer).GetByToken(ctx, req.(*Empty))
+		return srv.(UserServiceServer).GetByToken(ctx, req.(*Token))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _User_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
+func _UserService_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateUserRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServer).Create(ctx, in)
+		return srv.(UserServiceServer).Create(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.User/Create",
+		FullMethod: "/user.UserService/Create",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServer).Create(ctx, req.(*Empty))
+		return srv.(UserServiceServer).Create(ctx, req.(*CreateUserRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _User_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
+func _UserService_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateUserRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServer).Update(ctx, in)
+		return srv.(UserServiceServer).Update(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.User/Update",
+		FullMethod: "/user.UserService/Update",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServer).Update(ctx, req.(*Empty))
+		return srv.(UserServiceServer).Update(ctx, req.(*UpdateUserRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _User_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
+func _UserService_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Id)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServer).Delete(ctx, in)
+		return srv.(UserServiceServer).Delete(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.User/Delete",
+		FullMethod: "/user.UserService/Delete",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServer).Delete(ctx, req.(*Empty))
+		return srv.(UserServiceServer).Delete(ctx, req.(*Id))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// User_ServiceDesc is the grpc.ServiceDesc for User service.
+// UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var User_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "user.User",
-	HandlerType: (*UserServer)(nil),
+var UserService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "user.UserService",
+	HandlerType: (*UserServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Find",
-			Handler:    _User_Find_Handler,
+			Handler:    _UserService_Find_Handler,
 		},
 		{
 			MethodName: "GetById",
-			Handler:    _User_GetById_Handler,
+			Handler:    _UserService_GetById_Handler,
 		},
 		{
 			MethodName: "GetByEmail",
-			Handler:    _User_GetByEmail_Handler,
+			Handler:    _UserService_GetByEmail_Handler,
 		},
 		{
 			MethodName: "GetByToken",
-			Handler:    _User_GetByToken_Handler,
+			Handler:    _UserService_GetByToken_Handler,
 		},
 		{
 			MethodName: "Create",
-			Handler:    _User_Create_Handler,
+			Handler:    _UserService_Create_Handler,
 		},
 		{
 			MethodName: "Update",
-			Handler:    _User_Update_Handler,
+			Handler:    _UserService_Update_Handler,
 		},
 		{
 			MethodName: "Delete",
-			Handler:    _User_Delete_Handler,
+			Handler:    _UserService_Delete_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "user_service.proto",
 }
 
-// UserRoleClient is the client API for UserRole service.
+// UserRoleServiceClient is the client API for UserRoleService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type UserRoleClient interface {
+type UserRoleServiceClient interface {
 	Roles(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error)
 	Create(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error)
 	Delete(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error)
 }
 
-type userRoleClient struct {
+type userRoleServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewUserRoleClient(cc grpc.ClientConnInterface) UserRoleClient {
-	return &userRoleClient{cc}
+func NewUserRoleServiceClient(cc grpc.ClientConnInterface) UserRoleServiceClient {
+	return &userRoleServiceClient{cc}
 }
 
-func (c *userRoleClient) Roles(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error) {
+func (c *userRoleServiceClient) Roles(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error) {
 	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/user.UserRole/Roles", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.UserRoleService/Roles", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userRoleClient) Create(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error) {
+func (c *userRoleServiceClient) Create(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error) {
 	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/user.UserRole/Create", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.UserRoleService/Create", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userRoleClient) Delete(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error) {
+func (c *userRoleServiceClient) Delete(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error) {
 	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/user.UserRole/Delete", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.UserRoleService/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// UserRoleServer is the server API for UserRole service.
-// All implementations must embed UnimplementedUserRoleServer
+// UserRoleServiceServer is the server API for UserRoleService service.
+// All implementations must embed UnimplementedUserRoleServiceServer
 // for forward compatibility
-type UserRoleServer interface {
+type UserRoleServiceServer interface {
 	Roles(context.Context, *Empty) (*Empty, error)
 	Create(context.Context, *Empty) (*Empty, error)
 	Delete(context.Context, *Empty) (*Empty, error)
-	mustEmbedUnimplementedUserRoleServer()
+	mustEmbedUnimplementedUserRoleServiceServer()
 }
 
-// UnimplementedUserRoleServer must be embedded to have forward compatible implementations.
-type UnimplementedUserRoleServer struct {
+// UnimplementedUserRoleServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedUserRoleServiceServer struct {
 }
 
-func (UnimplementedUserRoleServer) Roles(context.Context, *Empty) (*Empty, error) {
+func (UnimplementedUserRoleServiceServer) Roles(context.Context, *Empty) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Roles not implemented")
 }
-func (UnimplementedUserRoleServer) Create(context.Context, *Empty) (*Empty, error) {
+func (UnimplementedUserRoleServiceServer) Create(context.Context, *Empty) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
-func (UnimplementedUserRoleServer) Delete(context.Context, *Empty) (*Empty, error) {
+func (UnimplementedUserRoleServiceServer) Delete(context.Context, *Empty) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
-func (UnimplementedUserRoleServer) mustEmbedUnimplementedUserRoleServer() {}
+func (UnimplementedUserRoleServiceServer) mustEmbedUnimplementedUserRoleServiceServer() {}
 
-// UnsafeUserRoleServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to UserRoleServer will
+// UnsafeUserRoleServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to UserRoleServiceServer will
 // result in compilation errors.
-type UnsafeUserRoleServer interface {
-	mustEmbedUnimplementedUserRoleServer()
+type UnsafeUserRoleServiceServer interface {
+	mustEmbedUnimplementedUserRoleServiceServer()
 }
 
-func RegisterUserRoleServer(s grpc.ServiceRegistrar, srv UserRoleServer) {
-	s.RegisterService(&UserRole_ServiceDesc, srv)
+func RegisterUserRoleServiceServer(s grpc.ServiceRegistrar, srv UserRoleServiceServer) {
+	s.RegisterService(&UserRoleService_ServiceDesc, srv)
 }
 
-func _UserRole_Roles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _UserRoleService_Roles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserRoleServer).Roles(ctx, in)
+		return srv.(UserRoleServiceServer).Roles(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.UserRole/Roles",
+		FullMethod: "/user.UserRoleService/Roles",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserRoleServer).Roles(ctx, req.(*Empty))
+		return srv.(UserRoleServiceServer).Roles(ctx, req.(*Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserRole_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _UserRoleService_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserRoleServer).Create(ctx, in)
+		return srv.(UserRoleServiceServer).Create(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.UserRole/Create",
+		FullMethod: "/user.UserRoleService/Create",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserRoleServer).Create(ctx, req.(*Empty))
+		return srv.(UserRoleServiceServer).Create(ctx, req.(*Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserRole_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _UserRoleService_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserRoleServer).Delete(ctx, in)
+		return srv.(UserRoleServiceServer).Delete(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.UserRole/Delete",
+		FullMethod: "/user.UserRoleService/Delete",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserRoleServer).Delete(ctx, req.(*Empty))
+		return srv.(UserRoleServiceServer).Delete(ctx, req.(*Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// UserRole_ServiceDesc is the grpc.ServiceDesc for UserRole service.
+// UserRoleService_ServiceDesc is the grpc.ServiceDesc for UserRoleService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var UserRole_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "user.UserRole",
-	HandlerType: (*UserRoleServer)(nil),
+var UserRoleService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "user.UserRoleService",
+	HandlerType: (*UserRoleServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Roles",
-			Handler:    _UserRole_Roles_Handler,
+			Handler:    _UserRoleService_Roles_Handler,
 		},
 		{
 			MethodName: "Create",
-			Handler:    _UserRole_Create_Handler,
+			Handler:    _UserRoleService_Create_Handler,
 		},
 		{
 			MethodName: "Delete",
-			Handler:    _UserRole_Delete_Handler,
+			Handler:    _UserRoleService_Delete_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

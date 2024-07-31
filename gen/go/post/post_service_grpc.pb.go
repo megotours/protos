@@ -18,230 +18,230 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// PostSrvClient is the client API for PostSrv service.
+// PostServiceClient is the client API for PostService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type PostSrvClient interface {
-	Index(ctx context.Context, in *IndexRequest, opts ...grpc.CallOption) (*IndexResponse, error)
-	CreatePost(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error)
-	UpdatePost(ctx context.Context, in *PostRequest, opts ...grpc.CallOption) (*PostResponse, error)
-	DeletePost(ctx context.Context, in *PostRequest, opts ...grpc.CallOption) (*PostResponse, error)
-	HidePost(ctx context.Context, in *PostRequest, opts ...grpc.CallOption) (*PostResponse, error)
+type PostServiceClient interface {
+	Find(ctx context.Context, in *FindPostRequest, opts ...grpc.CallOption) (*FindPostResponse, error)
+	CreatePost(ctx context.Context, in *CreatePostRequest, opts ...grpc.CallOption) (*PostDetail, error)
+	UpdatePost(ctx context.Context, in *UpdatePostRequest, opts ...grpc.CallOption) (*PostDetail, error)
+	DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*PostDetail, error)
+	HidePost(ctx context.Context, in *HidePostRequest, opts ...grpc.CallOption) (*PostDetail, error)
 }
 
-type postSrvClient struct {
+type postServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewPostSrvClient(cc grpc.ClientConnInterface) PostSrvClient {
-	return &postSrvClient{cc}
+func NewPostServiceClient(cc grpc.ClientConnInterface) PostServiceClient {
+	return &postServiceClient{cc}
 }
 
-func (c *postSrvClient) Index(ctx context.Context, in *IndexRequest, opts ...grpc.CallOption) (*IndexResponse, error) {
-	out := new(IndexResponse)
-	err := c.cc.Invoke(ctx, "/post.PostSrv/Index", in, out, opts...)
+func (c *postServiceClient) Find(ctx context.Context, in *FindPostRequest, opts ...grpc.CallOption) (*FindPostResponse, error) {
+	out := new(FindPostResponse)
+	err := c.cc.Invoke(ctx, "/post.PostService/Find", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *postSrvClient) CreatePost(ctx context.Context, in *CreateRequest, opts ...grpc.CallOption) (*CreateResponse, error) {
-	out := new(CreateResponse)
-	err := c.cc.Invoke(ctx, "/post.PostSrv/CreatePost", in, out, opts...)
+func (c *postServiceClient) CreatePost(ctx context.Context, in *CreatePostRequest, opts ...grpc.CallOption) (*PostDetail, error) {
+	out := new(PostDetail)
+	err := c.cc.Invoke(ctx, "/post.PostService/CreatePost", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *postSrvClient) UpdatePost(ctx context.Context, in *PostRequest, opts ...grpc.CallOption) (*PostResponse, error) {
-	out := new(PostResponse)
-	err := c.cc.Invoke(ctx, "/post.PostSrv/UpdatePost", in, out, opts...)
+func (c *postServiceClient) UpdatePost(ctx context.Context, in *UpdatePostRequest, opts ...grpc.CallOption) (*PostDetail, error) {
+	out := new(PostDetail)
+	err := c.cc.Invoke(ctx, "/post.PostService/UpdatePost", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *postSrvClient) DeletePost(ctx context.Context, in *PostRequest, opts ...grpc.CallOption) (*PostResponse, error) {
-	out := new(PostResponse)
-	err := c.cc.Invoke(ctx, "/post.PostSrv/DeletePost", in, out, opts...)
+func (c *postServiceClient) DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*PostDetail, error) {
+	out := new(PostDetail)
+	err := c.cc.Invoke(ctx, "/post.PostService/DeletePost", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *postSrvClient) HidePost(ctx context.Context, in *PostRequest, opts ...grpc.CallOption) (*PostResponse, error) {
-	out := new(PostResponse)
-	err := c.cc.Invoke(ctx, "/post.PostSrv/HidePost", in, out, opts...)
+func (c *postServiceClient) HidePost(ctx context.Context, in *HidePostRequest, opts ...grpc.CallOption) (*PostDetail, error) {
+	out := new(PostDetail)
+	err := c.cc.Invoke(ctx, "/post.PostService/HidePost", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// PostSrvServer is the server API for PostSrv service.
-// All implementations must embed UnimplementedPostSrvServer
+// PostServiceServer is the server API for PostService service.
+// All implementations must embed UnimplementedPostServiceServer
 // for forward compatibility
-type PostSrvServer interface {
-	Index(context.Context, *IndexRequest) (*IndexResponse, error)
-	CreatePost(context.Context, *CreateRequest) (*CreateResponse, error)
-	UpdatePost(context.Context, *PostRequest) (*PostResponse, error)
-	DeletePost(context.Context, *PostRequest) (*PostResponse, error)
-	HidePost(context.Context, *PostRequest) (*PostResponse, error)
-	mustEmbedUnimplementedPostSrvServer()
+type PostServiceServer interface {
+	Find(context.Context, *FindPostRequest) (*FindPostResponse, error)
+	CreatePost(context.Context, *CreatePostRequest) (*PostDetail, error)
+	UpdatePost(context.Context, *UpdatePostRequest) (*PostDetail, error)
+	DeletePost(context.Context, *DeletePostRequest) (*PostDetail, error)
+	HidePost(context.Context, *HidePostRequest) (*PostDetail, error)
+	mustEmbedUnimplementedPostServiceServer()
 }
 
-// UnimplementedPostSrvServer must be embedded to have forward compatible implementations.
-type UnimplementedPostSrvServer struct {
+// UnimplementedPostServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedPostServiceServer struct {
 }
 
-func (UnimplementedPostSrvServer) Index(context.Context, *IndexRequest) (*IndexResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Index not implemented")
+func (UnimplementedPostServiceServer) Find(context.Context, *FindPostRequest) (*FindPostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Find not implemented")
 }
-func (UnimplementedPostSrvServer) CreatePost(context.Context, *CreateRequest) (*CreateResponse, error) {
+func (UnimplementedPostServiceServer) CreatePost(context.Context, *CreatePostRequest) (*PostDetail, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreatePost not implemented")
 }
-func (UnimplementedPostSrvServer) UpdatePost(context.Context, *PostRequest) (*PostResponse, error) {
+func (UnimplementedPostServiceServer) UpdatePost(context.Context, *UpdatePostRequest) (*PostDetail, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdatePost not implemented")
 }
-func (UnimplementedPostSrvServer) DeletePost(context.Context, *PostRequest) (*PostResponse, error) {
+func (UnimplementedPostServiceServer) DeletePost(context.Context, *DeletePostRequest) (*PostDetail, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeletePost not implemented")
 }
-func (UnimplementedPostSrvServer) HidePost(context.Context, *PostRequest) (*PostResponse, error) {
+func (UnimplementedPostServiceServer) HidePost(context.Context, *HidePostRequest) (*PostDetail, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method HidePost not implemented")
 }
-func (UnimplementedPostSrvServer) mustEmbedUnimplementedPostSrvServer() {}
+func (UnimplementedPostServiceServer) mustEmbedUnimplementedPostServiceServer() {}
 
-// UnsafePostSrvServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to PostSrvServer will
+// UnsafePostServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to PostServiceServer will
 // result in compilation errors.
-type UnsafePostSrvServer interface {
-	mustEmbedUnimplementedPostSrvServer()
+type UnsafePostServiceServer interface {
+	mustEmbedUnimplementedPostServiceServer()
 }
 
-func RegisterPostSrvServer(s grpc.ServiceRegistrar, srv PostSrvServer) {
-	s.RegisterService(&PostSrv_ServiceDesc, srv)
+func RegisterPostServiceServer(s grpc.ServiceRegistrar, srv PostServiceServer) {
+	s.RegisterService(&PostService_ServiceDesc, srv)
 }
 
-func _PostSrv_Index_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(IndexRequest)
+func _PostService_Find_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FindPostRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PostSrvServer).Index(ctx, in)
+		return srv.(PostServiceServer).Find(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/post.PostSrv/Index",
+		FullMethod: "/post.PostService/Find",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PostSrvServer).Index(ctx, req.(*IndexRequest))
+		return srv.(PostServiceServer).Find(ctx, req.(*FindPostRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PostSrv_CreatePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateRequest)
+func _PostService_CreatePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreatePostRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PostSrvServer).CreatePost(ctx, in)
+		return srv.(PostServiceServer).CreatePost(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/post.PostSrv/CreatePost",
+		FullMethod: "/post.PostService/CreatePost",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PostSrvServer).CreatePost(ctx, req.(*CreateRequest))
+		return srv.(PostServiceServer).CreatePost(ctx, req.(*CreatePostRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PostSrv_UpdatePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PostRequest)
+func _PostService_UpdatePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdatePostRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PostSrvServer).UpdatePost(ctx, in)
+		return srv.(PostServiceServer).UpdatePost(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/post.PostSrv/UpdatePost",
+		FullMethod: "/post.PostService/UpdatePost",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PostSrvServer).UpdatePost(ctx, req.(*PostRequest))
+		return srv.(PostServiceServer).UpdatePost(ctx, req.(*UpdatePostRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PostSrv_DeletePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PostRequest)
+func _PostService_DeletePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeletePostRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PostSrvServer).DeletePost(ctx, in)
+		return srv.(PostServiceServer).DeletePost(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/post.PostSrv/DeletePost",
+		FullMethod: "/post.PostService/DeletePost",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PostSrvServer).DeletePost(ctx, req.(*PostRequest))
+		return srv.(PostServiceServer).DeletePost(ctx, req.(*DeletePostRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PostSrv_HidePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PostRequest)
+func _PostService_HidePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HidePostRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PostSrvServer).HidePost(ctx, in)
+		return srv.(PostServiceServer).HidePost(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/post.PostSrv/HidePost",
+		FullMethod: "/post.PostService/HidePost",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PostSrvServer).HidePost(ctx, req.(*PostRequest))
+		return srv.(PostServiceServer).HidePost(ctx, req.(*HidePostRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// PostSrv_ServiceDesc is the grpc.ServiceDesc for PostSrv service.
+// PostService_ServiceDesc is the grpc.ServiceDesc for PostService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var PostSrv_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "post.PostSrv",
-	HandlerType: (*PostSrvServer)(nil),
+var PostService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "post.PostService",
+	HandlerType: (*PostServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Index",
-			Handler:    _PostSrv_Index_Handler,
+			MethodName: "Find",
+			Handler:    _PostService_Find_Handler,
 		},
 		{
 			MethodName: "CreatePost",
-			Handler:    _PostSrv_CreatePost_Handler,
+			Handler:    _PostService_CreatePost_Handler,
 		},
 		{
 			MethodName: "UpdatePost",
-			Handler:    _PostSrv_UpdatePost_Handler,
+			Handler:    _PostService_UpdatePost_Handler,
 		},
 		{
 			MethodName: "DeletePost",
-			Handler:    _PostSrv_DeletePost_Handler,
+			Handler:    _PostService_DeletePost_Handler,
 		},
 		{
 			MethodName: "HidePost",
-			Handler:    _PostSrv_HidePost_Handler,
+			Handler:    _PostService_HidePost_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
