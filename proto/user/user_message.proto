@@ -23,6 +23,7 @@ message User {
     google.protobuf.Timestamp deleted_at = 11;
     string deleted_by = 12;
 }
+
 message UserDetails {
     string id = 1;
     string first_name = 2;
