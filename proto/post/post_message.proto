@@ -27,12 +27,8 @@ message PostDetail {
   int32 comment_count = 5;
   int32 view_count = 6;
   int32 repost_count = 7;
-
-
   repeated MediaContents contents = 8;
-
   PostType type = 9;
-
   google.protobuf.Timestamp created_at = 10;
   google.protobuf.Timestamp updated_at = 11;
   google.protobuf.Timestamp deleted_at = 12;
