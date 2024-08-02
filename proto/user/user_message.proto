@@ -9,7 +9,6 @@ message Email { string email = 1; }
 message Phone { string phone = 1; }
 message Empty { }
 
-
 message User {
     string first_name = 1;
     string middle_name = 2;
