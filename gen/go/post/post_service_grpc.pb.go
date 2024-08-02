@@ -22,7 +22,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type PostServiceClient interface {
-	Find(ctx context.Context, in *FindPostRequest, opts ...grpc.CallOption) (*FindPostResponse, error)
+	FindPost(ctx context.Context, in *FindPostRequest, opts ...grpc.CallOption) (*FindPostResponse, error)
 	CreatePost(ctx context.Context, in *CreatePostRequest, opts ...grpc.CallOption) (*PostDetail, error)
 	UpdatePost(ctx context.Context, in *UpdatePostRequest, opts ...grpc.CallOption) (*PostDetail, error)
 	DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*PostDetail, error)
@@ -37,9 +37,9 @@ func NewPostServiceClient(cc grpc.ClientConnInterface) PostServiceClient {
 	return &postServiceClient{cc}
 }
 
-func (c *postServiceClient) Find(ctx context.Context, in *FindPostRequest, opts ...grpc.CallOption) (*FindPostResponse, error) {
+func (c *postServiceClient) FindPost(ctx context.Context, in *FindPostRequest, opts ...grpc.CallOption) (*FindPostResponse, error) {
 	out := new(FindPostResponse)
-	err := c.cc.Invoke(ctx, "/post.PostService/Find", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/post.PostService/FindPost", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -86,7 +86,7 @@ func (c *postServiceClient) HidePost(ctx context.Context, in *HidePostRequest, o
 // All implementations must embed UnimplementedPostServiceServer
 // for forward compatibility
 type PostServiceServer interface {
-	Find(context.Context, *FindPostRequest) (*FindPostResponse, error)
+	FindPost(context.Context, *FindPostRequest) (*FindPostResponse, error)
 	CreatePost(context.Context, *CreatePostRequest) (*PostDetail, error)
 	UpdatePost(context.Context, *UpdatePostRequest) (*PostDetail, error)
 	DeletePost(context.Context, *DeletePostRequest) (*PostDetail, error)
@@ -98,8 +98,8 @@ type PostServiceServer interface {
 type UnimplementedPostServiceServer struct {
 }
 
-func (UnimplementedPostServiceServer) Find(context.Context, *FindPostRequest) (*FindPostResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Find not implemented")
+func (UnimplementedPostServiceServer) FindPost(context.Context, *FindPostRequest) (*FindPostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FindPost not implemented")
 }
 func (UnimplementedPostServiceServer) CreatePost(context.Context, *CreatePostRequest) (*PostDetail, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreatePost not implemented")
@@ -126,20 +126,20 @@ func RegisterPostServiceServer(s grpc.ServiceRegistrar, srv PostServiceServer) {
 	s.RegisterService(&PostService_ServiceDesc, srv)
 }
 
-func _PostService_Find_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _PostService_FindPost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(FindPostRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PostServiceServer).Find(ctx, in)
+		return srv.(PostServiceServer).FindPost(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/post.PostService/Find",
+		FullMethod: "/post.PostService/FindPost",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PostServiceServer).Find(ctx, req.(*FindPostRequest))
+		return srv.(PostServiceServer).FindPost(ctx, req.(*FindPostRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -224,8 +224,8 @@ var PostService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*PostServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Find",
-			Handler:    _PostService_Find_Handler,
+			MethodName: "FindPost",
+			Handler:    _PostService_FindPost_Handler,
 		},
 		{
 			MethodName: "CreatePost",
