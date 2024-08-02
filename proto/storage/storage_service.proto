@@ -1,6 +1,7 @@
 syntax = "proto3";
 import "storage_message.proto";
 package storage;
+
 option go_package = "proto/storage";
 
 service StorageService{
