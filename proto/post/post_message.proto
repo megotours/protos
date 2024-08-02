@@ -77,7 +77,6 @@ message CreatePostRequest{
   MediaContents contents = 8;
   PostType type = 9;
 }
-
 message UpdatePostRequest{
   string id = 1;
   string title = 2;
