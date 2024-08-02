@@ -57,8 +57,10 @@ message MediaContents {
   repeated MediaContentFiles files = 3;
 }
 message MediaContentFiles{
-  string url = 1;
-  MediaType type = 2;
+  string file_name = 1;
+  int64 size = 2;
+  string url = 3;
+  MediaType type = 4;
 }
 
 message CreateRequest{
