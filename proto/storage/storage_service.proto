@@ -1,0 +1,13 @@
+syntax = "proto3";
+import "storage_message.proto";
+package storage;
+
+option go_package = "proto/storage";
+
+service StorageService{
+    rpc PutObject(PutObjectRequest) returns (PutObjectResponse);
+    rpc GetObject(GetObjectRequest) returns (GetObjectResponse);
+    rpc GetObjectUrl(GetObjectUrlRequest) returns (GetObjectUrlResponse);
+    rpc DeleteObject(DeleteObjectRequest) returns (DeleteObjectResponse);
+}
+

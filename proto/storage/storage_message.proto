@@ -1,0 +1,41 @@
+syntax = "proto3";
+package storage;
+
+option go_package = "proto/storage";
+
+
+message PutObjectRequest {
+  string file_name = 1;
+  bytes content = 2;
+  string content_type = 3;
+}
+
+message PutObjectResponse {
+  string file_name = 1;
+}
+
+message GetObjectRequest {
+  string file_name = 1;
+}
+
+message GetObjectResponse {
+  string file_name = 1;
+  bytes content = 2;
+  string content_type = 3;
+}
+
+message GetObjectUrlRequest {
+  string file_name = 1;
+}
+
+message GetObjectUrlResponse {
+  string url = 1;
+}
+
+message DeleteObjectRequest {
+  string file_name = 1;
+}
+
+message DeleteObjectResponse {
+  string message = 1;
+}
