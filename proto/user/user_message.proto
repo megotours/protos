@@ -6,6 +6,7 @@ import "google/protobuf/timestamp.proto";
 message Id { string id = 1; }
 message Token { string token = 1; }
 message Email { string email = 1; }
+message Phone { string phone = 1; }
 message Empty { }
 
 

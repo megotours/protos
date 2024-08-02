@@ -8,6 +8,7 @@ service UserService{
   rpc Find(FindUserRequest) returns (FindUserResponse);
   rpc GetById(Id) returns (UserDetails);
   rpc GetByEmail(Email) returns (UserDetails);
+  rpc GetByPhone(Phone) returns (UserDetails);
   rpc GetByToken(Token) returns (UserDetails);
   rpc Create(CreateUserRequest) returns (UserDetails);
   rpc Update(UpdateUserRequest) returns (UserDetails);
