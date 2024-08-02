@@ -29,7 +29,7 @@ message PostDetail {
   int32 repost_count = 7;
 
 
-  MediaContents contents = 8;
+  repeated MediaContents contents = 8;
 
   PostType type = 9;
 
@@ -43,8 +43,12 @@ message PostResponse{
 
 message Author {
   string id = 1;
-  string username = 2;
-  string avatar = 3;
+  string first_name = 2;
+  string middle_name = 3;
+  string last_name = 4;
+  string email = 5;
+  string phone = 6;
+  string avatar = 7;
 }
 message PostRequest{
   string id = 1;
