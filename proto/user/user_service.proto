@@ -20,3 +20,18 @@ service UserRoleService{
   rpc Create(Empty) returns (Empty);
   rpc Delete(Empty) returns (Empty);
 }
+
+
+service AuthService{
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+  rpc LoginByEmail(LoginByEmailRequest) returns (LoginByEmailResponse);
+  //login by phone number
+  rpc Logout(LogoutRequest) returns (LogoutResponse);
+  //    rpc IsAuth(MyString) returns (MyBoolean) {}
+}
+//service PasswordService{
+//    rpc ForgotPassword(ForgotPasswordRequest) returns (ForgotPasswordResponse);
+//    rpc ResetPassword(ResetPasswordRequest) returns (ResetPasswordResponse);
+//    rpc ChangePassword(ChangePasswordRequest) returns (Message) {}
+//}
+

@@ -57,21 +57,40 @@ var file_user_service_proto_rawDesc = []byte{
 	0x72, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x0b, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x45,
 	0x6d, 0x70, 0x74, 0x79, 0x12, 0x22, 0x0a, 0x06, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x12, 0x0b,
 	0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x0b, 0x2e, 0x75, 0x73,
-	0x65, 0x72, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x42, 0x0c, 0x5a, 0x0a, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x65, 0x72, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x32, 0xc4, 0x01, 0x0a, 0x0b, 0x41, 0x75, 0x74,
+	0x68, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x39, 0x0a, 0x08, 0x52, 0x65, 0x67, 0x69,
+	0x73, 0x74, 0x65, 0x72, 0x12, 0x15, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x52, 0x65, 0x67, 0x69,
+	0x73, 0x74, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x75, 0x73,
+	0x65, 0x72, 0x2e, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x12, 0x45, 0x0a, 0x0c, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x42, 0x79, 0x45, 0x6d,
+	0x61, 0x69, 0x6c, 0x12, 0x19, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x4c, 0x6f, 0x67, 0x69, 0x6e,
+	0x42, 0x79, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1a,
+	0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x42, 0x79, 0x45, 0x6d, 0x61,
+	0x69, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x33, 0x0a, 0x06, 0x4c, 0x6f,
+	0x67, 0x6f, 0x75, 0x74, 0x12, 0x13, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x4c, 0x6f, 0x67, 0x6f,
+	0x75, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x14, 0x2e, 0x75, 0x73, 0x65, 0x72,
+	0x2e, 0x4c, 0x6f, 0x67, 0x6f, 0x75, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42,
+	0x0c, 0x5a, 0x0a, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var file_user_service_proto_goTypes = []any{
-	(*FindUserRequest)(nil),   // 0: user.FindUserRequest
-	(*Id)(nil),                // 1: user.Id
-	(*Email)(nil),             // 2: user.Email
-	(*Phone)(nil),             // 3: user.Phone
-	(*Token)(nil),             // 4: user.Token
-	(*CreateUserRequest)(nil), // 5: user.CreateUserRequest
-	(*UpdateUserRequest)(nil), // 6: user.UpdateUserRequest
-	(*Empty)(nil),             // 7: user.Empty
-	(*FindUserResponse)(nil),  // 8: user.FindUserResponse
-	(*UserDetails)(nil),       // 9: user.UserDetails
+	(*FindUserRequest)(nil),      // 0: user.FindUserRequest
+	(*Id)(nil),                   // 1: user.Id
+	(*Email)(nil),                // 2: user.Email
+	(*Phone)(nil),                // 3: user.Phone
+	(*Token)(nil),                // 4: user.Token
+	(*CreateUserRequest)(nil),    // 5: user.CreateUserRequest
+	(*UpdateUserRequest)(nil),    // 6: user.UpdateUserRequest
+	(*Empty)(nil),                // 7: user.Empty
+	(*RegisterRequest)(nil),      // 8: user.RegisterRequest
+	(*LoginByEmailRequest)(nil),  // 9: user.LoginByEmailRequest
+	(*LogoutRequest)(nil),        // 10: user.LogoutRequest
+	(*FindUserResponse)(nil),     // 11: user.FindUserResponse
+	(*UserDetails)(nil),          // 12: user.UserDetails
+	(*RegisterResponse)(nil),     // 13: user.RegisterResponse
+	(*LoginByEmailResponse)(nil), // 14: user.LoginByEmailResponse
+	(*LogoutResponse)(nil),       // 15: user.LogoutResponse
 }
 var file_user_service_proto_depIdxs = []int32{
 	0,  // 0: user.UserService.Find:input_type -> user.FindUserRequest
@@ -85,19 +104,25 @@ var file_user_service_proto_depIdxs = []int32{
 	7,  // 8: user.UserRoleService.Roles:input_type -> user.Empty
 	7,  // 9: user.UserRoleService.Create:input_type -> user.Empty
 	7,  // 10: user.UserRoleService.Delete:input_type -> user.Empty
-	8,  // 11: user.UserService.Find:output_type -> user.FindUserResponse
-	9,  // 12: user.UserService.GetById:output_type -> user.UserDetails
-	9,  // 13: user.UserService.GetByEmail:output_type -> user.UserDetails
-	9,  // 14: user.UserService.GetByPhone:output_type -> user.UserDetails
-	9,  // 15: user.UserService.GetByToken:output_type -> user.UserDetails
-	9,  // 16: user.UserService.Create:output_type -> user.UserDetails
-	9,  // 17: user.UserService.Update:output_type -> user.UserDetails
-	9,  // 18: user.UserService.Delete:output_type -> user.UserDetails
-	7,  // 19: user.UserRoleService.Roles:output_type -> user.Empty
-	7,  // 20: user.UserRoleService.Create:output_type -> user.Empty
-	7,  // 21: user.UserRoleService.Delete:output_type -> user.Empty
-	11, // [11:22] is the sub-list for method output_type
-	0,  // [0:11] is the sub-list for method input_type
+	8,  // 11: user.AuthService.Register:input_type -> user.RegisterRequest
+	9,  // 12: user.AuthService.LoginByEmail:input_type -> user.LoginByEmailRequest
+	10, // 13: user.AuthService.Logout:input_type -> user.LogoutRequest
+	11, // 14: user.UserService.Find:output_type -> user.FindUserResponse
+	12, // 15: user.UserService.GetById:output_type -> user.UserDetails
+	12, // 16: user.UserService.GetByEmail:output_type -> user.UserDetails
+	12, // 17: user.UserService.GetByPhone:output_type -> user.UserDetails
+	12, // 18: user.UserService.GetByToken:output_type -> user.UserDetails
+	12, // 19: user.UserService.Create:output_type -> user.UserDetails
+	12, // 20: user.UserService.Update:output_type -> user.UserDetails
+	12, // 21: user.UserService.Delete:output_type -> user.UserDetails
+	7,  // 22: user.UserRoleService.Roles:output_type -> user.Empty
+	7,  // 23: user.UserRoleService.Create:output_type -> user.Empty
+	7,  // 24: user.UserRoleService.Delete:output_type -> user.Empty
+	13, // 25: user.AuthService.Register:output_type -> user.RegisterResponse
+	14, // 26: user.AuthService.LoginByEmail:output_type -> user.LoginByEmailResponse
+	15, // 27: user.AuthService.Logout:output_type -> user.LogoutResponse
+	14, // [14:28] is the sub-list for method output_type
+	0,  // [0:14] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
@@ -117,7 +142,7 @@ func file_user_service_proto_init() {
 			NumEnums:      0,
 			NumMessages:   0,
 			NumExtensions: 0,
-			NumServices:   2,
+			NumServices:   3,
 		},
 		GoTypes:           file_user_service_proto_goTypes,
 		DependencyIndexes: file_user_service_proto_depIdxs,

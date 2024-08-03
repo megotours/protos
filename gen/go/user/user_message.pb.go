@@ -801,6 +801,558 @@ func (x *FindUserResponse) GetUsers() []*UserDetails {
 	return nil
 }
 
+// auth service
+type RegisterRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	FirstName  string `protobuf:"bytes,1,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	MiddleName string `protobuf:"bytes,2,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
+	LastName   string `protobuf:"bytes,3,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	Password   string `protobuf:"bytes,4,opt,name=password,proto3" json:"password,omitempty"`
+	Email      string `protobuf:"bytes,5,opt,name=email,proto3" json:"email,omitempty"`
+	Phone      string `protobuf:"bytes,6,opt,name=phone,proto3" json:"phone,omitempty"`
+}
+
+func (x *RegisterRequest) Reset() {
+	*x = RegisterRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_user_message_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RegisterRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterRequest) ProtoMessage() {}
+
+func (x *RegisterRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_user_message_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterRequest.ProtoReflect.Descriptor instead.
+func (*RegisterRequest) Descriptor() ([]byte, []int) {
+	return file_user_message_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *RegisterRequest) GetFirstName() string {
+	if x != nil {
+		return x.FirstName
+	}
+	return ""
+}
+
+func (x *RegisterRequest) GetMiddleName() string {
+	if x != nil {
+		return x.MiddleName
+	}
+	return ""
+}
+
+func (x *RegisterRequest) GetLastName() string {
+	if x != nil {
+		return x.LastName
+	}
+	return ""
+}
+
+func (x *RegisterRequest) GetPassword() string {
+	if x != nil {
+		return x.Password
+	}
+	return ""
+}
+
+func (x *RegisterRequest) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+func (x *RegisterRequest) GetPhone() string {
+	if x != nil {
+		return x.Phone
+	}
+	return ""
+}
+
+type RegisterResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Success bool   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	Message string `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+}
+
+func (x *RegisterResponse) Reset() {
+	*x = RegisterResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_user_message_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RegisterResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterResponse) ProtoMessage() {}
+
+func (x *RegisterResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_user_message_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterResponse.ProtoReflect.Descriptor instead.
+func (*RegisterResponse) Descriptor() ([]byte, []int) {
+	return file_user_message_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *RegisterResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+func (x *RegisterResponse) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
+type LoginByEmailRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Email    string `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	Password string `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+}
+
+func (x *LoginByEmailRequest) Reset() {
+	*x = LoginByEmailRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_user_message_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *LoginByEmailRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LoginByEmailRequest) ProtoMessage() {}
+
+func (x *LoginByEmailRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_user_message_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LoginByEmailRequest.ProtoReflect.Descriptor instead.
+func (*LoginByEmailRequest) Descriptor() ([]byte, []int) {
+	return file_user_message_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *LoginByEmailRequest) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+func (x *LoginByEmailRequest) GetPassword() string {
+	if x != nil {
+		return x.Password
+	}
+	return ""
+}
+
+type LoginByEmailResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Success bool   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	Token   string `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"`
+	Message string `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
+}
+
+func (x *LoginByEmailResponse) Reset() {
+	*x = LoginByEmailResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_user_message_proto_msgTypes[14]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *LoginByEmailResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LoginByEmailResponse) ProtoMessage() {}
+
+func (x *LoginByEmailResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_user_message_proto_msgTypes[14]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LoginByEmailResponse.ProtoReflect.Descriptor instead.
+func (*LoginByEmailResponse) Descriptor() ([]byte, []int) {
+	return file_user_message_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *LoginByEmailResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+func (x *LoginByEmailResponse) GetToken() string {
+	if x != nil {
+		return x.Token
+	}
+	return ""
+}
+
+func (x *LoginByEmailResponse) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
+type LogoutRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *LogoutRequest) Reset() {
+	*x = LogoutRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_user_message_proto_msgTypes[15]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *LogoutRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LogoutRequest) ProtoMessage() {}
+
+func (x *LogoutRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_user_message_proto_msgTypes[15]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LogoutRequest.ProtoReflect.Descriptor instead.
+func (*LogoutRequest) Descriptor() ([]byte, []int) {
+	return file_user_message_proto_rawDescGZIP(), []int{15}
+}
+
+type LogoutResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *LogoutResponse) Reset() {
+	*x = LogoutResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_user_message_proto_msgTypes[16]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *LogoutResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LogoutResponse) ProtoMessage() {}
+
+func (x *LogoutResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_user_message_proto_msgTypes[16]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LogoutResponse.ProtoReflect.Descriptor instead.
+func (*LogoutResponse) Descriptor() ([]byte, []int) {
+	return file_user_message_proto_rawDescGZIP(), []int{16}
+}
+
+type ForgotPasswordRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *ForgotPasswordRequest) Reset() {
+	*x = ForgotPasswordRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_user_message_proto_msgTypes[17]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ForgotPasswordRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ForgotPasswordRequest) ProtoMessage() {}
+
+func (x *ForgotPasswordRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_user_message_proto_msgTypes[17]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ForgotPasswordRequest.ProtoReflect.Descriptor instead.
+func (*ForgotPasswordRequest) Descriptor() ([]byte, []int) {
+	return file_user_message_proto_rawDescGZIP(), []int{17}
+}
+
+type ForgotPasswordResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *ForgotPasswordResponse) Reset() {
+	*x = ForgotPasswordResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_user_message_proto_msgTypes[18]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ForgotPasswordResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ForgotPasswordResponse) ProtoMessage() {}
+
+func (x *ForgotPasswordResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_user_message_proto_msgTypes[18]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ForgotPasswordResponse.ProtoReflect.Descriptor instead.
+func (*ForgotPasswordResponse) Descriptor() ([]byte, []int) {
+	return file_user_message_proto_rawDescGZIP(), []int{18}
+}
+
+type ResetPasswordRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *ResetPasswordRequest) Reset() {
+	*x = ResetPasswordRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_user_message_proto_msgTypes[19]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ResetPasswordRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResetPasswordRequest) ProtoMessage() {}
+
+func (x *ResetPasswordRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_user_message_proto_msgTypes[19]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResetPasswordRequest.ProtoReflect.Descriptor instead.
+func (*ResetPasswordRequest) Descriptor() ([]byte, []int) {
+	return file_user_message_proto_rawDescGZIP(), []int{19}
+}
+
+type ResetPasswordResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *ResetPasswordResponse) Reset() {
+	*x = ResetPasswordResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_user_message_proto_msgTypes[20]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ResetPasswordResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResetPasswordResponse) ProtoMessage() {}
+
+func (x *ResetPasswordResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_user_message_proto_msgTypes[20]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResetPasswordResponse.ProtoReflect.Descriptor instead.
+func (*ResetPasswordResponse) Descriptor() ([]byte, []int) {
+	return file_user_message_proto_rawDescGZIP(), []int{20}
+}
+
+type ChangePasswordRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	OldPassword string `protobuf:"bytes,1,opt,name=old_password,json=oldPassword,proto3" json:"old_password,omitempty"`
+	NewPassword string `protobuf:"bytes,2,opt,name=new_password,json=newPassword,proto3" json:"new_password,omitempty"`
+	RePassword  string `protobuf:"bytes,3,opt,name=re_password,json=rePassword,proto3" json:"re_password,omitempty"`
+}
+
+func (x *ChangePasswordRequest) Reset() {
+	*x = ChangePasswordRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_user_message_proto_msgTypes[21]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ChangePasswordRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChangePasswordRequest) ProtoMessage() {}
+
+func (x *ChangePasswordRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_user_message_proto_msgTypes[21]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChangePasswordRequest.ProtoReflect.Descriptor instead.
+func (*ChangePasswordRequest) Descriptor() ([]byte, []int) {
+	return file_user_message_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *ChangePasswordRequest) GetOldPassword() string {
+	if x != nil {
+		return x.OldPassword
+	}
+	return ""
+}
+
+func (x *ChangePasswordRequest) GetNewPassword() string {
+	if x != nil {
+		return x.NewPassword
+	}
+	return ""
+}
+
+func (x *ChangePasswordRequest) GetRePassword() string {
+	if x != nil {
+		return x.RePassword
+	}
+	return ""
+}
+
 var File_user_message_proto protoreflect.FileDescriptor
 
 var file_user_message_proto_rawDesc = []byte{
@@ -901,8 +1453,52 @@ var file_user_message_proto_rawDesc = []byte{
 	0x01, 0x28, 0x09, 0x52, 0x0c, 0x6e, 0x65, 0x78, 0x50, 0x61, 0x67, 0x65, 0x54, 0x6f, 0x6b, 0x65,
 	0x6e, 0x12, 0x27, 0x0a, 0x05, 0x75, 0x73, 0x65, 0x72, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b,
 	0x32, 0x11, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x44, 0x65, 0x74, 0x61,
-	0x69, 0x6c, 0x73, 0x52, 0x05, 0x75, 0x73, 0x65, 0x72, 0x73, 0x42, 0x0c, 0x5a, 0x0a, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x69, 0x6c, 0x73, 0x52, 0x05, 0x75, 0x73, 0x65, 0x72, 0x73, 0x22, 0xb6, 0x01, 0x0a, 0x0f, 0x52,
+	0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1d,
+	0x0a, 0x0a, 0x66, 0x69, 0x72, 0x73, 0x74, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x09, 0x66, 0x69, 0x72, 0x73, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1f, 0x0a,
+	0x0b, 0x6d, 0x69, 0x64, 0x64, 0x6c, 0x65, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x0a, 0x6d, 0x69, 0x64, 0x64, 0x6c, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1b,
+	0x0a, 0x09, 0x6c, 0x61, 0x73, 0x74, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x08, 0x6c, 0x61, 0x73, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1a, 0x0a, 0x08, 0x70,
+	0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x70,
+	0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c,
+	0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x12, 0x14, 0x0a,
+	0x05, 0x70, 0x68, 0x6f, 0x6e, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x70, 0x68,
+	0x6f, 0x6e, 0x65, 0x22, 0x46, 0x0a, 0x10, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x73, 0x75, 0x63, 0x63, 0x65,
+	0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73,
+	0x73, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x47, 0x0a, 0x13, 0x4c,
+	0x6f, 0x67, 0x69, 0x6e, 0x42, 0x79, 0x45, 0x6d, 0x61, 0x69, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x12, 0x14, 0x0a, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x61, 0x73, 0x73,
+	0x77, 0x6f, 0x72, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x70, 0x61, 0x73, 0x73,
+	0x77, 0x6f, 0x72, 0x64, 0x22, 0x60, 0x0a, 0x14, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x42, 0x79, 0x45,
+	0x6d, 0x61, 0x69, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x18, 0x0a, 0x07,
+	0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x73,
+	0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x18, 0x0a, 0x07,
+	0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d,
+	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x0f, 0x0a, 0x0d, 0x4c, 0x6f, 0x67, 0x6f, 0x75, 0x74,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x10, 0x0a, 0x0e, 0x4c, 0x6f, 0x67, 0x6f, 0x75,
+	0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x17, 0x0a, 0x15, 0x46, 0x6f, 0x72,
+	0x67, 0x6f, 0x74, 0x50, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x22, 0x18, 0x0a, 0x16, 0x46, 0x6f, 0x72, 0x67, 0x6f, 0x74, 0x50, 0x61, 0x73, 0x73,
+	0x77, 0x6f, 0x72, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x16, 0x0a, 0x14,
+	0x52, 0x65, 0x73, 0x65, 0x74, 0x50, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x22, 0x17, 0x0a, 0x15, 0x52, 0x65, 0x73, 0x65, 0x74, 0x50, 0x61, 0x73,
+	0x73, 0x77, 0x6f, 0x72, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x7e, 0x0a,
+	0x15, 0x43, 0x68, 0x61, 0x6e, 0x67, 0x65, 0x50, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x6f, 0x6c, 0x64, 0x5f, 0x70, 0x61,
+	0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x6f, 0x6c,
+	0x64, 0x50, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x12, 0x21, 0x0a, 0x0c, 0x6e, 0x65, 0x77,
+	0x5f, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x0b, 0x6e, 0x65, 0x77, 0x50, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x12, 0x1f, 0x0a, 0x0b,
+	0x72, 0x65, 0x5f, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x0a, 0x72, 0x65, 0x50, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x42, 0x0c, 0x5a,
+	0x0a, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x62, 0x06, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x33,
 }
 
 var (
@@ -917,28 +1513,39 @@ func file_user_message_proto_rawDescGZIP() []byte {
 	return file_user_message_proto_rawDescData
 }
 
-var file_user_message_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_user_message_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
 var file_user_message_proto_goTypes = []any{
-	(*Id)(nil),                    // 0: user.Id
-	(*Token)(nil),                 // 1: user.Token
-	(*Email)(nil),                 // 2: user.Email
-	(*Phone)(nil),                 // 3: user.Phone
-	(*Empty)(nil),                 // 4: user.Empty
-	(*User)(nil),                  // 5: user.User
-	(*UserDetails)(nil),           // 6: user.UserDetails
-	(*CreateUserRequest)(nil),     // 7: user.CreateUserRequest
-	(*UpdateUserRequest)(nil),     // 8: user.UpdateUserRequest
-	(*FindUserRequest)(nil),       // 9: user.FindUserRequest
-	(*FindUserResponse)(nil),      // 10: user.FindUserResponse
-	(*timestamppb.Timestamp)(nil), // 11: google.protobuf.Timestamp
+	(*Id)(nil),                     // 0: user.Id
+	(*Token)(nil),                  // 1: user.Token
+	(*Email)(nil),                  // 2: user.Email
+	(*Phone)(nil),                  // 3: user.Phone
+	(*Empty)(nil),                  // 4: user.Empty
+	(*User)(nil),                   // 5: user.User
+	(*UserDetails)(nil),            // 6: user.UserDetails
+	(*CreateUserRequest)(nil),      // 7: user.CreateUserRequest
+	(*UpdateUserRequest)(nil),      // 8: user.UpdateUserRequest
+	(*FindUserRequest)(nil),        // 9: user.FindUserRequest
+	(*FindUserResponse)(nil),       // 10: user.FindUserResponse
+	(*RegisterRequest)(nil),        // 11: user.RegisterRequest
+	(*RegisterResponse)(nil),       // 12: user.RegisterResponse
+	(*LoginByEmailRequest)(nil),    // 13: user.LoginByEmailRequest
+	(*LoginByEmailResponse)(nil),   // 14: user.LoginByEmailResponse
+	(*LogoutRequest)(nil),          // 15: user.LogoutRequest
+	(*LogoutResponse)(nil),         // 16: user.LogoutResponse
+	(*ForgotPasswordRequest)(nil),  // 17: user.ForgotPasswordRequest
+	(*ForgotPasswordResponse)(nil), // 18: user.ForgotPasswordResponse
+	(*ResetPasswordRequest)(nil),   // 19: user.ResetPasswordRequest
+	(*ResetPasswordResponse)(nil),  // 20: user.ResetPasswordResponse
+	(*ChangePasswordRequest)(nil),  // 21: user.ChangePasswordRequest
+	(*timestamppb.Timestamp)(nil),  // 22: google.protobuf.Timestamp
 }
 var file_user_message_proto_depIdxs = []int32{
-	11, // 0: user.User.created_at:type_name -> google.protobuf.Timestamp
-	11, // 1: user.User.updated_at:type_name -> google.protobuf.Timestamp
-	11, // 2: user.User.deleted_at:type_name -> google.protobuf.Timestamp
-	11, // 3: user.UserDetails.created_at:type_name -> google.protobuf.Timestamp
-	11, // 4: user.UserDetails.updated_at:type_name -> google.protobuf.Timestamp
-	11, // 5: user.UserDetails.deleted_at:type_name -> google.protobuf.Timestamp
+	22, // 0: user.User.created_at:type_name -> google.protobuf.Timestamp
+	22, // 1: user.User.updated_at:type_name -> google.protobuf.Timestamp
+	22, // 2: user.User.deleted_at:type_name -> google.protobuf.Timestamp
+	22, // 3: user.UserDetails.created_at:type_name -> google.protobuf.Timestamp
+	22, // 4: user.UserDetails.updated_at:type_name -> google.protobuf.Timestamp
+	22, // 5: user.UserDetails.deleted_at:type_name -> google.protobuf.Timestamp
 	6,  // 6: user.FindUserResponse.users:type_name -> user.UserDetails
 	7,  // [7:7] is the sub-list for method output_type
 	7,  // [7:7] is the sub-list for method input_type
@@ -1085,6 +1692,138 @@ func file_user_message_proto_init() {
 				return nil
 			}
 		}
+		file_user_message_proto_msgTypes[11].Exporter = func(v any, i int) any {
+			switch v := v.(*RegisterRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_user_message_proto_msgTypes[12].Exporter = func(v any, i int) any {
+			switch v := v.(*RegisterResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_user_message_proto_msgTypes[13].Exporter = func(v any, i int) any {
+			switch v := v.(*LoginByEmailRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_user_message_proto_msgTypes[14].Exporter = func(v any, i int) any {
+			switch v := v.(*LoginByEmailResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_user_message_proto_msgTypes[15].Exporter = func(v any, i int) any {
+			switch v := v.(*LogoutRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_user_message_proto_msgTypes[16].Exporter = func(v any, i int) any {
+			switch v := v.(*LogoutResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_user_message_proto_msgTypes[17].Exporter = func(v any, i int) any {
+			switch v := v.(*ForgotPasswordRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_user_message_proto_msgTypes[18].Exporter = func(v any, i int) any {
+			switch v := v.(*ForgotPasswordResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_user_message_proto_msgTypes[19].Exporter = func(v any, i int) any {
+			switch v := v.(*ResetPasswordRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_user_message_proto_msgTypes[20].Exporter = func(v any, i int) any {
+			switch v := v.(*ResetPasswordResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_user_message_proto_msgTypes[21].Exporter = func(v any, i int) any {
+			switch v := v.(*ChangePasswordRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -1092,7 +1831,7 @@ func file_user_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_user_message_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   22,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
