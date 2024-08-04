@@ -21,7 +21,6 @@ service UserRoleService{
   rpc Delete(Empty) returns (Empty);
 }
 
-
 service AuthService{
   rpc Register(RegisterRequest) returns (RegisterResponse);
 
@@ -29,9 +28,3 @@ service AuthService{
   rpc LoginByEmailSendCode(LoginByEmailSendCodeRequest) returns (LoginByEmailSendCodeResponse);
   rpc Logout(LogoutRequest) returns (LogoutResponse);
 }
-//service PasswordService{
-//    rpc ForgotPassword(ForgotPasswordRequest) returns (ForgotPasswordResponse);
-//    rpc ResetPassword(ResetPasswordRequest) returns (ResetPasswordResponse);
-//    rpc ChangePassword(ChangePasswordRequest) returns (Message) {}
-//}
-
