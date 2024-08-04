@@ -23,7 +23,6 @@ service UserRoleService{
 
 service AuthService{
   rpc Register(RegisterRequest) returns (RegisterResponse);
-
   rpc LoginByEmail(LoginByEmailRequest) returns (LoginByEmailResponse);
   rpc LoginByEmailSendCode(LoginByEmailSendCodeRequest) returns (LoginByEmailSendCodeResponse);
   rpc Logout(LogoutRequest) returns (LogoutResponse);
