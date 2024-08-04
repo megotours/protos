@@ -565,9 +565,10 @@ var UserRoleService_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	AuthService_Register_FullMethodName     = "/user.AuthService/Register"
-	AuthService_LoginByEmail_FullMethodName = "/user.AuthService/LoginByEmail"
-	AuthService_Logout_FullMethodName       = "/user.AuthService/Logout"
+	AuthService_Register_FullMethodName             = "/user.AuthService/Register"
+	AuthService_LoginByEmail_FullMethodName         = "/user.AuthService/LoginByEmail"
+	AuthService_LoginByEmailSendCode_FullMethodName = "/user.AuthService/LoginByEmailSendCode"
+	AuthService_Logout_FullMethodName               = "/user.AuthService/Logout"
 )
 
 // AuthServiceClient is the client API for AuthService service.
@@ -576,7 +577,7 @@ const (
 type AuthServiceClient interface {
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
 	LoginByEmail(ctx context.Context, in *LoginByEmailRequest, opts ...grpc.CallOption) (*LoginByEmailResponse, error)
-	// login by phone number
+	LoginByEmailSendCode(ctx context.Context, in *LoginByEmailSendCodeRequest, opts ...grpc.CallOption) (*LoginByEmailSendCodeResponse, error)
 	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error)
 }
 
@@ -608,6 +609,16 @@ func (c *authServiceClient) LoginByEmail(ctx context.Context, in *LoginByEmailRe
 	return out, nil
 }
 
+func (c *authServiceClient) LoginByEmailSendCode(ctx context.Context, in *LoginByEmailSendCodeRequest, opts ...grpc.CallOption) (*LoginByEmailSendCodeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(LoginByEmailSendCodeResponse)
+	err := c.cc.Invoke(ctx, AuthService_LoginByEmailSendCode_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *authServiceClient) Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(LogoutResponse)
@@ -624,7 +635,7 @@ func (c *authServiceClient) Logout(ctx context.Context, in *LogoutRequest, opts 
 type AuthServiceServer interface {
 	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
 	LoginByEmail(context.Context, *LoginByEmailRequest) (*LoginByEmailResponse, error)
-	// login by phone number
+	LoginByEmailSendCode(context.Context, *LoginByEmailSendCodeRequest) (*LoginByEmailSendCodeResponse, error)
 	Logout(context.Context, *LogoutRequest) (*LogoutResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
@@ -641,6 +652,9 @@ func (UnimplementedAuthServiceServer) Register(context.Context, *RegisterRequest
 }
 func (UnimplementedAuthServiceServer) LoginByEmail(context.Context, *LoginByEmailRequest) (*LoginByEmailResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LoginByEmail not implemented")
+}
+func (UnimplementedAuthServiceServer) LoginByEmailSendCode(context.Context, *LoginByEmailSendCodeRequest) (*LoginByEmailSendCodeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LoginByEmailSendCode not implemented")
 }
 func (UnimplementedAuthServiceServer) Logout(context.Context, *LogoutRequest) (*LogoutResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Logout not implemented")
@@ -702,6 +716,24 @@ func _AuthService_LoginByEmail_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AuthService_LoginByEmailSendCode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LoginByEmailSendCodeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).LoginByEmailSendCode(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_LoginByEmailSendCode_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).LoginByEmailSendCode(ctx, req.(*LoginByEmailSendCodeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _AuthService_Logout_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(LogoutRequest)
 	if err := dec(in); err != nil {
@@ -734,6 +766,10 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "LoginByEmail",
 			Handler:    _AuthService_LoginByEmail_Handler,
+		},
+		{
+			MethodName: "LoginByEmailSendCode",
+			Handler:    _AuthService_LoginByEmailSendCode_Handler,
 		},
 		{
 			MethodName: "Logout",
