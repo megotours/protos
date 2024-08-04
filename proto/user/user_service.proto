@@ -27,11 +27,7 @@ service AuthService{
 
   rpc LoginByEmail(LoginByEmailRequest) returns (LoginByEmailResponse);
   rpc LoginByEmailSendCode(LoginByEmailSendCodeRequest) returns (LoginByEmailSendCodeResponse);
-
-
-  //login by phone number
   rpc Logout(LogoutRequest) returns (LogoutResponse);
-  //    rpc IsAuth(MyString) returns (MyBoolean) {}
 }
 //service PasswordService{
 //    rpc ForgotPassword(ForgotPasswordRequest) returns (ForgotPasswordResponse);
