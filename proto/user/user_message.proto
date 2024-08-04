@@ -102,17 +102,5 @@ message LogoutRequest{
 message LogoutResponse{
 
 }
-message ForgotPasswordRequest{
-
-}
-message ForgotPasswordResponse{
-
-}
-message ResetPasswordRequest{
-
-}
-message ResetPasswordResponse{
-
-}
 
 
