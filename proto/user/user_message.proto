@@ -61,8 +61,11 @@ message FindUserRequest{
 }
 
 message FindUserResponse{
-    string nexPageToken = 1;
-    repeated UserDetails users = 2;
+    bool success = 1;
+    string message = 2;
+
+    string nexPageToken = 3;
+    repeated UserDetails users = 4;
 }
 
 
@@ -94,13 +97,15 @@ message LoginByEmailSendCodeRequest{
     string email = 1;
 }
 message LoginByEmailSendCodeResponse{
-    string code = 1;
+    bool success = 1;
+    string message = 2;
 }
 message LogoutRequest{
 
 }
 message LogoutResponse{
-
+    bool success = 1;
+    string message = 2;
 }
 
 
