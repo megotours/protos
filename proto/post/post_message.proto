@@ -60,7 +60,7 @@ message MediaContents {
 message MediaContentFiles{
   string file_name = 1;
   int64 size = 2;
-  string url = 3;
+  string path = 3;
   MediaType type = 4;
 }
 
@@ -74,9 +74,9 @@ message CreatePostRequest{
   string id = 1;
   string title = 2;
   string author_id = 3;
+  PostType type = 4;
 
-  repeated MediaContents contents = 8;
-  PostType type = 9;
+  repeated MediaContents contents = 5;
 }
 message UpdatePostRequest{
   string id = 1;
