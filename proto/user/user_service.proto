@@ -21,12 +21,3 @@ service UserRoleService{
   rpc Delete(Empty) returns (Empty);
 }
 
-service AuthService{
-  rpc Register(RegisterRequest) returns (RegisterResponse);
-
-  rpc LoginByEmail(LoginByEmailRequest) returns (LoginByEmailResponse);
-  rpc LoginByEmailSendCode(LoginByEmailSendCodeRequest) returns (LoginByEmailSendCodeResponse);
-  rpc Logout(LogoutRequest) returns (LogoutResponse);
-  rpc Check(CheckRequest) returns (CheckResponse);
-
-}

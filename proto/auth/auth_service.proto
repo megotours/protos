@@ -1,0 +1,18 @@
+syntax = "proto3";
+import "auth_message.proto";
+package auth;
+
+option go_package = "proto/auth";
+
+
+service AuthService{
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+
+  rpc LoginByEmail(LoginByEmailRequest) returns (LoginByEmailResponse);
+  rpc LoginByEmailSendCode(LoginByEmailSendCodeRequest) returns (LoginByEmailSendCodeResponse);
+  rpc Logout(LogoutRequest) returns (LogoutResponse);
+  rpc Check(CheckRequest) returns (CheckResponse);
+  rpc Parse(ParseRequest) returns (ParseResponse);
+
+}
+
