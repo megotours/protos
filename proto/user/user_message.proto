@@ -8,6 +8,10 @@ message Token {string token = 1;}
 message Email {string email = 1;}
 message Phone {string phone = 1;}
 message Empty {}
+message Avatar {
+  string file_name = 1;
+  bytes data = 3;
+}
 
 message User {
   string first_name = 1;
