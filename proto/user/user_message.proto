@@ -58,6 +58,7 @@ message CreateUserRequest {
   string theme = 8;
   string lang = 9;
 }
+
 message UpdateUserRequest {
   string id = 1;
   string first_name = 2;
