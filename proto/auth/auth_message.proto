@@ -34,7 +34,7 @@ message LoginByEmailSendCodeResponse{
     string message = 2;
 }
 message LogoutRequest{
-
+    string token = 1;
 }
 message LogoutResponse{
     bool success = 1;
@@ -51,5 +51,6 @@ message ParseRequest {
     string token = 1;
 }
 message ParseResponse {
-    string user_id = 1;
+    bool success = 1;
+    string user_id = 2;
 }
