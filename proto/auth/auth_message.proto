@@ -36,6 +36,7 @@ message LoginByEmailSendCodeResponse{
 message LogoutRequest{
     string token = 1;
 }
+
 message LogoutResponse{
     bool success = 1;
     string message = 2;
