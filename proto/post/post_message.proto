@@ -78,6 +78,7 @@ message CreatePostRequest{
 
   repeated MediaContents contents = 5;
 }
+
 message UpdatePostRequest{
   string id = 1;
   string title = 2;
