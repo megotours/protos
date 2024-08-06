@@ -27,5 +27,6 @@ service AuthService{
   rpc LoginByEmail(LoginByEmailRequest) returns (LoginByEmailResponse);
   rpc LoginByEmailSendCode(LoginByEmailSendCodeRequest) returns (LoginByEmailSendCodeResponse);
   rpc Logout(LogoutRequest) returns (LogoutResponse);
+  rpc Check(CheckRequest) returns (CheckResponse);
 
 }

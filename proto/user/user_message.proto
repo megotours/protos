@@ -108,4 +108,11 @@ message LogoutResponse{
     string message = 2;
 }
 
+message CheckRequest{
+    string token = 1;
+}
+message CheckResponse{
+    bool success = 1;
+}
+
 

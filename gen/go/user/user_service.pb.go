@@ -57,7 +57,7 @@ var file_user_service_proto_rawDesc = []byte{
 	0x72, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x0b, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x45,
 	0x6d, 0x70, 0x74, 0x79, 0x12, 0x22, 0x0a, 0x06, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x12, 0x0b,
 	0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x0b, 0x2e, 0x75, 0x73,
-	0x65, 0x72, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x32, 0xa3, 0x02, 0x0a, 0x0b, 0x41, 0x75, 0x74,
+	0x65, 0x72, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x32, 0xd5, 0x02, 0x0a, 0x0b, 0x41, 0x75, 0x74,
 	0x68, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x39, 0x0a, 0x08, 0x52, 0x65, 0x67, 0x69,
 	0x73, 0x74, 0x65, 0x72, 0x12, 0x15, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x52, 0x65, 0x67, 0x69,
 	0x73, 0x74, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x75, 0x73,
@@ -75,9 +75,12 @@ var file_user_service_proto_rawDesc = []byte{
 	0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x33, 0x0a, 0x06, 0x4c, 0x6f, 0x67,
 	0x6f, 0x75, 0x74, 0x12, 0x13, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x4c, 0x6f, 0x67, 0x6f, 0x75,
 	0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x14, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e,
-	0x4c, 0x6f, 0x67, 0x6f, 0x75, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x0c,
-	0x5a, 0x0a, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x4c, 0x6f, 0x67, 0x6f, 0x75, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x30,
+	0x0a, 0x05, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x12, 0x12, 0x2e, 0x75, 0x73, 0x65, 0x72, 0x2e, 0x43,
+	0x68, 0x65, 0x63, 0x6b, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x13, 0x2e, 0x75, 0x73,
+	0x65, 0x72, 0x2e, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x42, 0x0c, 0x5a, 0x0a, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x62, 0x06,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var file_user_service_proto_goTypes = []any{
@@ -93,12 +96,14 @@ var file_user_service_proto_goTypes = []any{
 	(*LoginByEmailRequest)(nil),          // 9: user.LoginByEmailRequest
 	(*LoginByEmailSendCodeRequest)(nil),  // 10: user.LoginByEmailSendCodeRequest
 	(*LogoutRequest)(nil),                // 11: user.LogoutRequest
-	(*FindUserResponse)(nil),             // 12: user.FindUserResponse
-	(*UserDetails)(nil),                  // 13: user.UserDetails
-	(*RegisterResponse)(nil),             // 14: user.RegisterResponse
-	(*LoginByEmailResponse)(nil),         // 15: user.LoginByEmailResponse
-	(*LoginByEmailSendCodeResponse)(nil), // 16: user.LoginByEmailSendCodeResponse
-	(*LogoutResponse)(nil),               // 17: user.LogoutResponse
+	(*CheckRequest)(nil),                 // 12: user.CheckRequest
+	(*FindUserResponse)(nil),             // 13: user.FindUserResponse
+	(*UserDetails)(nil),                  // 14: user.UserDetails
+	(*RegisterResponse)(nil),             // 15: user.RegisterResponse
+	(*LoginByEmailResponse)(nil),         // 16: user.LoginByEmailResponse
+	(*LoginByEmailSendCodeResponse)(nil), // 17: user.LoginByEmailSendCodeResponse
+	(*LogoutResponse)(nil),               // 18: user.LogoutResponse
+	(*CheckResponse)(nil),                // 19: user.CheckResponse
 }
 var file_user_service_proto_depIdxs = []int32{
 	0,  // 0: user.UserService.Find:input_type -> user.FindUserRequest
@@ -116,23 +121,25 @@ var file_user_service_proto_depIdxs = []int32{
 	9,  // 12: user.AuthService.LoginByEmail:input_type -> user.LoginByEmailRequest
 	10, // 13: user.AuthService.LoginByEmailSendCode:input_type -> user.LoginByEmailSendCodeRequest
 	11, // 14: user.AuthService.Logout:input_type -> user.LogoutRequest
-	12, // 15: user.UserService.Find:output_type -> user.FindUserResponse
-	13, // 16: user.UserService.GetById:output_type -> user.UserDetails
-	13, // 17: user.UserService.GetByEmail:output_type -> user.UserDetails
-	13, // 18: user.UserService.GetByPhone:output_type -> user.UserDetails
-	13, // 19: user.UserService.GetByToken:output_type -> user.UserDetails
-	13, // 20: user.UserService.Create:output_type -> user.UserDetails
-	13, // 21: user.UserService.Update:output_type -> user.UserDetails
-	13, // 22: user.UserService.Delete:output_type -> user.UserDetails
-	7,  // 23: user.UserRoleService.Roles:output_type -> user.Empty
-	7,  // 24: user.UserRoleService.Create:output_type -> user.Empty
-	7,  // 25: user.UserRoleService.Delete:output_type -> user.Empty
-	14, // 26: user.AuthService.Register:output_type -> user.RegisterResponse
-	15, // 27: user.AuthService.LoginByEmail:output_type -> user.LoginByEmailResponse
-	16, // 28: user.AuthService.LoginByEmailSendCode:output_type -> user.LoginByEmailSendCodeResponse
-	17, // 29: user.AuthService.Logout:output_type -> user.LogoutResponse
-	15, // [15:30] is the sub-list for method output_type
-	0,  // [0:15] is the sub-list for method input_type
+	12, // 15: user.AuthService.Check:input_type -> user.CheckRequest
+	13, // 16: user.UserService.Find:output_type -> user.FindUserResponse
+	14, // 17: user.UserService.GetById:output_type -> user.UserDetails
+	14, // 18: user.UserService.GetByEmail:output_type -> user.UserDetails
+	14, // 19: user.UserService.GetByPhone:output_type -> user.UserDetails
+	14, // 20: user.UserService.GetByToken:output_type -> user.UserDetails
+	14, // 21: user.UserService.Create:output_type -> user.UserDetails
+	14, // 22: user.UserService.Update:output_type -> user.UserDetails
+	14, // 23: user.UserService.Delete:output_type -> user.UserDetails
+	7,  // 24: user.UserRoleService.Roles:output_type -> user.Empty
+	7,  // 25: user.UserRoleService.Create:output_type -> user.Empty
+	7,  // 26: user.UserRoleService.Delete:output_type -> user.Empty
+	15, // 27: user.AuthService.Register:output_type -> user.RegisterResponse
+	16, // 28: user.AuthService.LoginByEmail:output_type -> user.LoginByEmailResponse
+	17, // 29: user.AuthService.LoginByEmailSendCode:output_type -> user.LoginByEmailSendCodeResponse
+	18, // 30: user.AuthService.Logout:output_type -> user.LogoutResponse
+	19, // 31: user.AuthService.Check:output_type -> user.CheckResponse
+	16, // [16:32] is the sub-list for method output_type
+	0,  // [0:16] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
