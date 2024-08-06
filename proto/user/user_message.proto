@@ -84,4 +84,3 @@ message FindUserResponse{
   string nexPageToken = 3;
   repeated UserDetails users = 4;
 }
-
