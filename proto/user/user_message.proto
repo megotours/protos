@@ -114,3 +114,4 @@ message CheckRequest{
 message CheckResponse{
     bool success = 1;
 }
+
