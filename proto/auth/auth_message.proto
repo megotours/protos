@@ -47,11 +47,9 @@ message CheckRequest{
 message CheckResponse{
     bool success = 1;
 }
-
 message ParseRequest {
     string token = 1;
 }
-
 message ParseResponse {
     string user_id = 1;
 }
