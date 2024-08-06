@@ -23,13 +23,13 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UserServiceClient interface {
 	Find(ctx context.Context, in *FindUserRequest, opts ...grpc.CallOption) (*FindUserResponse, error)
-	GetById(ctx context.Context, in *Id, opts ...grpc.CallOption) (*UserDetails, error)
-	GetByEmail(ctx context.Context, in *Email, opts ...grpc.CallOption) (*UserDetails, error)
-	GetByPhone(ctx context.Context, in *Phone, opts ...grpc.CallOption) (*UserDetails, error)
-	GetByToken(ctx context.Context, in *Token, opts ...grpc.CallOption) (*UserDetails, error)
-	Create(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*UserDetails, error)
-	Update(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*UserDetails, error)
-	Delete(ctx context.Context, in *Id, opts ...grpc.CallOption) (*UserDetails, error)
+	GetById(ctx context.Context, in *Id, opts ...grpc.CallOption) (*UserResponse, error)
+	GetByEmail(ctx context.Context, in *Email, opts ...grpc.CallOption) (*UserResponse, error)
+	GetByPhone(ctx context.Context, in *Phone, opts ...grpc.CallOption) (*UserResponse, error)
+	GetByToken(ctx context.Context, in *Token, opts ...grpc.CallOption) (*UserResponse, error)
+	Create(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*UserResponse, error)
+	Update(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*UserResponse, error)
+	Delete(ctx context.Context, in *Id, opts ...grpc.CallOption) (*UserResponse, error)
 }
 
 type userServiceClient struct {
@@ -49,8 +49,8 @@ func (c *userServiceClient) Find(ctx context.Context, in *FindUserRequest, opts 
 	return out, nil
 }
 
-func (c *userServiceClient) GetById(ctx context.Context, in *Id, opts ...grpc.CallOption) (*UserDetails, error) {
-	out := new(UserDetails)
+func (c *userServiceClient) GetById(ctx context.Context, in *Id, opts ...grpc.CallOption) (*UserResponse, error) {
+	out := new(UserResponse)
 	err := c.cc.Invoke(ctx, "/user.UserService/GetById", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -58,8 +58,8 @@ func (c *userServiceClient) GetById(ctx context.Context, in *Id, opts ...grpc.Ca
 	return out, nil
 }
 
-func (c *userServiceClient) GetByEmail(ctx context.Context, in *Email, opts ...grpc.CallOption) (*UserDetails, error) {
-	out := new(UserDetails)
+func (c *userServiceClient) GetByEmail(ctx context.Context, in *Email, opts ...grpc.CallOption) (*UserResponse, error) {
+	out := new(UserResponse)
 	err := c.cc.Invoke(ctx, "/user.UserService/GetByEmail", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -67,8 +67,8 @@ func (c *userServiceClient) GetByEmail(ctx context.Context, in *Email, opts ...g
 	return out, nil
 }
 
-func (c *userServiceClient) GetByPhone(ctx context.Context, in *Phone, opts ...grpc.CallOption) (*UserDetails, error) {
-	out := new(UserDetails)
+func (c *userServiceClient) GetByPhone(ctx context.Context, in *Phone, opts ...grpc.CallOption) (*UserResponse, error) {
+	out := new(UserResponse)
 	err := c.cc.Invoke(ctx, "/user.UserService/GetByPhone", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -76,8 +76,8 @@ func (c *userServiceClient) GetByPhone(ctx context.Context, in *Phone, opts ...g
 	return out, nil
 }
 
-func (c *userServiceClient) GetByToken(ctx context.Context, in *Token, opts ...grpc.CallOption) (*UserDetails, error) {
-	out := new(UserDetails)
+func (c *userServiceClient) GetByToken(ctx context.Context, in *Token, opts ...grpc.CallOption) (*UserResponse, error) {
+	out := new(UserResponse)
 	err := c.cc.Invoke(ctx, "/user.UserService/GetByToken", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -85,8 +85,8 @@ func (c *userServiceClient) GetByToken(ctx context.Context, in *Token, opts ...g
 	return out, nil
 }
 
-func (c *userServiceClient) Create(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*UserDetails, error) {
-	out := new(UserDetails)
+func (c *userServiceClient) Create(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*UserResponse, error) {
+	out := new(UserResponse)
 	err := c.cc.Invoke(ctx, "/user.UserService/Create", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -94,8 +94,8 @@ func (c *userServiceClient) Create(ctx context.Context, in *CreateUserRequest, o
 	return out, nil
 }
 
-func (c *userServiceClient) Update(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*UserDetails, error) {
-	out := new(UserDetails)
+func (c *userServiceClient) Update(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*UserResponse, error) {
+	out := new(UserResponse)
 	err := c.cc.Invoke(ctx, "/user.UserService/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -103,8 +103,8 @@ func (c *userServiceClient) Update(ctx context.Context, in *UpdateUserRequest, o
 	return out, nil
 }
 
-func (c *userServiceClient) Delete(ctx context.Context, in *Id, opts ...grpc.CallOption) (*UserDetails, error) {
-	out := new(UserDetails)
+func (c *userServiceClient) Delete(ctx context.Context, in *Id, opts ...grpc.CallOption) (*UserResponse, error) {
+	out := new(UserResponse)
 	err := c.cc.Invoke(ctx, "/user.UserService/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -117,13 +117,13 @@ func (c *userServiceClient) Delete(ctx context.Context, in *Id, opts ...grpc.Cal
 // for forward compatibility
 type UserServiceServer interface {
 	Find(context.Context, *FindUserRequest) (*FindUserResponse, error)
-	GetById(context.Context, *Id) (*UserDetails, error)
-	GetByEmail(context.Context, *Email) (*UserDetails, error)
-	GetByPhone(context.Context, *Phone) (*UserDetails, error)
-	GetByToken(context.Context, *Token) (*UserDetails, error)
-	Create(context.Context, *CreateUserRequest) (*UserDetails, error)
-	Update(context.Context, *UpdateUserRequest) (*UserDetails, error)
-	Delete(context.Context, *Id) (*UserDetails, error)
+	GetById(context.Context, *Id) (*UserResponse, error)
+	GetByEmail(context.Context, *Email) (*UserResponse, error)
+	GetByPhone(context.Context, *Phone) (*UserResponse, error)
+	GetByToken(context.Context, *Token) (*UserResponse, error)
+	Create(context.Context, *CreateUserRequest) (*UserResponse, error)
+	Update(context.Context, *UpdateUserRequest) (*UserResponse, error)
+	Delete(context.Context, *Id) (*UserResponse, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -134,25 +134,25 @@ type UnimplementedUserServiceServer struct {
 func (UnimplementedUserServiceServer) Find(context.Context, *FindUserRequest) (*FindUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Find not implemented")
 }
-func (UnimplementedUserServiceServer) GetById(context.Context, *Id) (*UserDetails, error) {
+func (UnimplementedUserServiceServer) GetById(context.Context, *Id) (*UserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetById not implemented")
 }
-func (UnimplementedUserServiceServer) GetByEmail(context.Context, *Email) (*UserDetails, error) {
+func (UnimplementedUserServiceServer) GetByEmail(context.Context, *Email) (*UserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetByEmail not implemented")
 }
-func (UnimplementedUserServiceServer) GetByPhone(context.Context, *Phone) (*UserDetails, error) {
+func (UnimplementedUserServiceServer) GetByPhone(context.Context, *Phone) (*UserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetByPhone not implemented")
 }
-func (UnimplementedUserServiceServer) GetByToken(context.Context, *Token) (*UserDetails, error) {
+func (UnimplementedUserServiceServer) GetByToken(context.Context, *Token) (*UserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetByToken not implemented")
 }
-func (UnimplementedUserServiceServer) Create(context.Context, *CreateUserRequest) (*UserDetails, error) {
+func (UnimplementedUserServiceServer) Create(context.Context, *CreateUserRequest) (*UserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
-func (UnimplementedUserServiceServer) Update(context.Context, *UpdateUserRequest) (*UserDetails, error) {
+func (UnimplementedUserServiceServer) Update(context.Context, *UpdateUserRequest) (*UserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
-func (UnimplementedUserServiceServer) Delete(context.Context, *Id) (*UserDetails, error) {
+func (UnimplementedUserServiceServer) Delete(context.Context, *Id) (*UserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
