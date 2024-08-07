@@ -9,6 +9,7 @@ message Token {string token = 1;}
 message Empty{
 }
 message Phone {string phone = 1;}
+
 message NewAvatar {
   string file_name = 1;
   string content_type = 2;
