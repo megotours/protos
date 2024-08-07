@@ -3,7 +3,6 @@ package storage;
 
 option go_package = "proto/storage";
 
-
 message PutObjectRequest {
   string file_name = 1;
   string content_type = 2;
