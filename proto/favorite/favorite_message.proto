@@ -1,0 +1,30 @@
+syntax = "proto3";
+package favorite;
+
+option go_package = "proto/favorite";
+
+message ExistsRequest{
+  string post_id = 1;
+}
+message ExistsResponse{
+  bool exists = 3;
+}
+message AddRequest{
+  string post_id = 1;
+}
+
+message AddResponse{
+  string post_id = 1;
+}
+message DeleteRequest{
+  string post_id = 1;
+}
+message DeleteResponse{
+  string post_id = 1;
+}
+message CountResponse{
+  int32 count = 1;
+}
+message CountRequest{
+  string post_id = 1;
+}

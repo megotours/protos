@@ -1,6 +1,6 @@
 syntax = "proto3";
 package post;
-option go_package = "antibomberman/mego/post";
+option go_package = "proto/post";
 
 enum MediaType {
   IMAGE = 0;

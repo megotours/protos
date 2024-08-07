@@ -4,10 +4,10 @@ package resource;
 
 option go_package = "proto/resource";
 
-service Resource{
-    rpc Find(Empty) returns (Empty);
-    rpc Create(Empty) returns (Empty);
-    rpc Update(Empty) returns (Empty);
-    rpc Delete(Empty) returns (Empty);
+service ResourceService{
+    rpc Find(FindRequest) returns (FindResponse);
+    rpc Create(CreateRequest) returns (CreateResponse);
+    rpc Update(UpdateRequest) returns (UpdateResponse);
+    rpc Delete(DeleteRequest) returns (DeleteResponse);
 }
 

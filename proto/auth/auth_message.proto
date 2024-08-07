@@ -5,23 +5,19 @@ option go_package = "proto/auth";
 
 //auth service
 
-
 message LoginByEmailRequest{
     string email = 1;
     string code =2;
 }
 
 message LoginByEmailResponse{
-    bool success = 1;
     string token = 2;
-    string message = 3;
 }
 message LoginByEmailSendCodeRequest{
     string email = 1;
 }
 message LoginByEmailSendCodeResponse{
     bool success = 1;
-    string message = 2;
 }
 message LogoutRequest{
     string token = 1;
@@ -29,7 +25,6 @@ message LogoutRequest{
 
 message LogoutResponse{
     bool success = 1;
-    string message = 2;
 }
 
 message CheckRequest{
@@ -42,6 +37,5 @@ message ParseRequest {
     string token = 1;
 }
 message ParseResponse {
-    bool success = 1;
     string user_id = 2;
 }

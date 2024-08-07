@@ -6,13 +6,13 @@ option go_package = "proto/user";
 
 service UserService{
   rpc Find(FindUserRequest) returns (FindUserResponse);
-  rpc GetById(Id) returns (UserResponse);
-  rpc GetByEmail(Email) returns (UserResponse);
-  rpc GetByPhone(Phone) returns (UserResponse);
-  rpc GetByToken(Token) returns (UserResponse);
-  rpc Create(CreateUserRequest) returns (UserResponse);
-  rpc Update(UpdateUserRequest) returns (UserResponse);
-  rpc Delete(Id) returns (UserResponse);
+  rpc GetById(Id) returns (UserDetails);
+  rpc GetByEmail(Email) returns (UserDetails);
+  rpc GetByPhone(Phone) returns (UserDetails);
+  rpc GetByToken(Token) returns (UserDetails);
+  rpc Create(CreateUserRequest) returns (UserDetails);
+  rpc Update(UpdateUserRequest) returns (UserDetails);
+  rpc Delete(Id) returns (UserDetails);
 }
 
 service UserRoleService{

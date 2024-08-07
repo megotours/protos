@@ -1,0 +1,13 @@
+syntax = "proto3";
+import "favorite_message.proto";
+package favorite;
+
+option go_package = "proto/favorite";
+
+service FavoriteService{
+  rpc Exists(ExistsRequest) returns (ExistsResponse);
+  rpc Add(AddRequest) returns (AddResponse);
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
+  rpc Count(CountRequest) returns (CountResponse);
+}
+

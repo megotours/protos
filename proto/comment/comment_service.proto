@@ -1,0 +1,36 @@
+syntax = "proto3";
+import "comment_message.proto";
+import "comment_enum.proto";
+package comment;
+
+option go_package = "proto/comment";
+
+service CommentService{
+  rpc Find(FindRequest) returns (FindResponse);
+  rpc Create(Empty) returns (Empty);
+  rpc Delete(Empty) returns (Empty);
+  rpc Count(Empty) returns (Empty);
+}
+message FindRequest{
+  int32 page_size = 1;
+  string page_token = 2;
+  string post_id = 3;
+  SortOrder sort_order = 4;
+}
+message FindResponse{
+  repeated Comment comments = 1;
+  string next_page_token = 2;
+}
+
+message Comment{
+  string id = 1;
+  string content = 2;
+  User user = 3;
+}
+message User{
+  string id = 1;
+  string first_name = 2;
+  string middle_name = 3;
+  string last_name = 4;
+  string email = 5;
+}

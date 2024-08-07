@@ -1,0 +1,30 @@
+syntax = "proto3";
+package like;
+
+option go_package = "proto/like";
+
+message ExistsRequest{
+  string post_id = 1;
+}
+message ExistsResponse{
+  bool exists = 3;
+}
+message LikeRequest{
+  string post_id = 1;
+}
+
+message LikeResponse{
+  string post_id = 1;
+}
+message DislikeRequest{
+  string post_id = 1;
+}
+message DislikeResponse{
+  string post_id = 1;
+}
+message CountResponse{
+  int32 count = 1;
+}
+message CountRequest{
+  string post_id = 1;
+}
