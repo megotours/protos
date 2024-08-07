@@ -94,6 +94,7 @@ message UpdateEmailSendCodeRequest{
 message UpdateEmailSendCodeResponse{
   bool success = 1;
 }
+
 message FindUserRequest{
   uint32 pageSize = 1;
   string pageToken = 2;
