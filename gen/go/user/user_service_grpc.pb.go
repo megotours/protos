@@ -30,7 +30,6 @@ type UserServiceClient interface {
 	Create(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*UserDetails, error)
 	Update(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*UserDetails, error)
 	Delete(ctx context.Context, in *Id, opts ...grpc.CallOption) (*UserDetails, error)
-	// test
 	UpdateProfile(ctx context.Context, in *UpdateProfileRequest, opts ...grpc.CallOption) (*UserDetails, error)
 	UpdateLang(ctx context.Context, in *UpdateLangRequest, opts ...grpc.CallOption) (*UpdateLangResponse, error)
 	UpdateTheme(ctx context.Context, in *UpdateThemeRequest, opts ...grpc.CallOption) (*UpdateThemeResponse, error)
@@ -175,7 +174,6 @@ type UserServiceServer interface {
 	Create(context.Context, *CreateUserRequest) (*UserDetails, error)
 	Update(context.Context, *UpdateUserRequest) (*UserDetails, error)
 	Delete(context.Context, *Id) (*UserDetails, error)
-	// test
 	UpdateProfile(context.Context, *UpdateProfileRequest) (*UserDetails, error)
 	UpdateLang(context.Context, *UpdateLangRequest) (*UpdateLangResponse, error)
 	UpdateTheme(context.Context, *UpdateThemeRequest) (*UpdateThemeResponse, error)
