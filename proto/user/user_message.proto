@@ -79,15 +79,14 @@ message UpdateThemeResponse{
   bool success = 1;
 }
 message UpdateEmailRequest{
-  string id = 1;
-  string email = 2;
-  string code = 3;
+  string user_id = 1;
+  string code = 2;
 }
 message UpdateEmailResponse{
   bool success = 1;
 }
 message UpdateEmailSendCodeRequest{
-  string id = 1;
+  string user_id = 1;
   string email = 2;
 }
 message UpdateEmailSendCodeResponse{
