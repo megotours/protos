@@ -52,12 +52,43 @@ message UpdateUserRequest {
   string last_name = 4;
   string email = 5;
   string phone = 6;
-  NewAvatar avatar = 7;
-  string about = 8;
-  string theme = 9;
-  string lang = 10;
+  string about = 7;
+  string theme = 8;
+  string lang = 9;
 }
 
+message UpdateProfileRequest{
+  string FirstName = 1;
+  string MiddleName = 2;
+  string LastName = 3;
+  string About = 4;
+  NewAvatar avatar = 5;
+}
+message UpdateLangRequest{
+  string lang = 1;
+}
+message UpdateLangResponse{
+  bool success = 1;
+}
+message UpdateThemeRequest{
+  string theme = 1;
+}
+message UpdateThemeResponse{
+  bool success = 1;
+}
+message UpdateEmailRequest{
+  string email = 1;
+  string code =2;
+}
+message UpdateEmailResponse{
+  bool success = 1;
+}
+message UpdateEmailSendCodeRequest{
+  string email = 1;
+}
+message UpdateEmailSendCodeResponse{
+  bool success = 1;
+}
 message FindUserRequest{
   uint32 pageSize = 1;
   string pageToken = 2;

@@ -13,7 +13,15 @@ service UserService{
   rpc Create(CreateUserRequest) returns (UserDetails);
   rpc Update(UpdateUserRequest) returns (UserDetails);
   rpc Delete(Id) returns (UserDetails);
+  //test
+  rpc UpdateProfile(UpdateProfileRequest) returns(UserDetails);
+  rpc UpdateLang(UpdateLangRequest) returns(UpdateLangResponse);
+  rpc UpdateTheme(UpdateThemeRequest) returns(UpdateThemeResponse);
+  rpc UpdateEmail(UpdateEmailRequest) returns(UpdateEmailResponse);
+  rpc UpdateEmailSendCode(UpdateEmailSendCodeRequest) returns(UpdateEmailSendCodeResponse);
 }
+
+
 
 service UserRoleService{
   rpc Roles(Empty) returns (Empty);

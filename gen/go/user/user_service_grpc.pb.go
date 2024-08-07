@@ -30,6 +30,12 @@ type UserServiceClient interface {
 	Create(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*UserDetails, error)
 	Update(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*UserDetails, error)
 	Delete(ctx context.Context, in *Id, opts ...grpc.CallOption) (*UserDetails, error)
+	// test
+	UpdateProfile(ctx context.Context, in *UpdateProfileRequest, opts ...grpc.CallOption) (*UserDetails, error)
+	UpdateLang(ctx context.Context, in *UpdateLangRequest, opts ...grpc.CallOption) (*UpdateLangResponse, error)
+	UpdateTheme(ctx context.Context, in *UpdateThemeRequest, opts ...grpc.CallOption) (*UpdateThemeResponse, error)
+	UpdateEmail(ctx context.Context, in *UpdateEmailRequest, opts ...grpc.CallOption) (*UpdateEmailResponse, error)
+	UpdateEmailSendCode(ctx context.Context, in *UpdateEmailSendCodeRequest, opts ...grpc.CallOption) (*UpdateEmailSendCodeResponse, error)
 }
 
 type userServiceClient struct {
@@ -112,6 +118,51 @@ func (c *userServiceClient) Delete(ctx context.Context, in *Id, opts ...grpc.Cal
 	return out, nil
 }
 
+func (c *userServiceClient) UpdateProfile(ctx context.Context, in *UpdateProfileRequest, opts ...grpc.CallOption) (*UserDetails, error) {
+	out := new(UserDetails)
+	err := c.cc.Invoke(ctx, "/user.UserService/UpdateProfile", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) UpdateLang(ctx context.Context, in *UpdateLangRequest, opts ...grpc.CallOption) (*UpdateLangResponse, error) {
+	out := new(UpdateLangResponse)
+	err := c.cc.Invoke(ctx, "/user.UserService/UpdateLang", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) UpdateTheme(ctx context.Context, in *UpdateThemeRequest, opts ...grpc.CallOption) (*UpdateThemeResponse, error) {
+	out := new(UpdateThemeResponse)
+	err := c.cc.Invoke(ctx, "/user.UserService/UpdateTheme", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) UpdateEmail(ctx context.Context, in *UpdateEmailRequest, opts ...grpc.CallOption) (*UpdateEmailResponse, error) {
+	out := new(UpdateEmailResponse)
+	err := c.cc.Invoke(ctx, "/user.UserService/UpdateEmail", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) UpdateEmailSendCode(ctx context.Context, in *UpdateEmailSendCodeRequest, opts ...grpc.CallOption) (*UpdateEmailSendCodeResponse, error) {
+	out := new(UpdateEmailSendCodeResponse)
+	err := c.cc.Invoke(ctx, "/user.UserService/UpdateEmailSendCode", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 // All implementations must embed UnimplementedUserServiceServer
 // for forward compatibility
@@ -124,6 +175,12 @@ type UserServiceServer interface {
 	Create(context.Context, *CreateUserRequest) (*UserDetails, error)
 	Update(context.Context, *UpdateUserRequest) (*UserDetails, error)
 	Delete(context.Context, *Id) (*UserDetails, error)
+	// test
+	UpdateProfile(context.Context, *UpdateProfileRequest) (*UserDetails, error)
+	UpdateLang(context.Context, *UpdateLangRequest) (*UpdateLangResponse, error)
+	UpdateTheme(context.Context, *UpdateThemeRequest) (*UpdateThemeResponse, error)
+	UpdateEmail(context.Context, *UpdateEmailRequest) (*UpdateEmailResponse, error)
+	UpdateEmailSendCode(context.Context, *UpdateEmailSendCodeRequest) (*UpdateEmailSendCodeResponse, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -154,6 +211,21 @@ func (UnimplementedUserServiceServer) Update(context.Context, *UpdateUserRequest
 }
 func (UnimplementedUserServiceServer) Delete(context.Context, *Id) (*UserDetails, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
+}
+func (UnimplementedUserServiceServer) UpdateProfile(context.Context, *UpdateProfileRequest) (*UserDetails, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateProfile not implemented")
+}
+func (UnimplementedUserServiceServer) UpdateLang(context.Context, *UpdateLangRequest) (*UpdateLangResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateLang not implemented")
+}
+func (UnimplementedUserServiceServer) UpdateTheme(context.Context, *UpdateThemeRequest) (*UpdateThemeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateTheme not implemented")
+}
+func (UnimplementedUserServiceServer) UpdateEmail(context.Context, *UpdateEmailRequest) (*UpdateEmailResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateEmail not implemented")
+}
+func (UnimplementedUserServiceServer) UpdateEmailSendCode(context.Context, *UpdateEmailSendCodeRequest) (*UpdateEmailSendCodeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateEmailSendCode not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
 
@@ -312,6 +384,96 @@ func _UserService_Delete_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_UpdateProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateProfileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).UpdateProfile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/user.UserService/UpdateProfile",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).UpdateProfile(ctx, req.(*UpdateProfileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_UpdateLang_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateLangRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).UpdateLang(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/user.UserService/UpdateLang",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).UpdateLang(ctx, req.(*UpdateLangRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_UpdateTheme_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateThemeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).UpdateTheme(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/user.UserService/UpdateTheme",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).UpdateTheme(ctx, req.(*UpdateThemeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_UpdateEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateEmailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).UpdateEmail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/user.UserService/UpdateEmail",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).UpdateEmail(ctx, req.(*UpdateEmailRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_UpdateEmailSendCode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateEmailSendCodeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).UpdateEmailSendCode(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/user.UserService/UpdateEmailSendCode",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).UpdateEmailSendCode(ctx, req.(*UpdateEmailSendCodeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -350,6 +512,26 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Delete",
 			Handler:    _UserService_Delete_Handler,
+		},
+		{
+			MethodName: "UpdateProfile",
+			Handler:    _UserService_UpdateProfile_Handler,
+		},
+		{
+			MethodName: "UpdateLang",
+			Handler:    _UserService_UpdateLang_Handler,
+		},
+		{
+			MethodName: "UpdateTheme",
+			Handler:    _UserService_UpdateTheme_Handler,
+		},
+		{
+			MethodName: "UpdateEmail",
+			Handler:    _UserService_UpdateEmail_Handler,
+		},
+		{
+			MethodName: "UpdateEmailSendCode",
+			Handler:    _UserService_UpdateEmailSendCode_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
