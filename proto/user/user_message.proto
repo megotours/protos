@@ -58,33 +58,38 @@ message UpdateUserRequest {
 }
 
 message UpdateProfileRequest{
-  string FirstName = 1;
-  string MiddleName = 2;
-  string LastName = 3;
-  string About = 4;
-  NewAvatar avatar = 5;
+  string id = 1;
+  string FirstName = 2;
+  string MiddleName = 3;
+  string LastName = 4;
+  string About = 5;
+  NewAvatar avatar = 6;
 }
 message UpdateLangRequest{
-  string lang = 1;
+  string id = 1;
+  string lang = 2;
 }
 message UpdateLangResponse{
   bool success = 1;
 }
 message UpdateThemeRequest{
-  string theme = 1;
+  string id = 1;
+  string theme = 2;
 }
 message UpdateThemeResponse{
   bool success = 1;
 }
 message UpdateEmailRequest{
-  string email = 1;
-  string code =2;
+  string id = 1;
+  string email = 2;
+  string code = 3;
 }
 message UpdateEmailResponse{
   bool success = 1;
 }
 message UpdateEmailSendCodeRequest{
-  string email = 1;
+  string id = 1;
+  string email = 2;
 }
 message UpdateEmailSendCodeResponse{
   bool success = 1;
