@@ -6,7 +6,8 @@ option go_package = "proto/storage";
 
 message PutObjectRequest {
   string file_name = 1;
-  bytes data = 2;
+  string content_type = 2;
+  bytes data = 3;
 }
 
 message PutObjectResponse {
@@ -19,8 +20,9 @@ message GetObjectRequest {
 
 message GetObjectResponse {
   string file_name = 1;
-  bytes data = 2;
-  string content_type = 3;
+  string content_type = 2;
+  bytes data = 3;
+
 }
 
 message GetObjectUrlRequest {
