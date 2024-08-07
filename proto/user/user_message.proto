@@ -56,7 +56,6 @@ message UpdateUserRequest {
   string theme = 8;
   string lang = 9;
 }
-
 message UpdateProfileRequest{
   string id = 1;
   string FirstName = 2;
