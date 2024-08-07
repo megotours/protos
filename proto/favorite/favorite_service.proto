@@ -10,4 +10,3 @@ service FavoriteService{
   rpc Delete(DeleteRequest) returns (DeleteResponse);
   rpc Count(CountRequest) returns (CountResponse);
 }
-
