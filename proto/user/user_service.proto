@@ -13,7 +13,7 @@ service UserService{
   rpc Create(CreateUserRequest) returns (UserDetails);
   rpc Update(UpdateUserRequest) returns (UserDetails);
   rpc Delete(Id) returns (UserDetails);
-  //test
+
   rpc UpdateProfile(UpdateProfileRequest) returns(UserDetails);
   rpc UpdateLang(UpdateLangRequest) returns(UpdateLangResponse);
   rpc UpdateTheme(UpdateThemeRequest) returns(UpdateThemeResponse);
