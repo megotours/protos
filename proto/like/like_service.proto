@@ -1,7 +1,6 @@
 syntax = "proto3";
 import "like_message.proto";
 package like;
-
 option go_package = "proto/like";
 
 service LikeService{
