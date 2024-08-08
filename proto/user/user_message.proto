@@ -16,6 +16,12 @@ message NewAvatar {
   bytes data = 3;
 }
 
+message Avatar {
+  string file_name = 1;
+  string content_type = 2;
+  string url = 3;
+}
+
 
 message UserDetails {
   string id = 1;
@@ -26,7 +32,7 @@ message UserDetails {
   string theme = 6;
   string email = 7;
   string phone = 8;
-  string avatar = 9;
+  Avatar avatar = 9;
   string lang = 10;
   google.protobuf.Timestamp created_at = 11;
   google.protobuf.Timestamp updated_at = 12;
