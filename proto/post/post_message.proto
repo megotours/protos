@@ -15,7 +15,7 @@ message PostDetail {
   int32 view_count = 6;
   int32 repost_count = 7;
 
-  repeated PostContentFile contents = 8;
+  repeated PostContent contents = 8;
 
   PostType type = 9;
   google.protobuf.Timestamp created_at = 10;
