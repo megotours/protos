@@ -8,6 +8,6 @@ service PostService{
   rpc GetById(GetByIdRequest) returns (PostDetail);
   rpc GetByAuthor(GetByAuthorRequest) returns (GetByAuthorResponse);
   rpc UpdatePost(UpdatePostRequest) returns (PostDetail);
-  rpc DeletePost(DeletePostRequest) returns (PostDetail);
-  rpc HidePost(HidePostRequest) returns (PostDetail);
+  rpc DeletePost(DeletePostRequest) returns (DeletePostResponse);
+  rpc HidePost(HidePostRequest) returns (HidePostResponse);
 }

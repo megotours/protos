@@ -27,8 +27,8 @@ type PostServiceClient interface {
 	GetById(ctx context.Context, in *GetByIdRequest, opts ...grpc.CallOption) (*PostDetail, error)
 	GetByAuthor(ctx context.Context, in *GetByAuthorRequest, opts ...grpc.CallOption) (*GetByAuthorResponse, error)
 	UpdatePost(ctx context.Context, in *UpdatePostRequest, opts ...grpc.CallOption) (*PostDetail, error)
-	DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*PostDetail, error)
-	HidePost(ctx context.Context, in *HidePostRequest, opts ...grpc.CallOption) (*PostDetail, error)
+	DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*DeletePostResponse, error)
+	HidePost(ctx context.Context, in *HidePostRequest, opts ...grpc.CallOption) (*HidePostResponse, error)
 }
 
 type postServiceClient struct {
@@ -84,8 +84,8 @@ func (c *postServiceClient) UpdatePost(ctx context.Context, in *UpdatePostReques
 	return out, nil
 }
 
-func (c *postServiceClient) DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*PostDetail, error) {
-	out := new(PostDetail)
+func (c *postServiceClient) DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*DeletePostResponse, error) {
+	out := new(DeletePostResponse)
 	err := c.cc.Invoke(ctx, "/post.PostService/DeletePost", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -93,8 +93,8 @@ func (c *postServiceClient) DeletePost(ctx context.Context, in *DeletePostReques
 	return out, nil
 }
 
-func (c *postServiceClient) HidePost(ctx context.Context, in *HidePostRequest, opts ...grpc.CallOption) (*PostDetail, error) {
-	out := new(PostDetail)
+func (c *postServiceClient) HidePost(ctx context.Context, in *HidePostRequest, opts ...grpc.CallOption) (*HidePostResponse, error) {
+	out := new(HidePostResponse)
 	err := c.cc.Invoke(ctx, "/post.PostService/HidePost", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -111,8 +111,8 @@ type PostServiceServer interface {
 	GetById(context.Context, *GetByIdRequest) (*PostDetail, error)
 	GetByAuthor(context.Context, *GetByAuthorRequest) (*GetByAuthorResponse, error)
 	UpdatePost(context.Context, *UpdatePostRequest) (*PostDetail, error)
-	DeletePost(context.Context, *DeletePostRequest) (*PostDetail, error)
-	HidePost(context.Context, *HidePostRequest) (*PostDetail, error)
+	DeletePost(context.Context, *DeletePostRequest) (*DeletePostResponse, error)
+	HidePost(context.Context, *HidePostRequest) (*HidePostResponse, error)
 	mustEmbedUnimplementedPostServiceServer()
 }
 
@@ -135,10 +135,10 @@ func (UnimplementedPostServiceServer) GetByAuthor(context.Context, *GetByAuthorR
 func (UnimplementedPostServiceServer) UpdatePost(context.Context, *UpdatePostRequest) (*PostDetail, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdatePost not implemented")
 }
-func (UnimplementedPostServiceServer) DeletePost(context.Context, *DeletePostRequest) (*PostDetail, error) {
+func (UnimplementedPostServiceServer) DeletePost(context.Context, *DeletePostRequest) (*DeletePostResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeletePost not implemented")
 }
-func (UnimplementedPostServiceServer) HidePost(context.Context, *HidePostRequest) (*PostDetail, error) {
+func (UnimplementedPostServiceServer) HidePost(context.Context, *HidePostRequest) (*HidePostResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method HidePost not implemented")
 }
 func (UnimplementedPostServiceServer) mustEmbedUnimplementedPostServiceServer() {}

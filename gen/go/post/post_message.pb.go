@@ -1077,6 +1077,44 @@ func (x *DeletePostRequest) GetAuthorId() string {
 	return ""
 }
 
+type DeletePostResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *DeletePostResponse) Reset() {
+	*x = DeletePostResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_post_message_proto_msgTypes[15]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DeletePostResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeletePostResponse) ProtoMessage() {}
+
+func (x *DeletePostResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_post_message_proto_msgTypes[15]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeletePostResponse.ProtoReflect.Descriptor instead.
+func (*DeletePostResponse) Descriptor() ([]byte, []int) {
+	return file_post_message_proto_rawDescGZIP(), []int{15}
+}
+
 type HidePostRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1089,7 +1127,7 @@ type HidePostRequest struct {
 func (x *HidePostRequest) Reset() {
 	*x = HidePostRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_post_message_proto_msgTypes[15]
+		mi := &file_post_message_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1102,7 +1140,7 @@ func (x *HidePostRequest) String() string {
 func (*HidePostRequest) ProtoMessage() {}
 
 func (x *HidePostRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_post_message_proto_msgTypes[15]
+	mi := &file_post_message_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1115,7 +1153,7 @@ func (x *HidePostRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HidePostRequest.ProtoReflect.Descriptor instead.
 func (*HidePostRequest) Descriptor() ([]byte, []int) {
-	return file_post_message_proto_rawDescGZIP(), []int{15}
+	return file_post_message_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *HidePostRequest) GetId() string {
@@ -1130,6 +1168,44 @@ func (x *HidePostRequest) GetAuthorId() string {
 		return x.AuthorId
 	}
 	return ""
+}
+
+type HidePostResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *HidePostResponse) Reset() {
+	*x = HidePostResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_post_message_proto_msgTypes[17]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *HidePostResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HidePostResponse) ProtoMessage() {}
+
+func (x *HidePostResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_post_message_proto_msgTypes[17]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HidePostResponse.ProtoReflect.Descriptor instead.
+func (*HidePostResponse) Descriptor() ([]byte, []int) {
+	return file_post_message_proto_rawDescGZIP(), []int{17}
 }
 
 var File_post_message_proto protoreflect.FileDescriptor
@@ -1278,12 +1354,15 @@ var file_post_message_proto_rawDesc = []byte{
 	0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02,
 	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1b, 0x0a, 0x09,
 	0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x08, 0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x49, 0x64, 0x22, 0x3e, 0x0a, 0x0f, 0x48, 0x69, 0x64,
-	0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02,
-	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1b, 0x0a, 0x09,
-	0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x08, 0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x49, 0x64, 0x42, 0x0c, 0x5a, 0x0a, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x2f, 0x70, 0x6f, 0x73, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x08, 0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x49, 0x64, 0x22, 0x14, 0x0a, 0x12, 0x44, 0x65, 0x6c,
+	0x65, 0x74, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0x3e, 0x0a, 0x0f, 0x48, 0x69, 0x64, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02,
+	0x69, 0x64, 0x12, 0x1b, 0x0a, 0x09, 0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x5f, 0x69, 0x64, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x49, 0x64, 0x22,
+	0x12, 0x0a, 0x10, 0x48, 0x69, 0x64, 0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x42, 0x0c, 0x5a, 0x0a, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x70, 0x6f, 0x73,
+	0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1298,7 +1377,7 @@ func file_post_message_proto_rawDescGZIP() []byte {
 	return file_post_message_proto_rawDescData
 }
 
-var file_post_message_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
+var file_post_message_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_post_message_proto_goTypes = []any{
 	(*FindPostRequest)(nil),       // 0: post.FindPostRequest
 	(*FindPostResponse)(nil),      // 1: post.FindPostResponse
@@ -1315,34 +1394,36 @@ var file_post_message_proto_goTypes = []any{
 	(*CreatePostRequest)(nil),     // 12: post.CreatePostRequest
 	(*UpdatePostRequest)(nil),     // 13: post.UpdatePostRequest
 	(*DeletePostRequest)(nil),     // 14: post.DeletePostRequest
-	(*HidePostRequest)(nil),       // 15: post.HidePostRequest
-	(SortOrder)(0),                // 16: post.SortOrder
-	(*timestamppb.Timestamp)(nil), // 17: google.protobuf.Timestamp
-	(PostType)(0),                 // 18: post.PostType
-	(MediaType)(0),                // 19: post.MediaType
+	(*DeletePostResponse)(nil),    // 15: post.DeletePostResponse
+	(*HidePostRequest)(nil),       // 16: post.HidePostRequest
+	(*HidePostResponse)(nil),      // 17: post.HidePostResponse
+	(SortOrder)(0),                // 18: post.SortOrder
+	(*timestamppb.Timestamp)(nil), // 19: google.protobuf.Timestamp
+	(PostType)(0),                 // 20: post.PostType
+	(MediaType)(0),                // 21: post.MediaType
 }
 var file_post_message_proto_depIdxs = []int32{
-	16, // 0: post.FindPostRequest.sort_order:type_name -> post.SortOrder
-	17, // 1: post.FindPostRequest.date_from:type_name -> google.protobuf.Timestamp
-	17, // 2: post.FindPostRequest.date_to:type_name -> google.protobuf.Timestamp
+	18, // 0: post.FindPostRequest.sort_order:type_name -> post.SortOrder
+	19, // 1: post.FindPostRequest.date_from:type_name -> google.protobuf.Timestamp
+	19, // 2: post.FindPostRequest.date_to:type_name -> google.protobuf.Timestamp
 	4,  // 3: post.FindPostResponse.posts:type_name -> post.PostDetail
-	16, // 4: post.GetByAuthorRequest.sort_order:type_name -> post.SortOrder
+	18, // 4: post.GetByAuthorRequest.sort_order:type_name -> post.SortOrder
 	4,  // 5: post.GetByAuthorResponse.posts:type_name -> post.PostDetail
 	7,  // 6: post.PostDetail.author:type_name -> post.Author
 	9,  // 7: post.PostDetail.contents:type_name -> post.MediaContents
-	18, // 8: post.PostDetail.type:type_name -> post.PostType
-	17, // 9: post.PostDetail.created_at:type_name -> google.protobuf.Timestamp
-	17, // 10: post.PostDetail.updated_at:type_name -> google.protobuf.Timestamp
-	17, // 11: post.PostDetail.deleted_at:type_name -> google.protobuf.Timestamp
+	20, // 8: post.PostDetail.type:type_name -> post.PostType
+	19, // 9: post.PostDetail.created_at:type_name -> google.protobuf.Timestamp
+	19, // 10: post.PostDetail.updated_at:type_name -> google.protobuf.Timestamp
+	19, // 11: post.PostDetail.deleted_at:type_name -> google.protobuf.Timestamp
 	10, // 12: post.MediaContents.files:type_name -> post.MediaContentFiles
-	19, // 13: post.MediaContentFiles.type:type_name -> post.MediaType
+	21, // 13: post.MediaContentFiles.type:type_name -> post.MediaType
 	7,  // 14: post.CreateRequest.author:type_name -> post.Author
 	9,  // 15: post.CreateRequest.contents:type_name -> post.MediaContents
-	18, // 16: post.CreateRequest.type:type_name -> post.PostType
-	18, // 17: post.CreatePostRequest.type:type_name -> post.PostType
+	20, // 16: post.CreateRequest.type:type_name -> post.PostType
+	20, // 17: post.CreatePostRequest.type:type_name -> post.PostType
 	9,  // 18: post.CreatePostRequest.contents:type_name -> post.MediaContents
 	9,  // 19: post.UpdatePostRequest.contents:type_name -> post.MediaContents
-	18, // 20: post.UpdatePostRequest.type:type_name -> post.PostType
+	20, // 20: post.UpdatePostRequest.type:type_name -> post.PostType
 	21, // [21:21] is the sub-list for method output_type
 	21, // [21:21] is the sub-list for method input_type
 	21, // [21:21] is the sub-list for extension type_name
@@ -1538,7 +1619,31 @@ func file_post_message_proto_init() {
 			}
 		}
 		file_post_message_proto_msgTypes[15].Exporter = func(v any, i int) any {
+			switch v := v.(*DeletePostResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_post_message_proto_msgTypes[16].Exporter = func(v any, i int) any {
 			switch v := v.(*HidePostRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_post_message_proto_msgTypes[17].Exporter = func(v any, i int) any {
+			switch v := v.(*HidePostResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1556,7 +1661,7 @@ func file_post_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_post_message_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   16,
+			NumMessages:   18,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
