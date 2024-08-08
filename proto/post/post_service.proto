@@ -3,7 +3,6 @@ package post;
 option go_package = "proto/post";
 import "post_message.proto";
 
-
 service PostService{
   rpc FindPost(FindPostRequest) returns (FindPostResponse);
   rpc CreatePost(CreatePostRequest) returns (PostDetail);
