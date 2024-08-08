@@ -19,6 +19,7 @@ message PostDetail {
   google.protobuf.Timestamp updated_at = 11;
   google.protobuf.Timestamp deleted_at = 12;
 }
+
 message Author {
   string id = 1;
   string first_name = 2;
