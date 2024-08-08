@@ -106,6 +106,7 @@ message FindUserRequest{
   string sort = 3;
   string search = 4;
 }
+
 message FindUserResponse{
   string nexPageToken = 3;
   repeated UserDetails users = 4;
