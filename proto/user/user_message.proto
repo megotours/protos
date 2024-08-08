@@ -15,7 +15,6 @@ message NewAvatar {
   string content_type = 2;
   bytes data = 3;
 }
-
 message Avatar {
   string file_name = 1;
   string url = 2;
