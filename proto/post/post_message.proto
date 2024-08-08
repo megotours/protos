@@ -91,7 +91,9 @@ message UpdatePostRequest{
 }
 message DeletePostRequest{
   string id = 1;
+  string author_id = 2;
 }
 message HidePostRequest{
   string id = 1;
+  string author_id = 2;
 }
