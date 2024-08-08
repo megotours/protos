@@ -2,10 +2,6 @@ syntax = "proto3";
 package post;
 option go_package = "proto/post";
 
-enum MediaType {
-  IMAGE = 0;
-  VIDEO = 1;
-}
 
 enum PostType {
   TOURIST = 0;
