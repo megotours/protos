@@ -9,14 +9,11 @@ message PostDetail {
   string id = 1;
   string title = 2;
   Author author = 3;
-
   int32 like_count = 4;
   int32 comment_count = 5;
   int32 view_count = 6;
   int32 repost_count = 7;
-
   repeated PostContent contents = 8;
-
   PostType type = 9;
   google.protobuf.Timestamp created_at = 10;
   google.protobuf.Timestamp updated_at = 11;
