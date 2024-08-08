@@ -7,6 +7,7 @@ import "post_message.proto";
 service PostService{
   rpc FindPost(FindPostRequest) returns (FindPostResponse);
   rpc CreatePost(CreatePostRequest) returns (PostDetail);
+  rpc GetById(GetByIdRequest) returns (PostDetail);
   rpc UpdatePost(UpdatePostRequest) returns (PostDetail);
   rpc DeletePost(DeletePostRequest) returns (PostDetail);
   rpc HidePost(HidePostRequest) returns (PostDetail);

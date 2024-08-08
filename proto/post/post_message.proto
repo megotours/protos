@@ -38,7 +38,9 @@ message PostDetail {
 message PostResponse{
 
 }
-
+message GetByIdRequest{
+  string id = 1;
+}
 message Author {
   string id = 1;
   string first_name = 2;

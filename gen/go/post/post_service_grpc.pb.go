@@ -24,6 +24,7 @@ const _ = grpc.SupportPackageIsVersion7
 type PostServiceClient interface {
 	FindPost(ctx context.Context, in *FindPostRequest, opts ...grpc.CallOption) (*FindPostResponse, error)
 	CreatePost(ctx context.Context, in *CreatePostRequest, opts ...grpc.CallOption) (*PostDetail, error)
+	GetById(ctx context.Context, in *GetByIdRequest, opts ...grpc.CallOption) (*PostDetail, error)
 	UpdatePost(ctx context.Context, in *UpdatePostRequest, opts ...grpc.CallOption) (*PostDetail, error)
 	DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*PostDetail, error)
 	HidePost(ctx context.Context, in *HidePostRequest, opts ...grpc.CallOption) (*PostDetail, error)
@@ -49,6 +50,15 @@ func (c *postServiceClient) FindPost(ctx context.Context, in *FindPostRequest, o
 func (c *postServiceClient) CreatePost(ctx context.Context, in *CreatePostRequest, opts ...grpc.CallOption) (*PostDetail, error) {
 	out := new(PostDetail)
 	err := c.cc.Invoke(ctx, "/post.PostService/CreatePost", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *postServiceClient) GetById(ctx context.Context, in *GetByIdRequest, opts ...grpc.CallOption) (*PostDetail, error) {
+	out := new(PostDetail)
+	err := c.cc.Invoke(ctx, "/post.PostService/GetById", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -88,6 +98,7 @@ func (c *postServiceClient) HidePost(ctx context.Context, in *HidePostRequest, o
 type PostServiceServer interface {
 	FindPost(context.Context, *FindPostRequest) (*FindPostResponse, error)
 	CreatePost(context.Context, *CreatePostRequest) (*PostDetail, error)
+	GetById(context.Context, *GetByIdRequest) (*PostDetail, error)
 	UpdatePost(context.Context, *UpdatePostRequest) (*PostDetail, error)
 	DeletePost(context.Context, *DeletePostRequest) (*PostDetail, error)
 	HidePost(context.Context, *HidePostRequest) (*PostDetail, error)
@@ -103,6 +114,9 @@ func (UnimplementedPostServiceServer) FindPost(context.Context, *FindPostRequest
 }
 func (UnimplementedPostServiceServer) CreatePost(context.Context, *CreatePostRequest) (*PostDetail, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreatePost not implemented")
+}
+func (UnimplementedPostServiceServer) GetById(context.Context, *GetByIdRequest) (*PostDetail, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetById not implemented")
 }
 func (UnimplementedPostServiceServer) UpdatePost(context.Context, *UpdatePostRequest) (*PostDetail, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdatePost not implemented")
@@ -158,6 +172,24 @@ func _PostService_CreatePost_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(PostServiceServer).CreatePost(ctx, req.(*CreatePostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PostService_GetById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetByIdRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PostServiceServer).GetById(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/post.PostService/GetById",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PostServiceServer).GetById(ctx, req.(*GetByIdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -230,6 +262,10 @@ var PostService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreatePost",
 			Handler:    _PostService_CreatePost_Handler,
+		},
+		{
+			MethodName: "GetById",
+			Handler:    _PostService_GetById_Handler,
 		},
 		{
 			MethodName: "UpdatePost",
