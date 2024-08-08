@@ -47,7 +47,6 @@ message PostContentFile{
   string url = 3;
 }
 
-
 //requests and responses
 message FindPostRequest{
   int32 page_size = 1;
