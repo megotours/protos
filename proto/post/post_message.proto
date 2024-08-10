@@ -4,8 +4,47 @@ package post;
 option go_package = "proto/post";
 import "google/protobuf/timestamp.proto";
 import "post_enum.proto";
+//models
+message PostDetail {
+  string id = 1;
+  string title = 2;
+  Author author = 3;
+  int32 like_count = 4;
+  int32 comment_count = 5;
+  int32 view_count = 6;
+  int32 repost_count = 7;
+  repeated PostContent contents = 8;
+  PostType type = 9;
+  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp updated_at = 11;
+  google.protobuf.Timestamp deleted_at = 12;
+}
 
+message Author {
+  string id = 1;
+  string first_name = 2;
+  string middle_name = 3;
+  string last_name = 4;
+  string email = 5;
+  string phone = 6;
+  Avatar avatar = 7;
+}
+message Avatar{
+  string file_name = 1;
+  string url = 2;
+}
+message PostContent {
+  string title = 1;
+  string content = 2;
+  repeated PostContentFile files = 3;
+}
+message PostContentFile{
+  string file_name = 1;
+  string content_type = 2;
+  string url = 3;
+}
 
+//requests and responses
 message FindPostRequest{
   int32 page_size = 1;
   string page_token = 2;
@@ -18,56 +57,35 @@ message FindPostResponse{
   repeated PostDetail posts = 1;
   string next_page_token = 2;
 }
-message PostDetail {
-  string id = 1;
-  string title = 2;
-  Author author = 3;
 
-  int32 like_count = 4;
-  int32 comment_count = 5;
-  int32 view_count = 6;
-  int32 repost_count = 7;
-
-  repeated MediaContents contents = 8;
-
-  PostType type = 9;
-  google.protobuf.Timestamp created_at = 10;
-  google.protobuf.Timestamp updated_at = 11;
-  google.protobuf.Timestamp deleted_at = 12;
+message GetByAuthorRequest{
+  string author_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+  string search = 4;
+  SortOrder sort_order = 5;
 }
+message GetByAuthorResponse{
+  repeated PostDetail posts = 1;
+  string next_page_token = 2;
+}
+
 message PostResponse{
 
 }
+message GetByIdRequest{
+  string id = 1;
+}
 
-message Author {
-  string id = 1;
-  string first_name = 2;
-  string middle_name = 3;
-  string last_name = 4;
-  string email = 5;
-  string phone = 6;
-  string avatar = 7;
-}
-message PostRequest{
-  string id = 1;
-}
-message MediaContents {
+message PostContentCreateOrUpdate {
   string title = 1;
   string content = 2;
-  repeated MediaContentFiles files = 3;
+  repeated PostContentFileCreateOrUpdate files = 3;
 }
-
-message MediaContentFiles{
+message PostContentFileCreateOrUpdate{
   string file_name = 1;
-  int64 size = 2;
-  string path = 3;
-  MediaType type = 4;
-}
-message CreateRequest{
-  string title = 1;
-  Author author = 2;
-  MediaContents contents = 3;
-  PostType type = 4;
+  string content_type = 2;
+  bytes data = 3;
 }
 
 message CreatePostRequest{
@@ -76,20 +94,26 @@ message CreatePostRequest{
   string author_id = 3;
   PostType type = 4;
 
-  repeated MediaContents contents = 5;
+  repeated PostContentCreateOrUpdate contents = 5;
 }
-
 message UpdatePostRequest{
   string id = 1;
   string title = 2;
   string author_id = 3;
+  PostType type = 4;
 
-  repeated MediaContents contents = 8;
-  PostType type = 9;
+  repeated PostContentCreateOrUpdate contents = 5;
 }
 message DeletePostRequest{
   string id = 1;
+  string author_id = 2;
 }
+message DeletePostResponse{
+}
+
 message HidePostRequest{
   string id = 1;
+  string author_id = 2;
+}
+message HidePostResponse{
 }

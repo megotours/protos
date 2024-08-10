@@ -16,12 +16,7 @@ message LikeRequest{
 message LikeResponse{
   string post_id = 1;
 }
-message DislikeRequest{
-  string post_id = 1;
-}
-message DislikeResponse{
-  string post_id = 1;
-}
+
 message CountResponse{
   int32 count = 1;
 }

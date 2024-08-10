@@ -1,13 +1,13 @@
 syntax = "proto3";
 package post;
-
 option go_package = "proto/post";
 import "post_message.proto";
-
 service PostService{
   rpc FindPost(FindPostRequest) returns (FindPostResponse);
   rpc CreatePost(CreatePostRequest) returns (PostDetail);
+  rpc GetById(GetByIdRequest) returns (PostDetail);
+  rpc GetByAuthor(GetByAuthorRequest) returns (GetByAuthorResponse);
   rpc UpdatePost(UpdatePostRequest) returns (PostDetail);
-  rpc DeletePost(DeletePostRequest) returns (PostDetail);
-  rpc HidePost(HidePostRequest) returns (PostDetail);
+  rpc DeletePost(DeletePostRequest) returns (DeletePostResponse);
+  rpc HidePost(HidePostRequest) returns (HidePostResponse);
 }

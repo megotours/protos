@@ -24,9 +24,11 @@ const _ = grpc.SupportPackageIsVersion7
 type PostServiceClient interface {
 	FindPost(ctx context.Context, in *FindPostRequest, opts ...grpc.CallOption) (*FindPostResponse, error)
 	CreatePost(ctx context.Context, in *CreatePostRequest, opts ...grpc.CallOption) (*PostDetail, error)
+	GetById(ctx context.Context, in *GetByIdRequest, opts ...grpc.CallOption) (*PostDetail, error)
+	GetByAuthor(ctx context.Context, in *GetByAuthorRequest, opts ...grpc.CallOption) (*GetByAuthorResponse, error)
 	UpdatePost(ctx context.Context, in *UpdatePostRequest, opts ...grpc.CallOption) (*PostDetail, error)
-	DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*PostDetail, error)
-	HidePost(ctx context.Context, in *HidePostRequest, opts ...grpc.CallOption) (*PostDetail, error)
+	DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*DeletePostResponse, error)
+	HidePost(ctx context.Context, in *HidePostRequest, opts ...grpc.CallOption) (*HidePostResponse, error)
 }
 
 type postServiceClient struct {
@@ -55,6 +57,24 @@ func (c *postServiceClient) CreatePost(ctx context.Context, in *CreatePostReques
 	return out, nil
 }
 
+func (c *postServiceClient) GetById(ctx context.Context, in *GetByIdRequest, opts ...grpc.CallOption) (*PostDetail, error) {
+	out := new(PostDetail)
+	err := c.cc.Invoke(ctx, "/post.PostService/GetById", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *postServiceClient) GetByAuthor(ctx context.Context, in *GetByAuthorRequest, opts ...grpc.CallOption) (*GetByAuthorResponse, error) {
+	out := new(GetByAuthorResponse)
+	err := c.cc.Invoke(ctx, "/post.PostService/GetByAuthor", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *postServiceClient) UpdatePost(ctx context.Context, in *UpdatePostRequest, opts ...grpc.CallOption) (*PostDetail, error) {
 	out := new(PostDetail)
 	err := c.cc.Invoke(ctx, "/post.PostService/UpdatePost", in, out, opts...)
@@ -64,8 +84,8 @@ func (c *postServiceClient) UpdatePost(ctx context.Context, in *UpdatePostReques
 	return out, nil
 }
 
-func (c *postServiceClient) DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*PostDetail, error) {
-	out := new(PostDetail)
+func (c *postServiceClient) DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*DeletePostResponse, error) {
+	out := new(DeletePostResponse)
 	err := c.cc.Invoke(ctx, "/post.PostService/DeletePost", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -73,8 +93,8 @@ func (c *postServiceClient) DeletePost(ctx context.Context, in *DeletePostReques
 	return out, nil
 }
 
-func (c *postServiceClient) HidePost(ctx context.Context, in *HidePostRequest, opts ...grpc.CallOption) (*PostDetail, error) {
-	out := new(PostDetail)
+func (c *postServiceClient) HidePost(ctx context.Context, in *HidePostRequest, opts ...grpc.CallOption) (*HidePostResponse, error) {
+	out := new(HidePostResponse)
 	err := c.cc.Invoke(ctx, "/post.PostService/HidePost", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -88,9 +108,11 @@ func (c *postServiceClient) HidePost(ctx context.Context, in *HidePostRequest, o
 type PostServiceServer interface {
 	FindPost(context.Context, *FindPostRequest) (*FindPostResponse, error)
 	CreatePost(context.Context, *CreatePostRequest) (*PostDetail, error)
+	GetById(context.Context, *GetByIdRequest) (*PostDetail, error)
+	GetByAuthor(context.Context, *GetByAuthorRequest) (*GetByAuthorResponse, error)
 	UpdatePost(context.Context, *UpdatePostRequest) (*PostDetail, error)
-	DeletePost(context.Context, *DeletePostRequest) (*PostDetail, error)
-	HidePost(context.Context, *HidePostRequest) (*PostDetail, error)
+	DeletePost(context.Context, *DeletePostRequest) (*DeletePostResponse, error)
+	HidePost(context.Context, *HidePostRequest) (*HidePostResponse, error)
 	mustEmbedUnimplementedPostServiceServer()
 }
 
@@ -104,13 +126,19 @@ func (UnimplementedPostServiceServer) FindPost(context.Context, *FindPostRequest
 func (UnimplementedPostServiceServer) CreatePost(context.Context, *CreatePostRequest) (*PostDetail, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreatePost not implemented")
 }
+func (UnimplementedPostServiceServer) GetById(context.Context, *GetByIdRequest) (*PostDetail, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetById not implemented")
+}
+func (UnimplementedPostServiceServer) GetByAuthor(context.Context, *GetByAuthorRequest) (*GetByAuthorResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetByAuthor not implemented")
+}
 func (UnimplementedPostServiceServer) UpdatePost(context.Context, *UpdatePostRequest) (*PostDetail, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdatePost not implemented")
 }
-func (UnimplementedPostServiceServer) DeletePost(context.Context, *DeletePostRequest) (*PostDetail, error) {
+func (UnimplementedPostServiceServer) DeletePost(context.Context, *DeletePostRequest) (*DeletePostResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeletePost not implemented")
 }
-func (UnimplementedPostServiceServer) HidePost(context.Context, *HidePostRequest) (*PostDetail, error) {
+func (UnimplementedPostServiceServer) HidePost(context.Context, *HidePostRequest) (*HidePostResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method HidePost not implemented")
 }
 func (UnimplementedPostServiceServer) mustEmbedUnimplementedPostServiceServer() {}
@@ -158,6 +186,42 @@ func _PostService_CreatePost_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(PostServiceServer).CreatePost(ctx, req.(*CreatePostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PostService_GetById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetByIdRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PostServiceServer).GetById(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/post.PostService/GetById",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PostServiceServer).GetById(ctx, req.(*GetByIdRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PostService_GetByAuthor_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetByAuthorRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PostServiceServer).GetByAuthor(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/post.PostService/GetByAuthor",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PostServiceServer).GetByAuthor(ctx, req.(*GetByAuthorRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -230,6 +294,14 @@ var PostService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreatePost",
 			Handler:    _PostService_CreatePost_Handler,
+		},
+		{
+			MethodName: "GetById",
+			Handler:    _PostService_GetById_Handler,
+		},
+		{
+			MethodName: "GetByAuthor",
+			Handler:    _PostService_GetByAuthor_Handler,
 		},
 		{
 			MethodName: "UpdatePost",
