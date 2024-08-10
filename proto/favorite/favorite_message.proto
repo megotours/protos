@@ -4,23 +4,28 @@ package favorite;
 option go_package = "proto/favorite";
 
 message ExistsRequest{
-  string post_id = 1;
+  string user_id = 1;
+  string post_id = 2;
 }
 message ExistsResponse{
-  bool exists = 3;
+  bool exists = 1;
 }
 message AddRequest{
-  string post_id = 1;
+  string user_id = 1;
+  string post_id = 2;
 }
 
 message AddResponse{
-  string post_id = 1;
+  string user_id = 1;
+  string post_id = 2;
 }
 message DeleteRequest{
-  string post_id = 1;
+  string user_id = 1;
+  string post_id = 2;
 }
 message DeleteResponse{
-  string post_id = 1;
+  string user_id = 1;
+  string post_id = 2;
 }
 message CountResponse{
   int32 count = 1;

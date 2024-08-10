@@ -4,22 +4,26 @@ package like;
 option go_package = "proto/like";
 
 message ExistsRequest{
-  string post_id = 1;
+  string user_id = 1;
+  string post_id = 2;
 }
 message ExistsResponse{
-  bool exists = 3;
+  bool exists = 1;
 }
 message LikeRequest{
-  string post_id = 1;
+  string user_id = 1;
+  string post_id = 2;
 }
 
 message LikeResponse{
-  string post_id = 1;
+  string user_id = 1;
+  string post_id = 2;
 }
 
 message CountResponse{
   int32 count = 1;
 }
 message CountRequest{
-  string post_id = 1;
+  string user_id = 1;
+  string post_id = 2;
 }
