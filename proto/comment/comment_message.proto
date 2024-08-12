@@ -1,9 +1,50 @@
 syntax = "proto3";
 package comment;
+import "comment_enum.proto";
+import "google/protobuf/timestamp.proto";
 
 option go_package = "proto/comment";
 
 message Empty{
 
 }
+
+message FindRequest{
+  int32 page_size = 1;
+  string page_token = 2;
+  string post_id = 3;
+  string comment_id = 4;
+  SortOrder sort_order = 5;
+}
+message FindResponse{
+  repeated Comment comments = 1;
+  string next_page_token = 2;
+}
+
+message Comment{
+  string id = 1;
+  string content = 2;
+  string post_id = 3;
+  string parent_id = 4;
+  string comment_id = 5;
+  Author author = 6;
+  google.protobuf.Timestamp created_at = 7;
+}
+message Author{
+  string id = 1;
+  string first_name = 2;
+  string middle_name = 3;
+  string last_name = 4;
+  string email = 5;
+  string avatar = 6;
+}
+message CreateRequest{
+  string author_id = 1;
+  string post_id = 2;
+  string comment_id = 3;
+  string parent_id = 4;
+  string content = 5;
+
+}
+
 
