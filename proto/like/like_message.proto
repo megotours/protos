@@ -24,6 +24,5 @@ message CountResponse{
   int32 count = 1;
 }
 message CountRequest{
-  string user_id = 1;
   string post_id = 2;
 }
