@@ -19,7 +19,6 @@ message LikeResponse{
   string user_id = 1;
   string post_id = 2;
 }
-
 message CountResponse{
   int32 count = 1;
 }
