@@ -7,5 +7,6 @@ service LikeService{
   rpc Exists(ExistsRequest) returns (ExistsResponse);
   rpc Like(LikeRequest) returns (LikeResponse);
   rpc Count(CountRequest) returns (CountResponse);
+  rpc Find(FindRequest) returns (FindResponse);
 }
 

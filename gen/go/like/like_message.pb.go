@@ -20,6 +20,61 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type Like struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	UserId string `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	PostId string `protobuf:"bytes,2,opt,name=post_id,json=postId,proto3" json:"post_id,omitempty"`
+}
+
+func (x *Like) Reset() {
+	*x = Like{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_like_message_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Like) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Like) ProtoMessage() {}
+
+func (x *Like) ProtoReflect() protoreflect.Message {
+	mi := &file_like_message_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Like.ProtoReflect.Descriptor instead.
+func (*Like) Descriptor() ([]byte, []int) {
+	return file_like_message_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *Like) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *Like) GetPostId() string {
+	if x != nil {
+		return x.PostId
+	}
+	return ""
+}
+
 type ExistsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -32,7 +87,7 @@ type ExistsRequest struct {
 func (x *ExistsRequest) Reset() {
 	*x = ExistsRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_like_message_proto_msgTypes[0]
+		mi := &file_like_message_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -45,7 +100,7 @@ func (x *ExistsRequest) String() string {
 func (*ExistsRequest) ProtoMessage() {}
 
 func (x *ExistsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_like_message_proto_msgTypes[0]
+	mi := &file_like_message_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -58,7 +113,7 @@ func (x *ExistsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExistsRequest.ProtoReflect.Descriptor instead.
 func (*ExistsRequest) Descriptor() ([]byte, []int) {
-	return file_like_message_proto_rawDescGZIP(), []int{0}
+	return file_like_message_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ExistsRequest) GetUserId() string {
@@ -86,7 +141,7 @@ type ExistsResponse struct {
 func (x *ExistsResponse) Reset() {
 	*x = ExistsResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_like_message_proto_msgTypes[1]
+		mi := &file_like_message_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -99,7 +154,7 @@ func (x *ExistsResponse) String() string {
 func (*ExistsResponse) ProtoMessage() {}
 
 func (x *ExistsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_like_message_proto_msgTypes[1]
+	mi := &file_like_message_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -112,7 +167,7 @@ func (x *ExistsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExistsResponse.ProtoReflect.Descriptor instead.
 func (*ExistsResponse) Descriptor() ([]byte, []int) {
-	return file_like_message_proto_rawDescGZIP(), []int{1}
+	return file_like_message_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ExistsResponse) GetExists() bool {
@@ -134,7 +189,7 @@ type LikeRequest struct {
 func (x *LikeRequest) Reset() {
 	*x = LikeRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_like_message_proto_msgTypes[2]
+		mi := &file_like_message_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -147,7 +202,7 @@ func (x *LikeRequest) String() string {
 func (*LikeRequest) ProtoMessage() {}
 
 func (x *LikeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_like_message_proto_msgTypes[2]
+	mi := &file_like_message_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -160,7 +215,7 @@ func (x *LikeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LikeRequest.ProtoReflect.Descriptor instead.
 func (*LikeRequest) Descriptor() ([]byte, []int) {
-	return file_like_message_proto_rawDescGZIP(), []int{2}
+	return file_like_message_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *LikeRequest) GetUserId() string {
@@ -189,7 +244,7 @@ type LikeResponse struct {
 func (x *LikeResponse) Reset() {
 	*x = LikeResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_like_message_proto_msgTypes[3]
+		mi := &file_like_message_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -202,7 +257,7 @@ func (x *LikeResponse) String() string {
 func (*LikeResponse) ProtoMessage() {}
 
 func (x *LikeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_like_message_proto_msgTypes[3]
+	mi := &file_like_message_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -215,7 +270,7 @@ func (x *LikeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LikeResponse.ProtoReflect.Descriptor instead.
 func (*LikeResponse) Descriptor() ([]byte, []int) {
-	return file_like_message_proto_rawDescGZIP(), []int{3}
+	return file_like_message_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *LikeResponse) GetUserId() string {
@@ -243,7 +298,7 @@ type CountResponse struct {
 func (x *CountResponse) Reset() {
 	*x = CountResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_like_message_proto_msgTypes[4]
+		mi := &file_like_message_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -256,7 +311,7 @@ func (x *CountResponse) String() string {
 func (*CountResponse) ProtoMessage() {}
 
 func (x *CountResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_like_message_proto_msgTypes[4]
+	mi := &file_like_message_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -269,7 +324,7 @@ func (x *CountResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CountResponse.ProtoReflect.Descriptor instead.
 func (*CountResponse) Descriptor() ([]byte, []int) {
-	return file_like_message_proto_rawDescGZIP(), []int{4}
+	return file_like_message_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *CountResponse) GetCount() int32 {
@@ -290,7 +345,7 @@ type CountRequest struct {
 func (x *CountRequest) Reset() {
 	*x = CountRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_like_message_proto_msgTypes[5]
+		mi := &file_like_message_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -303,7 +358,7 @@ func (x *CountRequest) String() string {
 func (*CountRequest) ProtoMessage() {}
 
 func (x *CountRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_like_message_proto_msgTypes[5]
+	mi := &file_like_message_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -316,7 +371,7 @@ func (x *CountRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CountRequest.ProtoReflect.Descriptor instead.
 func (*CountRequest) Descriptor() ([]byte, []int) {
-	return file_like_message_proto_rawDescGZIP(), []int{5}
+	return file_like_message_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *CountRequest) GetPostId() string {
@@ -326,32 +381,156 @@ func (x *CountRequest) GetPostId() string {
 	return ""
 }
 
+type FindRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	PageSize  int32  `protobuf:"varint,1,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+}
+
+func (x *FindRequest) Reset() {
+	*x = FindRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_like_message_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *FindRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FindRequest) ProtoMessage() {}
+
+func (x *FindRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_like_message_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FindRequest.ProtoReflect.Descriptor instead.
+func (*FindRequest) Descriptor() ([]byte, []int) {
+	return file_like_message_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *FindRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *FindRequest) GetPageToken() string {
+	if x != nil {
+		return x.PageToken
+	}
+	return ""
+}
+
+type FindResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Likes         []*Like `protobuf:"bytes,1,rep,name=likes,proto3" json:"likes,omitempty"`
+	NextPageToken string  `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+}
+
+func (x *FindResponse) Reset() {
+	*x = FindResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_like_message_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *FindResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FindResponse) ProtoMessage() {}
+
+func (x *FindResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_like_message_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FindResponse.ProtoReflect.Descriptor instead.
+func (*FindResponse) Descriptor() ([]byte, []int) {
+	return file_like_message_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *FindResponse) GetLikes() []*Like {
+	if x != nil {
+		return x.Likes
+	}
+	return nil
+}
+
+func (x *FindResponse) GetNextPageToken() string {
+	if x != nil {
+		return x.NextPageToken
+	}
+	return ""
+}
+
 var File_like_message_proto protoreflect.FileDescriptor
 
 var file_like_message_proto_rawDesc = []byte{
 	0x0a, 0x12, 0x6c, 0x69, 0x6b, 0x65, 0x5f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x2e, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x12, 0x04, 0x6c, 0x69, 0x6b, 0x65, 0x22, 0x41, 0x0a, 0x0d, 0x45, 0x78,
-	0x69, 0x73, 0x74, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x17, 0x0a, 0x07, 0x75,
-	0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x75, 0x73,
-	0x65, 0x72, 0x49, 0x64, 0x12, 0x17, 0x0a, 0x07, 0x70, 0x6f, 0x73, 0x74, 0x5f, 0x69, 0x64, 0x18,
-	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x70, 0x6f, 0x73, 0x74, 0x49, 0x64, 0x22, 0x28, 0x0a,
-	0x0e, 0x45, 0x78, 0x69, 0x73, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
-	0x16, 0x0a, 0x06, 0x65, 0x78, 0x69, 0x73, 0x74, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52,
-	0x06, 0x65, 0x78, 0x69, 0x73, 0x74, 0x73, 0x22, 0x3f, 0x0a, 0x0b, 0x4c, 0x69, 0x6b, 0x65, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x17, 0x0a, 0x07, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69,
-	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x75, 0x73, 0x65, 0x72, 0x49, 0x64, 0x12,
-	0x17, 0x0a, 0x07, 0x70, 0x6f, 0x73, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x06, 0x70, 0x6f, 0x73, 0x74, 0x49, 0x64, 0x22, 0x40, 0x0a, 0x0c, 0x4c, 0x69, 0x6b, 0x65,
-	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x17, 0x0a, 0x07, 0x75, 0x73, 0x65, 0x72,
-	0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x75, 0x73, 0x65, 0x72, 0x49,
-	0x64, 0x12, 0x17, 0x0a, 0x07, 0x70, 0x6f, 0x73, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x06, 0x70, 0x6f, 0x73, 0x74, 0x49, 0x64, 0x22, 0x25, 0x0a, 0x0d, 0x43, 0x6f,
-	0x75, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x63,
-	0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x63, 0x6f, 0x75, 0x6e,
-	0x74, 0x22, 0x27, 0x0a, 0x0c, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x12, 0x17, 0x0a, 0x07, 0x70, 0x6f, 0x73, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x06, 0x70, 0x6f, 0x73, 0x74, 0x49, 0x64, 0x42, 0x0c, 0x5a, 0x0a, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x2f, 0x6c, 0x69, 0x6b, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x72, 0x6f, 0x74, 0x6f, 0x12, 0x04, 0x6c, 0x69, 0x6b, 0x65, 0x22, 0x38, 0x0a, 0x04, 0x4c, 0x69,
+	0x6b, 0x65, 0x12, 0x17, 0x0a, 0x07, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x06, 0x75, 0x73, 0x65, 0x72, 0x49, 0x64, 0x12, 0x17, 0x0a, 0x07, 0x70,
+	0x6f, 0x73, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x70, 0x6f,
+	0x73, 0x74, 0x49, 0x64, 0x22, 0x41, 0x0a, 0x0d, 0x45, 0x78, 0x69, 0x73, 0x74, 0x73, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x17, 0x0a, 0x07, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x75, 0x73, 0x65, 0x72, 0x49, 0x64, 0x12, 0x17,
+	0x0a, 0x07, 0x70, 0x6f, 0x73, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x06, 0x70, 0x6f, 0x73, 0x74, 0x49, 0x64, 0x22, 0x28, 0x0a, 0x0e, 0x45, 0x78, 0x69, 0x73, 0x74,
+	0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x65, 0x78, 0x69,
+	0x73, 0x74, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x06, 0x65, 0x78, 0x69, 0x73, 0x74,
+	0x73, 0x22, 0x3f, 0x0a, 0x0b, 0x4c, 0x69, 0x6b, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x12, 0x17, 0x0a, 0x07, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x06, 0x75, 0x73, 0x65, 0x72, 0x49, 0x64, 0x12, 0x17, 0x0a, 0x07, 0x70, 0x6f, 0x73,
+	0x74, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x70, 0x6f, 0x73, 0x74,
+	0x49, 0x64, 0x22, 0x40, 0x0a, 0x0c, 0x4c, 0x69, 0x6b, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x12, 0x17, 0x0a, 0x07, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x06, 0x75, 0x73, 0x65, 0x72, 0x49, 0x64, 0x12, 0x17, 0x0a, 0x07, 0x70,
+	0x6f, 0x73, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x70, 0x6f,
+	0x73, 0x74, 0x49, 0x64, 0x22, 0x25, 0x0a, 0x0d, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x22, 0x27, 0x0a, 0x0c, 0x43,
+	0x6f, 0x75, 0x6e, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x17, 0x0a, 0x07, 0x70,
+	0x6f, 0x73, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x70, 0x6f,
+	0x73, 0x74, 0x49, 0x64, 0x22, 0x49, 0x0a, 0x0b, 0x46, 0x69, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x12, 0x1b, 0x0a, 0x09, 0x70, 0x61, 0x67, 0x65, 0x5f, 0x73, 0x69, 0x7a, 0x65,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x70, 0x61, 0x67, 0x65, 0x53, 0x69, 0x7a, 0x65,
+	0x12, 0x1d, 0x0a, 0x0a, 0x70, 0x61, 0x67, 0x65, 0x5f, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x70, 0x61, 0x67, 0x65, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x22,
+	0x58, 0x0a, 0x0c, 0x46, 0x69, 0x6e, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
+	0x20, 0x0a, 0x05, 0x6c, 0x69, 0x6b, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0a,
+	0x2e, 0x6c, 0x69, 0x6b, 0x65, 0x2e, 0x4c, 0x69, 0x6b, 0x65, 0x52, 0x05, 0x6c, 0x69, 0x6b, 0x65,
+	0x73, 0x12, 0x26, 0x0a, 0x0f, 0x6e, 0x65, 0x78, 0x74, 0x5f, 0x70, 0x61, 0x67, 0x65, 0x5f, 0x74,
+	0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d, 0x6e, 0x65, 0x78, 0x74,
+	0x50, 0x61, 0x67, 0x65, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x42, 0x0c, 0x5a, 0x0a, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x2f, 0x6c, 0x69, 0x6b, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -366,21 +545,25 @@ func file_like_message_proto_rawDescGZIP() []byte {
 	return file_like_message_proto_rawDescData
 }
 
-var file_like_message_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_like_message_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_like_message_proto_goTypes = []any{
-	(*ExistsRequest)(nil),  // 0: like.ExistsRequest
-	(*ExistsResponse)(nil), // 1: like.ExistsResponse
-	(*LikeRequest)(nil),    // 2: like.LikeRequest
-	(*LikeResponse)(nil),   // 3: like.LikeResponse
-	(*CountResponse)(nil),  // 4: like.CountResponse
-	(*CountRequest)(nil),   // 5: like.CountRequest
+	(*Like)(nil),           // 0: like.Like
+	(*ExistsRequest)(nil),  // 1: like.ExistsRequest
+	(*ExistsResponse)(nil), // 2: like.ExistsResponse
+	(*LikeRequest)(nil),    // 3: like.LikeRequest
+	(*LikeResponse)(nil),   // 4: like.LikeResponse
+	(*CountResponse)(nil),  // 5: like.CountResponse
+	(*CountRequest)(nil),   // 6: like.CountRequest
+	(*FindRequest)(nil),    // 7: like.FindRequest
+	(*FindResponse)(nil),   // 8: like.FindResponse
 }
 var file_like_message_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0, // 0: like.FindResponse.likes:type_name -> like.Like
+	1, // [1:1] is the sub-list for method output_type
+	1, // [1:1] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_like_message_proto_init() }
@@ -390,7 +573,7 @@ func file_like_message_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_like_message_proto_msgTypes[0].Exporter = func(v any, i int) any {
-			switch v := v.(*ExistsRequest); i {
+			switch v := v.(*Like); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -402,7 +585,7 @@ func file_like_message_proto_init() {
 			}
 		}
 		file_like_message_proto_msgTypes[1].Exporter = func(v any, i int) any {
-			switch v := v.(*ExistsResponse); i {
+			switch v := v.(*ExistsRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -414,7 +597,7 @@ func file_like_message_proto_init() {
 			}
 		}
 		file_like_message_proto_msgTypes[2].Exporter = func(v any, i int) any {
-			switch v := v.(*LikeRequest); i {
+			switch v := v.(*ExistsResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -426,7 +609,7 @@ func file_like_message_proto_init() {
 			}
 		}
 		file_like_message_proto_msgTypes[3].Exporter = func(v any, i int) any {
-			switch v := v.(*LikeResponse); i {
+			switch v := v.(*LikeRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -438,7 +621,7 @@ func file_like_message_proto_init() {
 			}
 		}
 		file_like_message_proto_msgTypes[4].Exporter = func(v any, i int) any {
-			switch v := v.(*CountResponse); i {
+			switch v := v.(*LikeResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -450,7 +633,43 @@ func file_like_message_proto_init() {
 			}
 		}
 		file_like_message_proto_msgTypes[5].Exporter = func(v any, i int) any {
+			switch v := v.(*CountResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_like_message_proto_msgTypes[6].Exporter = func(v any, i int) any {
 			switch v := v.(*CountRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_like_message_proto_msgTypes[7].Exporter = func(v any, i int) any {
+			switch v := v.(*FindRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_like_message_proto_msgTypes[8].Exporter = func(v any, i int) any {
+			switch v := v.(*FindResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -468,7 +687,7 @@ func file_like_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_like_message_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

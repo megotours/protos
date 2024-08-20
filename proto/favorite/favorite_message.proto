@@ -3,6 +3,10 @@ package favorite;
 
 option go_package = "proto/favorite";
 
+message Favorite{
+  string user_id = 1;
+  string post_id = 2;
+}
 message ExistsRequest{
   string user_id = 1;
   string post_id = 2;
@@ -32,4 +36,13 @@ message CountResponse{
 }
 message CountRequest{
   string post_id = 1;
+}
+
+message FindRequest{
+  int32 page_size = 1;
+  string page_token = 2;
+}
+message FindResponse{
+  repeated Favorite likes = 1;
+  string next_page_token = 2;
 }

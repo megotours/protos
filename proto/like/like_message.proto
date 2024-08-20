@@ -3,6 +3,10 @@ package like;
 
 option go_package = "proto/like";
 
+message Like{
+  string user_id = 1;
+  string post_id = 2;
+}
 message ExistsRequest{
   string user_id = 1;
   string post_id = 2;
@@ -24,4 +28,12 @@ message CountResponse{
 }
 message CountRequest{
   string post_id = 2;
+}
+message FindRequest{
+  int32 page_size = 1;
+  string page_token = 2;
+}
+message FindResponse{
+  repeated Like likes = 1;
+  string next_page_token = 2;
 }
