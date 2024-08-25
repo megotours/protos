@@ -36,9 +36,9 @@ message Avatar{
 message PostContent {
   string title = 1;
   string description = 2;
-  PostContentFile file = 3;
+  File file = 3;
 }
-message PostContentFile{
+message File{
   string file_name = 1;
   string content_type = 2;
   string url = 3;
@@ -80,9 +80,9 @@ message GetByIdRequest{
 message PostContentCreateOrUpdate {
   string title = 1;
   string content = 2;
-  PostContentFileCreateOrUpdate file = 3;
+  FileCreateOrUpdate file = 3;
 }
-message PostContentFileCreateOrUpdate{
+message FileCreateOrUpdate{
   string file_name = 1;
   string content_type = 2;
   bytes data = 3;
