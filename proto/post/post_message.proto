@@ -94,6 +94,7 @@ message CreatePostRequest{
 }
 message UpdatePostRequest{
   string id = 1;
+  File image = 2;
   string author_id = 3;
   PostType type = 4;
 
