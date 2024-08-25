@@ -89,7 +89,6 @@ message FileCreateOrUpdate{
 
 message CreatePostRequest{
   string id = 1;
-  string title = 2;
   string author_id = 3;
   PostType type = 4;
 
@@ -97,7 +96,6 @@ message CreatePostRequest{
 }
 message UpdatePostRequest{
   string id = 1;
-  string title = 2;
   string author_id = 3;
   PostType type = 4;
 
