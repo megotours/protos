@@ -11,7 +11,7 @@ message PostDetail {
   int32 like_count = 4;
   int32 comment_count = 5;
   int32 view_count = 6;
-
+  File image = 7;
   repeated PostContent contents = 8;
   PostType type = 9;
   google.protobuf.Timestamp created_at = 10;
@@ -86,6 +86,7 @@ message FileCreateOrUpdate{
 
 message CreatePostRequest{
   string id = 1;
+  File image = 2;
   string author_id = 3;
   PostType type = 4;
 
