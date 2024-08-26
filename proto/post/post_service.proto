@@ -11,7 +11,11 @@ service PostService{
   rpc DeletePost(DeletePostRequest) returns (DeletePostResponse);
   rpc HidePost(HidePostRequest) returns (HidePostResponse);
 
-  //post tags
   //post likes list
   //post favorites list
+
+
+  rpc Categories(CategoriesRequest) returns (CategoriesResponse);
 }
+
+

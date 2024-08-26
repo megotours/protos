@@ -7,11 +7,12 @@ import "post_enum.proto";
 //models
 message PostDetail {
   string id = 1;
-  Author author = 3;
-  int32 like_count = 4;
-  int32 comment_count = 5;
-  int32 view_count = 6;
-  File image = 7;
+  Author author = 2;
+  int32 like_count = 3;
+  int32 comment_count = 4;
+  int32 view_count = 5;
+  File image = 6;
+  repeated Category categories = 7;
   repeated PostContent contents = 8;
   PostType type = 9;
   google.protobuf.Timestamp created_at = 10;
@@ -42,7 +43,11 @@ message File{
   string content_type = 2;
   string url = 3;
 }
-
+message Category{
+  string id = 1;
+  string name = 2;
+  File icon = 3;
+}
 //requests and responses
 message FindPostRequest{
   int32 page_size = 1;
@@ -89,16 +94,16 @@ message CreatePostRequest{
   string author_id = 2;
   PostType type = 3;
   File image = 4;
-
-  PostContentCreateOrUpdate contents = 5;
+  repeated Category categories = 5;
+  repeated PostContentCreateOrUpdate contents = 6;
 }
 message UpdatePostRequest{
   string id = 1;
   string author_id = 2;
   PostType type = 3;
   File image = 4;
-
-  repeated PostContentCreateOrUpdate contents = 5;
+  repeated Category categories = 5;
+  repeated PostContentCreateOrUpdate contents = 6;
 }
 message DeletePostRequest{
   string id = 1;
@@ -112,4 +117,16 @@ message HidePostRequest{
   string author_id = 2;
 }
 message HidePostResponse{
+}
+
+
+
+message CategoriesRequest{
+  string name = 1;
+  FileCreateOrUpdate icon = 2;
+}
+
+
+message CategoriesResponse{
+  repeated Category categories = 1;
 }
