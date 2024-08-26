@@ -93,7 +93,7 @@ message CreatePostRequest{
   string id = 1;
   string author_id = 2;
   PostType type = 3;
-  File image = 4;
+  FileCreateOrUpdate image = 4;
   repeated Category categories = 5;
   repeated PostContentCreateOrUpdate contents = 6;
 }
@@ -101,7 +101,7 @@ message UpdatePostRequest{
   string id = 1;
   string author_id = 2;
   PostType type = 3;
-  File image = 4;
+  FileCreateOrUpdate image = 4;
   repeated Category categories = 5;
   repeated PostContentCreateOrUpdate contents = 6;
 }
