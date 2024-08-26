@@ -29,6 +29,7 @@ type PostServiceClient interface {
 	UpdatePost(ctx context.Context, in *UpdatePostRequest, opts ...grpc.CallOption) (*PostDetail, error)
 	DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*DeletePostResponse, error)
 	HidePost(ctx context.Context, in *HidePostRequest, opts ...grpc.CallOption) (*HidePostResponse, error)
+	Categories(ctx context.Context, in *CategoriesRequest, opts ...grpc.CallOption) (*CategoriesResponse, error)
 }
 
 type postServiceClient struct {
@@ -102,6 +103,15 @@ func (c *postServiceClient) HidePost(ctx context.Context, in *HidePostRequest, o
 	return out, nil
 }
 
+func (c *postServiceClient) Categories(ctx context.Context, in *CategoriesRequest, opts ...grpc.CallOption) (*CategoriesResponse, error) {
+	out := new(CategoriesResponse)
+	err := c.cc.Invoke(ctx, "/post.PostService/Categories", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // PostServiceServer is the server API for PostService service.
 // All implementations must embed UnimplementedPostServiceServer
 // for forward compatibility
@@ -113,6 +123,7 @@ type PostServiceServer interface {
 	UpdatePost(context.Context, *UpdatePostRequest) (*PostDetail, error)
 	DeletePost(context.Context, *DeletePostRequest) (*DeletePostResponse, error)
 	HidePost(context.Context, *HidePostRequest) (*HidePostResponse, error)
+	Categories(context.Context, *CategoriesRequest) (*CategoriesResponse, error)
 	mustEmbedUnimplementedPostServiceServer()
 }
 
@@ -140,6 +151,9 @@ func (UnimplementedPostServiceServer) DeletePost(context.Context, *DeletePostReq
 }
 func (UnimplementedPostServiceServer) HidePost(context.Context, *HidePostRequest) (*HidePostResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method HidePost not implemented")
+}
+func (UnimplementedPostServiceServer) Categories(context.Context, *CategoriesRequest) (*CategoriesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Categories not implemented")
 }
 func (UnimplementedPostServiceServer) mustEmbedUnimplementedPostServiceServer() {}
 
@@ -280,6 +294,24 @@ func _PostService_HidePost_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PostService_Categories_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CategoriesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PostServiceServer).Categories(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/post.PostService/Categories",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PostServiceServer).Categories(ctx, req.(*CategoriesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // PostService_ServiceDesc is the grpc.ServiceDesc for PostService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -314,6 +346,10 @@ var PostService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "HidePost",
 			Handler:    _PostService_HidePost_Handler,
+		},
+		{
+			MethodName: "Categories",
+			Handler:    _PostService_Categories_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
