@@ -80,7 +80,7 @@ message GetByIdRequest{
 
 message PostContentCreateOrUpdate {
   string title = 1;
-  string content = 2;
+  string description = 2;
   FileCreateOrUpdate file = 3;
 }
 message FileCreateOrUpdate{
