@@ -13,8 +13,6 @@ service PostService{
 
   //post likes list
   //post favorites list
-
-
   rpc Categories(CategoriesRequest) returns (CategoriesResponse);
 }
 
