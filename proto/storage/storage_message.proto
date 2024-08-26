@@ -29,7 +29,9 @@ message GetObjectUrlRequest {
 }
 
 message GetObjectUrlResponse {
-  string url = 1;
+  string file_name = 1;
+  string content_type = 2;
+  string url = 3;
 }
 
 message DeleteObjectRequest {
