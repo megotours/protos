@@ -97,6 +97,7 @@ message CreatePostRequest{
   repeated Category categories = 5;
   repeated PostContentCreateOrUpdate contents = 6;
 }
+
 message UpdatePostRequest{
   string id = 1;
   string author_id = 2;
