@@ -29,6 +29,8 @@ type PostServiceClient interface {
 	UpdatePost(ctx context.Context, in *UpdatePostRequest, opts ...grpc.CallOption) (*PostDetail, error)
 	DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*DeletePostResponse, error)
 	HidePost(ctx context.Context, in *HidePostRequest, opts ...grpc.CallOption) (*HidePostResponse, error)
+	// post likes list
+	// post favorites list
 	Categories(ctx context.Context, in *CategoriesRequest, opts ...grpc.CallOption) (*CategoriesResponse, error)
 }
 
@@ -123,6 +125,8 @@ type PostServiceServer interface {
 	UpdatePost(context.Context, *UpdatePostRequest) (*PostDetail, error)
 	DeletePost(context.Context, *DeletePostRequest) (*DeletePostResponse, error)
 	HidePost(context.Context, *HidePostRequest) (*HidePostResponse, error)
+	// post likes list
+	// post favorites list
 	Categories(context.Context, *CategoriesRequest) (*CategoriesResponse, error)
 	mustEmbedUnimplementedPostServiceServer()
 }
