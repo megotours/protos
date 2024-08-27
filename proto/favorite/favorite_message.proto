@@ -42,6 +42,7 @@ message FindRequest{
   int32 page_size = 1;
   string page_token = 2;
 }
+
 message FindResponse{
   repeated Favorite favorites = 1;
   string next_page_token = 2;
