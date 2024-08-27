@@ -43,6 +43,6 @@ message FindRequest{
   string page_token = 2;
 }
 message FindResponse{
-  repeated Favorite likes = 1;
+  repeated Favorite favorites = 1;
   string next_page_token = 2;
 }
