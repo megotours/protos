@@ -37,7 +37,7 @@ message Avatar{
 message PostContent {
   string title = 1;
   string description = 2;
-  File file = 3;
+  File image = 3;
 }
 message File{
   string file_name = 1;
