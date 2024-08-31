@@ -134,8 +134,9 @@ message CreateCategoryRequest{
 }
 
 message UpdateCategoryRequest{
-  string name = 1;
-  FileCreateOrUpdate icon = 2;
+  string id = 1;
+  string name = 2;
+  FileCreateOrUpdate icon = 3;
 }
 message DeleteCategoryRequest{
   string id = 1;
