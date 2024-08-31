@@ -13,7 +13,16 @@ service PostService{
 
   //post likes list
   //post favorites list
-  rpc Categories(CategoriesRequest) returns (CategoriesResponse);
+
+
+
+  //category service
+  rpc FindCategory(FindCategoryRequest) returns (FindCategoryResponse);
+  rpc CreateCategory(CreateCategoryRequest) returns (Category);
+  rpc UpdateCategory(UpdateCategoryRequest) returns (Category);
+  rpc DeleteCategory(DeleteCategoryRequest) returns (Category);
 }
+
+
 
 

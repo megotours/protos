@@ -122,12 +122,21 @@ message HidePostResponse{
 
 
 
-message CategoriesRequest{
+message FindCategoryRequest{
+
+}
+message FindCategoryResponse{
+  repeated Category categories = 1;
+}
+message CreateCategoryRequest{
   string name = 1;
   FileCreateOrUpdate icon = 2;
 }
 
-
-message CategoriesResponse{
-  repeated Category categories = 1;
+message UpdateCategoryRequest{
+  string name = 1;
+  FileCreateOrUpdate icon = 2;
+}
+message DeleteCategoryRequest{
+  string id = 1;
 }
