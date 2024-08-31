@@ -1306,17 +1306,14 @@ func (*HidePostResponse) Descriptor() ([]byte, []int) {
 	return file_post_message_proto_rawDescGZIP(), []int{18}
 }
 
-type CategoriesRequest struct {
+type FindCategoryRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
-
-	Name string              `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Icon *FileCreateOrUpdate `protobuf:"bytes,2,opt,name=icon,proto3" json:"icon,omitempty"`
 }
 
-func (x *CategoriesRequest) Reset() {
-	*x = CategoriesRequest{}
+func (x *FindCategoryRequest) Reset() {
+	*x = FindCategoryRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_post_message_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1324,13 +1321,13 @@ func (x *CategoriesRequest) Reset() {
 	}
 }
 
-func (x *CategoriesRequest) String() string {
+func (x *FindCategoryRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CategoriesRequest) ProtoMessage() {}
+func (*FindCategoryRequest) ProtoMessage() {}
 
-func (x *CategoriesRequest) ProtoReflect() protoreflect.Message {
+func (x *FindCategoryRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_post_message_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1342,26 +1339,12 @@ func (x *CategoriesRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CategoriesRequest.ProtoReflect.Descriptor instead.
-func (*CategoriesRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use FindCategoryRequest.ProtoReflect.Descriptor instead.
+func (*FindCategoryRequest) Descriptor() ([]byte, []int) {
 	return file_post_message_proto_rawDescGZIP(), []int{19}
 }
 
-func (x *CategoriesRequest) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *CategoriesRequest) GetIcon() *FileCreateOrUpdate {
-	if x != nil {
-		return x.Icon
-	}
-	return nil
-}
-
-type CategoriesResponse struct {
+type FindCategoryResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -1369,8 +1352,8 @@ type CategoriesResponse struct {
 	Categories []*Category `protobuf:"bytes,1,rep,name=categories,proto3" json:"categories,omitempty"`
 }
 
-func (x *CategoriesResponse) Reset() {
-	*x = CategoriesResponse{}
+func (x *FindCategoryResponse) Reset() {
+	*x = FindCategoryResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_post_message_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1378,13 +1361,13 @@ func (x *CategoriesResponse) Reset() {
 	}
 }
 
-func (x *CategoriesResponse) String() string {
+func (x *FindCategoryResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CategoriesResponse) ProtoMessage() {}
+func (*FindCategoryResponse) ProtoMessage() {}
 
-func (x *CategoriesResponse) ProtoReflect() protoreflect.Message {
+func (x *FindCategoryResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_post_message_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1396,16 +1379,173 @@ func (x *CategoriesResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CategoriesResponse.ProtoReflect.Descriptor instead.
-func (*CategoriesResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use FindCategoryResponse.ProtoReflect.Descriptor instead.
+func (*FindCategoryResponse) Descriptor() ([]byte, []int) {
 	return file_post_message_proto_rawDescGZIP(), []int{20}
 }
 
-func (x *CategoriesResponse) GetCategories() []*Category {
+func (x *FindCategoryResponse) GetCategories() []*Category {
 	if x != nil {
 		return x.Categories
 	}
 	return nil
+}
+
+type CreateCategoryRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Name string              `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Icon *FileCreateOrUpdate `protobuf:"bytes,2,opt,name=icon,proto3" json:"icon,omitempty"`
+}
+
+func (x *CreateCategoryRequest) Reset() {
+	*x = CreateCategoryRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_post_message_proto_msgTypes[21]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CreateCategoryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateCategoryRequest) ProtoMessage() {}
+
+func (x *CreateCategoryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_post_message_proto_msgTypes[21]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateCategoryRequest.ProtoReflect.Descriptor instead.
+func (*CreateCategoryRequest) Descriptor() ([]byte, []int) {
+	return file_post_message_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *CreateCategoryRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *CreateCategoryRequest) GetIcon() *FileCreateOrUpdate {
+	if x != nil {
+		return x.Icon
+	}
+	return nil
+}
+
+type UpdateCategoryRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Name string              `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Icon *FileCreateOrUpdate `protobuf:"bytes,2,opt,name=icon,proto3" json:"icon,omitempty"`
+}
+
+func (x *UpdateCategoryRequest) Reset() {
+	*x = UpdateCategoryRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_post_message_proto_msgTypes[22]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UpdateCategoryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateCategoryRequest) ProtoMessage() {}
+
+func (x *UpdateCategoryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_post_message_proto_msgTypes[22]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateCategoryRequest.ProtoReflect.Descriptor instead.
+func (*UpdateCategoryRequest) Descriptor() ([]byte, []int) {
+	return file_post_message_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *UpdateCategoryRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *UpdateCategoryRequest) GetIcon() *FileCreateOrUpdate {
+	if x != nil {
+		return x.Icon
+	}
+	return nil
+}
+
+type DeleteCategoryRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+}
+
+func (x *DeleteCategoryRequest) Reset() {
+	*x = DeleteCategoryRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_post_message_proto_msgTypes[23]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DeleteCategoryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteCategoryRequest) ProtoMessage() {}
+
+func (x *DeleteCategoryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_post_message_proto_msgTypes[23]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteCategoryRequest.ProtoReflect.Descriptor instead.
+func (*DeleteCategoryRequest) Descriptor() ([]byte, []int) {
+	return file_post_message_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *DeleteCategoryRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
 }
 
 var File_post_message_proto protoreflect.FileDescriptor
@@ -1580,18 +1720,29 @@ var file_post_message_proto_rawDesc = []byte{
 	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1b, 0x0a, 0x09,
 	0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
 	0x08, 0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x49, 0x64, 0x22, 0x12, 0x0a, 0x10, 0x48, 0x69, 0x64,
-	0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x55, 0x0a,
-	0x11, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x2c, 0x0a, 0x04, 0x69, 0x63, 0x6f, 0x6e, 0x18, 0x02,
-	0x20, 0x01, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x70, 0x6f, 0x73, 0x74, 0x2e, 0x46, 0x69, 0x6c, 0x65,
-	0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x04,
-	0x69, 0x63, 0x6f, 0x6e, 0x22, 0x44, 0x0a, 0x12, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69,
-	0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x2e, 0x0a, 0x0a, 0x63, 0x61,
-	0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0e,
-	0x2e, 0x70, 0x6f, 0x73, 0x74, 0x2e, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x52, 0x0a,
-	0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x65, 0x73, 0x42, 0x0c, 0x5a, 0x0a, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x2f, 0x70, 0x6f, 0x73, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x65, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x15, 0x0a,
+	0x13, 0x46, 0x69, 0x6e, 0x64, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x22, 0x46, 0x0a, 0x14, 0x46, 0x69, 0x6e, 0x64, 0x43, 0x61, 0x74, 0x65,
+	0x67, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x2e, 0x0a, 0x0a,
+	0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b,
+	0x32, 0x0e, 0x2e, 0x70, 0x6f, 0x73, 0x74, 0x2e, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79,
+	0x52, 0x0a, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x65, 0x73, 0x22, 0x59, 0x0a, 0x15,
+	0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x2c, 0x0a, 0x04, 0x69, 0x63, 0x6f,
+	0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x70, 0x6f, 0x73, 0x74, 0x2e, 0x46,
+	0x69, 0x6c, 0x65, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x55, 0x70, 0x64, 0x61, 0x74,
+	0x65, 0x52, 0x04, 0x69, 0x63, 0x6f, 0x6e, 0x22, 0x59, 0x0a, 0x15, 0x55, 0x70, 0x64, 0x61, 0x74,
+	0x65, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
+	0x6e, 0x61, 0x6d, 0x65, 0x12, 0x2c, 0x0a, 0x04, 0x69, 0x63, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x18, 0x2e, 0x70, 0x6f, 0x73, 0x74, 0x2e, 0x46, 0x69, 0x6c, 0x65, 0x43, 0x72,
+	0x65, 0x61, 0x74, 0x65, 0x4f, 0x72, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x04, 0x69, 0x63,
+	0x6f, 0x6e, 0x22, 0x27, 0x0a, 0x15, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x43, 0x61, 0x74, 0x65,
+	0x67, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x69,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x42, 0x0c, 0x5a, 0x0a, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x70, 0x6f, 0x73, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x33,
 }
 
 var (
@@ -1606,7 +1757,7 @@ func file_post_message_proto_rawDescGZIP() []byte {
 	return file_post_message_proto_rawDescData
 }
 
-var file_post_message_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
+var file_post_message_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
 var file_post_message_proto_goTypes = []any{
 	(*PostDetail)(nil),                // 0: post.PostDetail
 	(*Author)(nil),                    // 1: post.Author
@@ -1627,45 +1778,49 @@ var file_post_message_proto_goTypes = []any{
 	(*DeletePostResponse)(nil),        // 16: post.DeletePostResponse
 	(*HidePostRequest)(nil),           // 17: post.HidePostRequest
 	(*HidePostResponse)(nil),          // 18: post.HidePostResponse
-	(*CategoriesRequest)(nil),         // 19: post.CategoriesRequest
-	(*CategoriesResponse)(nil),        // 20: post.CategoriesResponse
-	(PostType)(0),                     // 21: post.PostType
-	(*timestamppb.Timestamp)(nil),     // 22: google.protobuf.Timestamp
-	(SortOrder)(0),                    // 23: post.SortOrder
+	(*FindCategoryRequest)(nil),       // 19: post.FindCategoryRequest
+	(*FindCategoryResponse)(nil),      // 20: post.FindCategoryResponse
+	(*CreateCategoryRequest)(nil),     // 21: post.CreateCategoryRequest
+	(*UpdateCategoryRequest)(nil),     // 22: post.UpdateCategoryRequest
+	(*DeleteCategoryRequest)(nil),     // 23: post.DeleteCategoryRequest
+	(PostType)(0),                     // 24: post.PostType
+	(*timestamppb.Timestamp)(nil),     // 25: google.protobuf.Timestamp
+	(SortOrder)(0),                    // 26: post.SortOrder
 }
 var file_post_message_proto_depIdxs = []int32{
 	1,  // 0: post.PostDetail.author:type_name -> post.Author
 	4,  // 1: post.PostDetail.image:type_name -> post.File
 	5,  // 2: post.PostDetail.categories:type_name -> post.Category
 	3,  // 3: post.PostDetail.contents:type_name -> post.PostContent
-	21, // 4: post.PostDetail.type:type_name -> post.PostType
-	22, // 5: post.PostDetail.created_at:type_name -> google.protobuf.Timestamp
-	22, // 6: post.PostDetail.updated_at:type_name -> google.protobuf.Timestamp
-	22, // 7: post.PostDetail.deleted_at:type_name -> google.protobuf.Timestamp
+	24, // 4: post.PostDetail.type:type_name -> post.PostType
+	25, // 5: post.PostDetail.created_at:type_name -> google.protobuf.Timestamp
+	25, // 6: post.PostDetail.updated_at:type_name -> google.protobuf.Timestamp
+	25, // 7: post.PostDetail.deleted_at:type_name -> google.protobuf.Timestamp
 	2,  // 8: post.Author.avatar:type_name -> post.Avatar
 	4,  // 9: post.PostContent.image:type_name -> post.File
 	4,  // 10: post.Category.icon:type_name -> post.File
-	23, // 11: post.FindPostRequest.sort_order:type_name -> post.SortOrder
-	22, // 12: post.FindPostRequest.date_from:type_name -> google.protobuf.Timestamp
-	22, // 13: post.FindPostRequest.date_to:type_name -> google.protobuf.Timestamp
+	26, // 11: post.FindPostRequest.sort_order:type_name -> post.SortOrder
+	25, // 12: post.FindPostRequest.date_from:type_name -> google.protobuf.Timestamp
+	25, // 13: post.FindPostRequest.date_to:type_name -> google.protobuf.Timestamp
 	0,  // 14: post.FindPostResponse.posts:type_name -> post.PostDetail
-	23, // 15: post.GetByAuthorRequest.sort_order:type_name -> post.SortOrder
+	26, // 15: post.GetByAuthorRequest.sort_order:type_name -> post.SortOrder
 	0,  // 16: post.GetByAuthorResponse.posts:type_name -> post.PostDetail
 	12, // 17: post.PostContentCreateOrUpdate.file:type_name -> post.FileCreateOrUpdate
-	21, // 18: post.CreatePostRequest.type:type_name -> post.PostType
+	24, // 18: post.CreatePostRequest.type:type_name -> post.PostType
 	12, // 19: post.CreatePostRequest.image:type_name -> post.FileCreateOrUpdate
 	11, // 20: post.CreatePostRequest.contents:type_name -> post.PostContentCreateOrUpdate
-	21, // 21: post.UpdatePostRequest.type:type_name -> post.PostType
+	24, // 21: post.UpdatePostRequest.type:type_name -> post.PostType
 	12, // 22: post.UpdatePostRequest.image:type_name -> post.FileCreateOrUpdate
 	5,  // 23: post.UpdatePostRequest.categories:type_name -> post.Category
 	11, // 24: post.UpdatePostRequest.contents:type_name -> post.PostContentCreateOrUpdate
-	12, // 25: post.CategoriesRequest.icon:type_name -> post.FileCreateOrUpdate
-	5,  // 26: post.CategoriesResponse.categories:type_name -> post.Category
-	27, // [27:27] is the sub-list for method output_type
-	27, // [27:27] is the sub-list for method input_type
-	27, // [27:27] is the sub-list for extension type_name
-	27, // [27:27] is the sub-list for extension extendee
-	0,  // [0:27] is the sub-list for field type_name
+	5,  // 25: post.FindCategoryResponse.categories:type_name -> post.Category
+	12, // 26: post.CreateCategoryRequest.icon:type_name -> post.FileCreateOrUpdate
+	12, // 27: post.UpdateCategoryRequest.icon:type_name -> post.FileCreateOrUpdate
+	28, // [28:28] is the sub-list for method output_type
+	28, // [28:28] is the sub-list for method input_type
+	28, // [28:28] is the sub-list for extension type_name
+	28, // [28:28] is the sub-list for extension extendee
+	0,  // [0:28] is the sub-list for field type_name
 }
 
 func init() { file_post_message_proto_init() }
@@ -1904,7 +2059,7 @@ func file_post_message_proto_init() {
 			}
 		}
 		file_post_message_proto_msgTypes[19].Exporter = func(v any, i int) any {
-			switch v := v.(*CategoriesRequest); i {
+			switch v := v.(*FindCategoryRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1916,7 +2071,43 @@ func file_post_message_proto_init() {
 			}
 		}
 		file_post_message_proto_msgTypes[20].Exporter = func(v any, i int) any {
-			switch v := v.(*CategoriesResponse); i {
+			switch v := v.(*FindCategoryResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_post_message_proto_msgTypes[21].Exporter = func(v any, i int) any {
+			switch v := v.(*CreateCategoryRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_post_message_proto_msgTypes[22].Exporter = func(v any, i int) any {
+			switch v := v.(*UpdateCategoryRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_post_message_proto_msgTypes[23].Exporter = func(v any, i int) any {
+			switch v := v.(*DeleteCategoryRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1934,7 +2125,7 @@ func file_post_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_post_message_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   21,
+			NumMessages:   24,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

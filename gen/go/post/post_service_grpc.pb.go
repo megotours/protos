@@ -19,14 +19,17 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	PostService_FindPost_FullMethodName    = "/post.PostService/FindPost"
-	PostService_CreatePost_FullMethodName  = "/post.PostService/CreatePost"
-	PostService_GetById_FullMethodName     = "/post.PostService/GetById"
-	PostService_GetByAuthor_FullMethodName = "/post.PostService/GetByAuthor"
-	PostService_UpdatePost_FullMethodName  = "/post.PostService/UpdatePost"
-	PostService_DeletePost_FullMethodName  = "/post.PostService/DeletePost"
-	PostService_HidePost_FullMethodName    = "/post.PostService/HidePost"
-	PostService_Categories_FullMethodName  = "/post.PostService/Categories"
+	PostService_FindPost_FullMethodName       = "/post.PostService/FindPost"
+	PostService_CreatePost_FullMethodName     = "/post.PostService/CreatePost"
+	PostService_GetById_FullMethodName        = "/post.PostService/GetById"
+	PostService_GetByAuthor_FullMethodName    = "/post.PostService/GetByAuthor"
+	PostService_UpdatePost_FullMethodName     = "/post.PostService/UpdatePost"
+	PostService_DeletePost_FullMethodName     = "/post.PostService/DeletePost"
+	PostService_HidePost_FullMethodName       = "/post.PostService/HidePost"
+	PostService_FindCategory_FullMethodName   = "/post.PostService/FindCategory"
+	PostService_CreateCategory_FullMethodName = "/post.PostService/CreateCategory"
+	PostService_UpdateCategory_FullMethodName = "/post.PostService/UpdateCategory"
+	PostService_DeleteCategory_FullMethodName = "/post.PostService/DeleteCategory"
 )
 
 // PostServiceClient is the client API for PostService service.
@@ -40,9 +43,11 @@ type PostServiceClient interface {
 	UpdatePost(ctx context.Context, in *UpdatePostRequest, opts ...grpc.CallOption) (*PostDetail, error)
 	DeletePost(ctx context.Context, in *DeletePostRequest, opts ...grpc.CallOption) (*DeletePostResponse, error)
 	HidePost(ctx context.Context, in *HidePostRequest, opts ...grpc.CallOption) (*HidePostResponse, error)
-	// post likes list
-	// post favorites list
-	Categories(ctx context.Context, in *CategoriesRequest, opts ...grpc.CallOption) (*CategoriesResponse, error)
+	// category service
+	FindCategory(ctx context.Context, in *FindCategoryRequest, opts ...grpc.CallOption) (*FindCategoryResponse, error)
+	CreateCategory(ctx context.Context, in *CreateCategoryRequest, opts ...grpc.CallOption) (*Category, error)
+	UpdateCategory(ctx context.Context, in *UpdateCategoryRequest, opts ...grpc.CallOption) (*Category, error)
+	DeleteCategory(ctx context.Context, in *DeleteCategoryRequest, opts ...grpc.CallOption) (*Category, error)
 }
 
 type postServiceClient struct {
@@ -123,10 +128,40 @@ func (c *postServiceClient) HidePost(ctx context.Context, in *HidePostRequest, o
 	return out, nil
 }
 
-func (c *postServiceClient) Categories(ctx context.Context, in *CategoriesRequest, opts ...grpc.CallOption) (*CategoriesResponse, error) {
+func (c *postServiceClient) FindCategory(ctx context.Context, in *FindCategoryRequest, opts ...grpc.CallOption) (*FindCategoryResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CategoriesResponse)
-	err := c.cc.Invoke(ctx, PostService_Categories_FullMethodName, in, out, cOpts...)
+	out := new(FindCategoryResponse)
+	err := c.cc.Invoke(ctx, PostService_FindCategory_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *postServiceClient) CreateCategory(ctx context.Context, in *CreateCategoryRequest, opts ...grpc.CallOption) (*Category, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Category)
+	err := c.cc.Invoke(ctx, PostService_CreateCategory_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *postServiceClient) UpdateCategory(ctx context.Context, in *UpdateCategoryRequest, opts ...grpc.CallOption) (*Category, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Category)
+	err := c.cc.Invoke(ctx, PostService_UpdateCategory_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *postServiceClient) DeleteCategory(ctx context.Context, in *DeleteCategoryRequest, opts ...grpc.CallOption) (*Category, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Category)
+	err := c.cc.Invoke(ctx, PostService_DeleteCategory_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -144,9 +179,11 @@ type PostServiceServer interface {
 	UpdatePost(context.Context, *UpdatePostRequest) (*PostDetail, error)
 	DeletePost(context.Context, *DeletePostRequest) (*DeletePostResponse, error)
 	HidePost(context.Context, *HidePostRequest) (*HidePostResponse, error)
-	// post likes list
-	// post favorites list
-	Categories(context.Context, *CategoriesRequest) (*CategoriesResponse, error)
+	// category service
+	FindCategory(context.Context, *FindCategoryRequest) (*FindCategoryResponse, error)
+	CreateCategory(context.Context, *CreateCategoryRequest) (*Category, error)
+	UpdateCategory(context.Context, *UpdateCategoryRequest) (*Category, error)
+	DeleteCategory(context.Context, *DeleteCategoryRequest) (*Category, error)
 	mustEmbedUnimplementedPostServiceServer()
 }
 
@@ -178,8 +215,17 @@ func (UnimplementedPostServiceServer) DeletePost(context.Context, *DeletePostReq
 func (UnimplementedPostServiceServer) HidePost(context.Context, *HidePostRequest) (*HidePostResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method HidePost not implemented")
 }
-func (UnimplementedPostServiceServer) Categories(context.Context, *CategoriesRequest) (*CategoriesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Categories not implemented")
+func (UnimplementedPostServiceServer) FindCategory(context.Context, *FindCategoryRequest) (*FindCategoryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FindCategory not implemented")
+}
+func (UnimplementedPostServiceServer) CreateCategory(context.Context, *CreateCategoryRequest) (*Category, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCategory not implemented")
+}
+func (UnimplementedPostServiceServer) UpdateCategory(context.Context, *UpdateCategoryRequest) (*Category, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCategory not implemented")
+}
+func (UnimplementedPostServiceServer) DeleteCategory(context.Context, *DeleteCategoryRequest) (*Category, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCategory not implemented")
 }
 func (UnimplementedPostServiceServer) mustEmbedUnimplementedPostServiceServer() {}
 func (UnimplementedPostServiceServer) testEmbeddedByValue()                     {}
@@ -328,20 +374,74 @@ func _PostService_HidePost_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PostService_Categories_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CategoriesRequest)
+func _PostService_FindCategory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FindCategoryRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PostServiceServer).Categories(ctx, in)
+		return srv.(PostServiceServer).FindCategory(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: PostService_Categories_FullMethodName,
+		FullMethod: PostService_FindCategory_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PostServiceServer).Categories(ctx, req.(*CategoriesRequest))
+		return srv.(PostServiceServer).FindCategory(ctx, req.(*FindCategoryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PostService_CreateCategory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateCategoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PostServiceServer).CreateCategory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PostService_CreateCategory_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PostServiceServer).CreateCategory(ctx, req.(*CreateCategoryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PostService_UpdateCategory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateCategoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PostServiceServer).UpdateCategory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PostService_UpdateCategory_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PostServiceServer).UpdateCategory(ctx, req.(*UpdateCategoryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PostService_DeleteCategory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteCategoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PostServiceServer).DeleteCategory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PostService_DeleteCategory_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PostServiceServer).DeleteCategory(ctx, req.(*DeleteCategoryRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -382,8 +482,20 @@ var PostService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _PostService_HidePost_Handler,
 		},
 		{
-			MethodName: "Categories",
-			Handler:    _PostService_Categories_Handler,
+			MethodName: "FindCategory",
+			Handler:    _PostService_FindCategory_Handler,
+		},
+		{
+			MethodName: "CreateCategory",
+			Handler:    _PostService_CreateCategory_Handler,
+		},
+		{
+			MethodName: "UpdateCategory",
+			Handler:    _PostService_UpdateCategory_Handler,
+		},
+		{
+			MethodName: "DeleteCategory",
+			Handler:    _PostService_DeleteCategory_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
