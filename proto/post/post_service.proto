@@ -22,7 +22,3 @@ service PostService{
   rpc UpdateCategory(UpdateCategoryRequest) returns (Category);
   rpc DeleteCategory(DeleteCategoryRequest) returns (Category);
 }
-
-
-
-
