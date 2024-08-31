@@ -132,7 +132,6 @@ message CreateCategoryRequest{
   string name = 1;
   FileCreateOrUpdate icon = 2;
 }
-
 message UpdateCategoryRequest{
   string id = 1;
   string name = 2;
