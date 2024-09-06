@@ -8,16 +8,18 @@ import "post_enum.proto";
 message PostDetail {
   string id = 1;
   Author author = 2;
-  int32 like_count = 3;
-  int32 comment_count = 4;
-  int32 view_count = 5;
-  File image = 6;
-  repeated Category categories = 7;
-  repeated PostContent contents = 8;
-  PostType type = 9;
-  google.protobuf.Timestamp created_at = 10;
-  google.protobuf.Timestamp updated_at = 11;
-  google.protobuf.Timestamp deleted_at = 12;
+  string title = 3;
+  string description = 4;
+  int32 like_count = 5;
+  int32 comment_count = 6;
+  int32 view_count = 7;
+  File image = 8;
+  repeated Category categories = 9;
+  repeated PostContent contents = 10;
+  PostType type = 11;
+  google.protobuf.Timestamp created_at = 12;
+  google.protobuf.Timestamp updated_at = 13;
+  google.protobuf.Timestamp deleted_at = 14;
 }
 
 message Author {
@@ -92,19 +94,23 @@ message FileCreateOrUpdate{
 message CreatePostRequest{
   string id = 1;
   string author_id = 2;
-  PostType type = 3;
-  FileCreateOrUpdate image = 4;
-  repeated string categories = 5;
-  repeated PostContentCreateOrUpdate contents = 6;
+  string title = 3;
+  string description = 4;
+  PostType type = 5;
+  FileCreateOrUpdate image = 6;
+  repeated string categories = 7;
+  repeated PostContentCreateOrUpdate contents = 8;
 }
 
 message UpdatePostRequest{
   string id = 1;
   string author_id = 2;
-  PostType type = 3;
-  FileCreateOrUpdate image = 4;
-  repeated Category categories = 5;
-  repeated PostContentCreateOrUpdate contents = 6;
+  string title = 3;
+  string description = 4;
+  PostType type = 5;
+  FileCreateOrUpdate image = 6;
+  repeated Category categories = 7;
+  repeated PostContentCreateOrUpdate contents = 8;
 }
 message DeletePostRequest{
   string id = 1;
