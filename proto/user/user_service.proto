@@ -1,5 +1,5 @@
 syntax = "proto3";
-import "user_message.proto";
+import "proto/user/user_message.proto";
 package user;
 
 option go_package = "proto/user";

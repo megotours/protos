@@ -1,5 +1,5 @@
 syntax = "proto3";
-import "favorite_message.proto";
+import "proto/favorite/favorite_message.proto";
 package favorite;
 
 option go_package = "proto/favorite";

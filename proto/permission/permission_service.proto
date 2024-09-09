@@ -1,5 +1,5 @@
 syntax = "proto3";
-import "permission_message.proto";
+import "proto/permission/permission_message.proto";
 package permission;
 
 option go_package = "proto/permission";

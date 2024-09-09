@@ -1,5 +1,5 @@
 syntax = "proto3";
-import "resource_message.proto";
+import "proto/resource/resource_message.proto";
 package resource;
 
 option go_package = "proto/resource";

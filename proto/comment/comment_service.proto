@@ -1,12 +1,14 @@
 syntax = "proto3";
-import "comment_message.proto";
+import "proto/comment/comment_message.proto";
+
 package comment;
 option go_package = "proto/comment";
 
 service CommentService{
   rpc Find(FindRequest) returns (FindResponse);
-  rpc Create(Empty) returns (Empty);
-  rpc Delete(Empty) returns (Empty);
-  rpc Count(Empty) returns (Empty);
+  rpc Create(CreateRequest) returns (CreateResponse);
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
+  rpc Count(CountRequest) returns (CountResponse);
+  rpc LikeComment(LikeCommentRequest) returns (LikeCommentResponse);
 }
 

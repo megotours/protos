@@ -3,7 +3,7 @@ package post;
 
 option go_package = "proto/post";
 import "google/protobuf/timestamp.proto";
-import "post_enum.proto";
+import "proto/post/post_enum.proto";
 //models
 message PostDetail {
   string id = 1;
