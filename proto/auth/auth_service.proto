@@ -1,5 +1,5 @@
 syntax = "proto3";
-import "auth_message.proto";
+import "proto/auth/auth_message.proto";
 package auth;
 
 option go_package = "proto/auth";
