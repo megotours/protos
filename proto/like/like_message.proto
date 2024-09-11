@@ -17,11 +17,13 @@ message ExistsResponse{
 message LikeRequest{
   string user_id = 1;
   string post_id = 2;
+  string comment_id = 3;
 }
 
 message LikeResponse{
   string user_id = 1;
   string post_id = 2;
+  string comment_id = 3;
 }
 message CountResponse{
   int32 count = 1;
