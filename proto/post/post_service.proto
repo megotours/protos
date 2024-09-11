@@ -1,7 +1,7 @@
 syntax = "proto3";
 package post;
 option go_package = "proto/post";
-import "proto/post/post_message.proto";
+import "post_message.proto";
 service PostService{
   rpc FindPost(FindPostRequest) returns (FindPostResponse);
   rpc CreatePost(CreatePostRequest) returns (PostDetail);

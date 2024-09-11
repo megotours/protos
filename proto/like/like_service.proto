@@ -1,5 +1,5 @@
 syntax = "proto3";
-import "proto/like/like_message.proto";
+import "like_message.proto";
 package like;
 option go_package = "proto/like";
 

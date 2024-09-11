@@ -1,5 +1,5 @@
 syntax = "proto3";
-import "proto/storage/storage_message.proto";
+import "storage_message.proto";
 package storage;
 
 option go_package = "proto/storage";

@@ -1,7 +1,7 @@
 syntax = "proto3";
 package comment;
 
-import "proto/comment/comment_enum.proto";
+import "comment_enum.proto";
 import "google/protobuf/timestamp.proto";
 
 option go_package = "proto/comment";
@@ -61,16 +61,3 @@ message CountRequest{
 message CountResponse{
   int32 count = 1;
 }
-
-message LikeCommentRequest{
-  string user_id = 1;
-  string post_id = 2;
-  string comment_id = 3;
-}
-
-message LikeCommentResponse{
-  string user_id = 1;
-  string post_id = 2;
-  string comment_id = 3;
-}
-

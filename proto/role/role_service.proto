@@ -1,5 +1,5 @@
 syntax = "proto3";
-import "proto/role/role_message.proto";
+import "role_message.proto";
 package role;
 
 option go_package = "proto/role";
