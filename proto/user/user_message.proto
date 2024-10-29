@@ -3,23 +3,21 @@ package user;
 
 option go_package = "proto/user";
 import "google/protobuf/timestamp.proto";
-message Id {string id = 1;}
-message Email {string email = 1;}
-message Token {string token = 1;}
+import "user_enum.proto";
+
 message Empty{
 }
-message Phone {string phone = 1;}
 
 message NewAvatar {
   string file_name = 1;
   string content_type = 2;
   bytes data = 3;
 }
+
 message Avatar {
   string file_name = 1;
   string url = 2;
 }
-
 
 message UserDetails {
   string id = 1;
@@ -32,13 +30,45 @@ message UserDetails {
   string phone = 8;
   Avatar avatar = 9;
   string lang = 10;
-  google.protobuf.Timestamp created_at = 11;
-  google.protobuf.Timestamp updated_at = 12;
-  google.protobuf.Timestamp deleted_at = 13;
+  bool is_private = 11;
+  google.protobuf.Timestamp created_at = 12;
+  google.protobuf.Timestamp updated_at = 13;
+  google.protobuf.Timestamp deleted_at = 14;
 
-  repeated string roles = 14;
+  repeated string roles = 15;
 }
 
+message Subscribers {
+  int64 id = 1;
+  int64 user_id = 2;
+  repeated int64 subscribers_id = 3;
+  google.protobuf.Timestamp created_at = 4;
+}
+
+message SubscriptionRequest {
+  int64 id = 1;
+  int64 requester_id = 2;
+  int64 target_id = 3;
+  Status status = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
+message GetByIdRequest {
+  string id = 1;
+}
+
+message GetByEmailRequest {
+  string email = 1;
+}
+
+message GetByPhoneRequest {
+  string phone = 1;
+}
+
+message GetByTokenRequest {
+  string token = 1;
+}
 
 message CreateUserRequest {
   string first_name = 1;
@@ -62,6 +92,7 @@ message UpdateUserRequest {
   string theme = 8;
   string lang = 9;
 }
+
 message UpdateProfileRequest{
   string id = 1;
   string FirstName = 2;
@@ -70,42 +101,89 @@ message UpdateProfileRequest{
   string About = 5;
   NewAvatar avatar = 6;
 }
+
 message UpdateLangRequest{
   string id = 1;
   string lang = 2;
 }
+
 message UpdateLangResponse{
   bool success = 1;
 }
+
 message UpdateThemeRequest{
   string id = 1;
   string theme = 2;
 }
+
 message UpdateThemeResponse{
   bool success = 1;
 }
+
 message UpdateEmailRequest{
   string user_id = 1;
   string code = 2;
 }
+
 message UpdateEmailResponse{
   bool success = 1;
 }
+
 message UpdateEmailSendCodeRequest{
   string user_id = 1;
   string email = 2;
 }
+
 message UpdateEmailSendCodeResponse{
   bool success = 1;
 }
+
 message FindUserRequest{
   uint32 pageSize = 1;
   string pageToken = 2;
-  string sort = 3;
+  SortOrder sort = 3;
   string search = 4;
 }
 
 message FindUserResponse{
   string nexPageToken = 3;
   repeated UserDetails users = 4;
+}
+
+message SubscriptionsListRequest {
+  int64 user_id = 1;
+  uint32 pageSize = 2;
+  string pageToken = 3;
+}
+
+message SubscriptionsListResponse {
+  Subscribers subscribers = 1;
+  string nextPageToken = 2;
+}
+
+message SubscribersListRequest {
+  int64 user_id = 1;
+  uint32 pageSize = 2;
+  string pageToken = 3;
+}
+
+message SubscribersListResponse {
+  repeated SubscriptionRequest subscriptions = 1;
+  string nextPageToken = 2;
+}
+
+message SubscribeRequest {
+  SubscriptionRequest subscription = 1;
+}
+
+message UnsubscribeRequest {
+  SubscriptionRequest subscription = 1;
+}
+
+message AcceptRequest {
+  SubscriptionRequest subscription = 1;
+}
+
+message DeclineRequest {
+  SubscriptionRequest subscription = 1;
 }

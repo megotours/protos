@@ -1,18 +1,18 @@
 syntax = "proto3";
-import "user_message.proto";
 package user;
 
 option go_package = "proto/user";
+import "user_message.proto";
 
 service UserService{
   rpc Find(FindUserRequest) returns (FindUserResponse);
-  rpc GetById(Id) returns (UserDetails);
-  rpc GetByEmail(Email) returns (UserDetails);
-  rpc GetByPhone(Phone) returns (UserDetails);
-  rpc GetByToken(Token) returns (UserDetails);
+  rpc GetById(GetByIdRequest) returns (UserDetails);
+  rpc GetByEmail(GetByEmailRequest) returns (UserDetails);
+  rpc GetByPhone(GetByPhoneRequest) returns (UserDetails);
+  rpc GetByToken(GetByTokenRequest) returns (UserDetails);
   rpc Create(CreateUserRequest) returns (UserDetails);
   rpc Update(UpdateUserRequest) returns (UserDetails);
-  rpc Delete(Id) returns (UserDetails);
+  rpc Delete(GetByIdRequest) returns (UserDetails);
 
   rpc UpdateProfile(UpdateProfileRequest) returns(UserDetails);
   rpc UpdateLang(UpdateLangRequest) returns(UpdateLangResponse);
@@ -27,5 +27,14 @@ service UserRoleService{
   rpc Roles(Empty) returns (Empty);
   rpc Create(Empty) returns (Empty);
   rpc Delete(Empty) returns (Empty);
+}
+
+service SubscriptionsService{
+  rpc SubscriptionsList(SubscriptionsListRequest) returns (SubscriptionsListResponse);
+  rpc SubscribersList(SubscribersListRequest) returns (SubscribersListResponse);
+  rpc Subscribe(SubscribeRequest) returns (Empty);
+  rpc Unsubscribe(UnsubscribeRequest) returns (Empty);
+  rpc Accept(AcceptRequest) returns (Empty);
+  rpc Decline(DeclineRequest) returns (Empty);
 }
 
