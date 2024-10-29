@@ -1,0 +1,15 @@
+syntax = "proto3";
+package user;
+
+option go_package = "proto/user";
+
+enum SortOrder {
+    DESC = 0;
+    ASC = 1;
+}
+
+enum Status {
+    ACCEPTED = 0;
+    DECLINED = 1;
+    PENDING = 2;
+}
