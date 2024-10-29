@@ -10,6 +10,7 @@ service PostService{
   rpc UpdatePost(UpdatePostRequest) returns (PostDetail);
   rpc DeletePost(DeletePostRequest) returns (DeletePostResponse);
   rpc HidePost(HidePostRequest) returns (HidePostResponse);
+  rpc AddView(AddViewRequest) returns (AddViewResponse);
 
   //post likes list
   //post favorites list

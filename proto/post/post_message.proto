@@ -131,6 +131,7 @@ message HidePostResponse{
 message FindCategoryRequest{
 
 }
+
 message FindCategoryResponse{
   repeated Category categories = 1;
 }
@@ -146,4 +147,11 @@ message UpdateCategoryRequest{
 
 message DeleteCategoryRequest{
   string id = 1;
+}
+
+message AddViewRequest {
+  int64 post_id = 1;
+}
+
+message AddViewResponse {
 }
