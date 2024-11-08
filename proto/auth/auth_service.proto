@@ -1,16 +1,36 @@
 syntax = "proto3";
-import "auth_message.proto";
+import "proto/auth/auth_message.proto";
 package auth;
 
 option go_package = "proto/auth";
 
+import "google/api/annotations.proto";
 
 service AuthService{
-  rpc LoginByEmail(LoginByEmailRequest) returns (LoginByEmailResponse);
-  rpc LoginByEmailSendCode(LoginByEmailSendCodeRequest) returns (LoginByEmailSendCodeResponse);
-  rpc Logout(LogoutRequest) returns (LogoutResponse);
-  rpc Check(CheckRequest) returns (CheckResponse);
-  rpc Parse(ParseRequest) returns (ParseResponse);
-
+  rpc LoginByEmail(LoginByEmailRequest) returns (LoginByEmailResponse) {
+    option (google.api.http) = {
+      post: "/v1/auth/loginByEmail"
+    };
+  }
+  rpc LoginByEmailSendCode(LoginByEmailSendCodeRequest) returns (LoginByEmailSendCodeResponse) {
+    option (google.api.http) = {
+      post: "/v1/auth/loginByEmailSendCode"
+    };
+  }
+  rpc Logout(LogoutRequest) returns (LogoutResponse) {
+    option (google.api.http) = {
+      delete: "/v1/auth/logout"
+    };
+  }
+  rpc Check(CheckRequest) returns (CheckResponse) {
+    option (google.api.http) = {
+      get: "/v1/auth/check"
+    };
+  }
+  rpc Parse(ParseRequest) returns (ParseResponse) {
+    option (google.api.http) = {
+      get: "/v1/auth/parse"
+    };
+  }
 }
 

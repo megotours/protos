@@ -1,0 +1,7 @@
+grpc:
+  - name: protos
+    port: 50051
+    enabled: true
+    sw:
+      enabled: true
+      jsonPath: "gen/go"

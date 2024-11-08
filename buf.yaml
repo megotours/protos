@@ -1,0 +1,5 @@
+version: v1
+
+name: buf.build/mego/mego-protos
+deps:
+  - buf.build/googleapis/googleapis
