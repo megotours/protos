@@ -3,7 +3,7 @@ package user;
 
 option go_package = "proto/user";
 import "google/protobuf/timestamp.proto";
-import "user_enum.proto";
+import "proto/user/user_enum.proto";
 
 message Empty{
 }

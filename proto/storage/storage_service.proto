@@ -1,13 +1,31 @@
 syntax = "proto3";
-import "storage_message.proto";
+import "proto/storage/storage_message.proto";
 package storage;
 
 option go_package = "proto/storage";
 
+import "google/api/annotations.proto";
+
 service StorageService{
-    rpc PutObject(PutObjectRequest) returns (PutObjectResponse);
-    rpc GetObject(GetObjectRequest) returns (GetObjectResponse);
-    rpc GetObjectUrl(GetObjectUrlRequest) returns (GetObjectUrlResponse);
-    rpc DeleteObject(DeleteObjectRequest) returns (DeleteObjectResponse);
+    rpc PutObject(PutObjectRequest) returns (PutObjectResponse) {
+        option (google.api.http) = {
+            post: "/v1/object"
+        };
+    }
+    rpc GetObject(GetObjectRequest) returns (GetObjectResponse) {
+        option (google.api.http) = {
+            get: "/v1/object"
+        };
+    }
+    rpc GetObjectUrl(GetObjectUrlRequest) returns (GetObjectUrlResponse) {
+        option (google.api.http) = {
+            get: "/v1/object/url"
+        };
+    }
+    rpc DeleteObject(DeleteObjectRequest) returns (DeleteObjectResponse) {
+        option (google.api.http) = {
+            delete: "/v1/object"
+        };
+    }
 }
 

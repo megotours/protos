@@ -1,0 +1,86 @@
+version: v1
+plugins:
+  - name: go
+    out: gen/go
+    opt:
+      - Mproto/auth/auth_message.proto=./auth
+      - Mproto/auth/auth_service.proto=./auth
+      - Mproto/comment/comment_enum.proto=./comment
+      - Mproto/comment/comment_message.proto=./comment
+      - Mproto/comment/comment_service.proto=./comment
+      - Mproto/favorite/favorite_message.proto=./favorite
+      - Mproto/favorite/favorite_service.proto=./favorite
+      - Mproto/like/like_message.proto=./like
+      - Mproto/like/like_service.proto=./like
+      - Mproto/permission/permission_message.proto=./permission
+      - Mproto/permission/permission_service.proto=./permission
+      - Mproto/post/post_enum.proto=./post
+      - Mproto/post/post_message.proto=./post
+      - Mproto/post/post_service.proto=./post
+      - Mproto/resource/resource_message.proto=./resource
+      - Mproto/resource/resource_service.proto=./resource
+      - Mproto/role/role_message.proto=./role
+      - Mproto/role/role_service.proto=./role
+      - Mproto/storage/storage_message.proto=./storage
+      - Mproto/storage/storage_service.proto=./storage
+      - Mproto/user/user_enum.proto=./user
+      - Mproto/user/user_message.proto=./user
+      - Mproto/user/user_service.proto=./user
+  - name: go-grpc
+    out: gen/go
+    opt:
+      - Mproto/auth/auth_message.proto=./auth
+      - Mproto/auth/auth_service.proto=./auth
+      - Mproto/comment/comment_enum.proto=./comment
+      - Mproto/comment/comment_message.proto=./comment
+      - Mproto/comment/comment_service.proto=./comment
+      - Mproto/favorite/favorite_message.proto=./favorite
+      - Mproto/favorite/favorite_service.proto=./favorite
+      - Mproto/like/like_message.proto=./like
+      - Mproto/like/like_service.proto=./like
+      - Mproto/permission/permission_message.proto=./permission
+      - Mproto/permission/permission_service.proto=./permission
+      - Mproto/post/post_enum.proto=./post
+      - Mproto/post/post_message.proto=./post
+      - Mproto/post/post_service.proto=./post
+      - Mproto/resource/resource_message.proto=./resource
+      - Mproto/resource/resource_service.proto=./resource
+      - Mproto/role/role_message.proto=./role
+      - Mproto/role/role_service.proto=./role
+      - Mproto/storage/storage_message.proto=./storage
+      - Mproto/storage/storage_service.proto=./storage
+      - Mproto/user/user_enum.proto=./user
+      - Mproto/user/user_message.proto=./user
+      - Mproto/user/user_service.proto=./user
+  - name: grpc-gateway
+    out: gen/go
+    opt:
+      - Mproto/auth/auth_message.proto=./auth
+      - Mproto/auth/auth_service.proto=./auth
+      - Mproto/comment/comment_enum.proto=./comment
+      - Mproto/comment/comment_message.proto=./comment
+      - Mproto/comment/comment_service.proto=./comment
+      - Mproto/favorite/favorite_message.proto=./favorite
+      - Mproto/favorite/favorite_service.proto=./favorite
+      - Mproto/like/like_message.proto=./like
+      - Mproto/like/like_service.proto=./like
+      - Mproto/permission/permission_message.proto=./permission
+      - Mproto/permission/permission_service.proto=./permission
+      - Mproto/post/post_enum.proto=./post
+      - Mproto/post/post_message.proto=./post
+      - Mproto/post/post_service.proto=./post
+      - Mproto/resource/resource_message.proto=./resource
+      - Mproto/resource/resource_service.proto=./resource
+      - Mproto/role/role_message.proto=./role
+      - Mproto/role/role_service.proto=./role
+      - Mproto/storage/storage_message.proto=./storage
+      - Mproto/storage/storage_service.proto=./storage
+      - Mproto/user/user_enum.proto=./user
+      - Mproto/user/user_message.proto=./user
+      - Mproto/user/user_service.proto=./user
+  - name: openapiv2
+    out: gen/go
+    strategy: all
+    opt:
+      - allow_merge=true
+      - merge_file_name=api
