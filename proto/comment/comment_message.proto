@@ -6,19 +6,6 @@ import "google/protobuf/timestamp.proto";
 
 option go_package = "proto/comment";
 
-message FindRequest{
-  int32 page_size = 1;
-  string page_token = 2;
-  string post_id = 3;
-  string comment_id = 4;
-  SortOrder sort_order = 5;
-}
-
-message FindResponse{
-  repeated Comment comments = 1;
-  string next_page_token = 2;
-}
-
 message Comment{
   string id = 1;
   string content = 2;
@@ -36,6 +23,31 @@ message Author{
   string last_name = 4;
   string email = 5;
   string avatar = 6;
+}
+
+message FindRequest{
+  int32 page_size = 1;
+  string page_token = 2;
+  string post_id = 3;
+  string comment_id = 4;
+  SortOrder sort_order = 5;
+}
+
+message FindResponse{
+  repeated Comment comments = 1;
+  string next_page_token = 2;
+}
+
+message GetByAuthorRequest{
+  string author_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+  SortOrder sort_order = 4;
+}
+
+message GetByAuthorResponse{
+  repeated Comment comments = 1;
+  string next_page_token = 2;
 }
 
 message CreateRequest{

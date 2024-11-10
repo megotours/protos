@@ -636,6 +636,60 @@
         ]
       }
     },
+    "/v1/comment/getByAuthor": {
+      "get": {
+        "operationId": "CommentService_GetByAuthor",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/commentGetByAuthorResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "authorId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "NEWEST",
+              "OLDEST"
+            ],
+            "default": "NEWEST"
+          }
+        ],
+        "tags": [
+          "CommentService"
+        ]
+      }
+    },
     "/v1/favorite": {
       "get": {
         "operationId": "FavoriteService_Find",
@@ -834,6 +888,46 @@
           },
           {
             "name": "pageToken",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "LikeService"
+        ]
+      },
+      "delete": {
+        "operationId": "LikeService_UnLike",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/likeLikeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "postId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "commentId",
             "in": "query",
             "required": false,
             "type": "string"
@@ -1222,6 +1316,14 @@
         },
         "parameters": [
           {
+            "name": "userId",
+            "description": "when user_id is given, FindPost must request its subscriptions from user service and use GetByAuthor method to return posts\nand if SortOrder is not given, its default value must be NEWEST",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
             "name": "pageSize",
             "in": "query",
             "required": false,
@@ -1360,25 +1462,6 @@
             "default": "TOURIST"
           },
           {
-            "name": "image.fileName",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "image.contentType",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "image.data",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "format": "byte"
-          },
-          {
             "name": "categories",
             "in": "query",
             "required": false,
@@ -1387,6 +1470,37 @@
               "type": "string"
             },
             "collectionFormat": "multi"
+          },
+          {
+            "name": "contents.title",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "contents.description",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "contents.file.fileName",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "contents.file.contentType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "contents.file.data",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "byte"
           }
         ],
         "tags": [
@@ -1447,19 +1561,31 @@
             "default": "TOURIST"
           },
           {
-            "name": "image.fileName",
+            "name": "contents.title",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
-            "name": "image.contentType",
+            "name": "contents.description",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
-            "name": "image.data",
+            "name": "contents.file.fileName",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "contents.file.contentType",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "contents.file.data",
             "in": "query",
             "required": false,
             "type": "string",
@@ -1897,51 +2023,18 @@
         },
         "parameters": [
           {
-            "name": "subscription.id",
+            "name": "requesterId",
             "in": "query",
             "required": false,
             "type": "string",
             "format": "int64"
           },
           {
-            "name": "subscription.requesterId",
+            "name": "targetId",
             "in": "query",
             "required": false,
             "type": "string",
             "format": "int64"
-          },
-          {
-            "name": "subscription.targetId",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "format": "int64"
-          },
-          {
-            "name": "subscription.status",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "enum": [
-              "ACCEPTED",
-              "DECLINED",
-              "PENDING"
-            ],
-            "default": "ACCEPTED"
-          },
-          {
-            "name": "subscription.createdAt",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "format": "date-time"
-          },
-          {
-            "name": "subscription.updatedAt",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "format": "date-time"
           }
         ],
         "tags": [
@@ -1965,13 +2058,6 @@
           }
         },
         "parameters": [
-          {
-            "name": "subscription.id",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "format": "int64"
-          },
           {
             "name": "subscription.requesterId",
             "in": "query",
@@ -2037,13 +2123,6 @@
         },
         "parameters": [
           {
-            "name": "subscription.id",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "format": "int64"
-          },
-          {
             "name": "subscription.requesterId",
             "in": "query",
             "required": false,
@@ -2107,13 +2186,6 @@
           }
         },
         "parameters": [
-          {
-            "name": "subscription.id",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "format": "int64"
-          },
           {
             "name": "subscription.requesterId",
             "in": "query",
@@ -3007,6 +3079,21 @@
         }
       }
     },
+    "commentGetByAuthorResponse": {
+      "type": "object",
+      "properties": {
+        "comments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/commentComment"
+          }
+        },
+        "nextPageToken": {
+          "type": "string"
+        }
+      }
+    },
     "commentSortOrder": {
       "type": "string",
       "enum": [
@@ -3424,6 +3511,14 @@
         "type": {
           "$ref": "#/definitions/postPostType"
         },
+        "isLiked": {
+          "type": "boolean",
+          "title": "request it from 'like' service `Exists` method"
+        },
+        "isFavorite": {
+          "type": "boolean",
+          "title": "request it from 'favorite' service `Exists` method"
+        },
         "createdAt": {
           "type": "string",
           "format": "date-time"
@@ -3697,23 +3792,17 @@
       ],
       "default": "ACCEPTED"
     },
-    "userSubscribers": {
+    "userSubscriber": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "format": "int64"
-        },
         "userId": {
           "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "title": "the user id"
         },
-        "subscribersId": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "int64"
-          }
+        "subscriber": {
+          "$ref": "#/definitions/userUserDetails",
+          "title": "user's subscriber"
         },
         "createdAt": {
           "type": "string",
@@ -3724,11 +3813,11 @@
     "userSubscribersListResponse": {
       "type": "object",
       "properties": {
-        "subscriptions": {
+        "subscriber": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/userSubscriptionRequest"
+            "$ref": "#/definitions/userSubscriber"
           }
         },
         "nextPageToken": {
@@ -3736,13 +3825,27 @@
         }
       }
     },
+    "userSubscription": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "the user id"
+        },
+        "subscription": {
+          "$ref": "#/definitions/userUserDetails",
+          "title": "user's subscription on someone"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
     "userSubscriptionRequest": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "format": "int64"
-        },
         "requesterId": {
           "type": "string",
           "format": "int64"
@@ -3767,8 +3870,12 @@
     "userSubscriptionsListResponse": {
       "type": "object",
       "properties": {
-        "subscribers": {
-          "$ref": "#/definitions/userSubscribers"
+        "subscriptions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/userSubscription"
+          }
         },
         "nextPageToken": {
           "type": "string"

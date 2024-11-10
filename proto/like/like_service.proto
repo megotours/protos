@@ -17,6 +17,11 @@ service LikeService{
       post: "/v1/like"
     };
   }
+  rpc UnLike(LikeRequest) returns (LikeResponse) {
+    option (google.api.http) = {
+      delete: "/v1/like"
+    };
+  }
   rpc Count(CountRequest) returns (CountResponse) {
     option (google.api.http) = {
       get: "/v1/like/count"

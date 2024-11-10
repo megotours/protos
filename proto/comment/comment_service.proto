@@ -12,6 +12,11 @@ service CommentService{
       get: "/v1/comment"
     };
   }
+  rpc GetByAuthor(GetByAuthorRequest) returns (GetByAuthorResponse) {
+    option (google.api.http) = {
+      get: "/v1/comment/getByAuthor"
+    };
+  }
   rpc Create(CreateRequest) returns (CreateResponse) {
     option (google.api.http) = {
       post: "/v1/comment"
