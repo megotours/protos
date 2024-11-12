@@ -1,0 +1,13 @@
+grpc:
+  - name: protos
+    enabled: true
+    port: 50051
+    enableReflection: true
+    enableRkGwOption: true
+    commonService:
+      enabled: true
+    sw:
+      enabled: true
+      jsonPath: "gen/go"
+    docs:
+      enabled: true
