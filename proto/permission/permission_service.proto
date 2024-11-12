@@ -1,12 +1,30 @@
 syntax = "proto3";
-import "permission_message.proto";
+import "proto/permission/permission_message.proto";
 package permission;
 
 option go_package = "proto/permission";
 
+import "google/api/annotations.proto";
+
 service PermissionService{
-  rpc Find(FindRequest) returns (FindResponse);
-  rpc Create(CreateRequest) returns (CreateResponse);
-  rpc Update(UpdateRequest) returns (UpdateResponse);
-  rpc Delete(DeleteRequest) returns (DeleteResponse);
+  rpc Find(FindRequest) returns (FindResponse) {
+    option (google.api.http) = {
+      get: "/v1/permission"
+    };
+  }
+  rpc Create(CreateRequest) returns (CreateResponse) {
+    option (google.api.http) = {
+      post: "/v1/permission"
+    };
+  }
+  rpc Update(UpdateRequest) returns (UpdateResponse) {
+    option (google.api.http) = {
+      put: "/v1/permission"
+    };
+  }
+  rpc Delete(DeleteRequest) returns (DeleteResponse) {
+    option (google.api.http) = {
+      delete: "/v1/permission"
+    };
+  }
 }

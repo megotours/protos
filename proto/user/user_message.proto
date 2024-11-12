@@ -3,7 +3,7 @@ package user;
 
 option go_package = "proto/user";
 import "google/protobuf/timestamp.proto";
-import "user_enum.proto";
+import "proto/user/user_enum.proto";
 
 message Empty{
 }
@@ -38,20 +38,24 @@ message UserDetails {
   repeated string roles = 15;
 }
 
-message Subscribers {
-  int64 id = 1;
-  int64 user_id = 2;
-  repeated int64 subscribers_id = 3;
-  google.protobuf.Timestamp created_at = 4;
+message Subscriber {
+  int64 user_id = 1; // the user id
+  UserDetails subscriber = 2; // user's subscriber
+  google.protobuf.Timestamp created_at = 3;
+}
+
+message Subscription {
+  int64 user_id = 1; // the user id
+  UserDetails subscription = 2; // user's subscription on someone
+  google.protobuf.Timestamp created_at = 3;
 }
 
 message SubscriptionRequest {
-  int64 id = 1;
-  int64 requester_id = 2;
-  int64 target_id = 3;
-  Status status = 4;
-  google.protobuf.Timestamp created_at = 5;
-  google.protobuf.Timestamp updated_at = 6;
+  int64 requester_id = 1;
+  int64 target_id = 2;
+  Status status = 3;
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
 }
 
 message GetByIdRequest {
@@ -157,7 +161,7 @@ message SubscriptionsListRequest {
 }
 
 message SubscriptionsListResponse {
-  Subscribers subscribers = 1;
+  repeated Subscription subscriptions = 1;
   string nextPageToken = 2;
 }
 
@@ -168,7 +172,7 @@ message SubscribersListRequest {
 }
 
 message SubscribersListResponse {
-  repeated SubscriptionRequest subscriptions = 1;
+  repeated Subscriber subscriber = 1;
   string nextPageToken = 2;
 }
 
@@ -177,7 +181,8 @@ message SubscribeRequest {
 }
 
 message UnsubscribeRequest {
-  SubscriptionRequest subscription = 1;
+  int64 requester_id = 1;
+  int64 target_id = 2;
 }
 
 message AcceptRequest {

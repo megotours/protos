@@ -2,39 +2,129 @@ syntax = "proto3";
 package user;
 
 option go_package = "proto/user";
-import "user_message.proto";
+import "proto/user/user_message.proto";
 
-service UserService{
-  rpc Find(FindUserRequest) returns (FindUserResponse);
-  rpc GetById(GetByIdRequest) returns (UserDetails);
-  rpc GetByEmail(GetByEmailRequest) returns (UserDetails);
-  rpc GetByPhone(GetByPhoneRequest) returns (UserDetails);
-  rpc GetByToken(GetByTokenRequest) returns (UserDetails);
-  rpc Create(CreateUserRequest) returns (UserDetails);
-  rpc Update(UpdateUserRequest) returns (UserDetails);
-  rpc Delete(GetByIdRequest) returns (UserDetails);
+import "google/api/annotations.proto";
 
-  rpc UpdateProfile(UpdateProfileRequest) returns(UserDetails);
-  rpc UpdateLang(UpdateLangRequest) returns(UpdateLangResponse);
-  rpc UpdateTheme(UpdateThemeRequest) returns(UpdateThemeResponse);
-  rpc UpdateEmail(UpdateEmailRequest) returns(UpdateEmailResponse);
-  rpc UpdateEmailSendCode(UpdateEmailSendCodeRequest) returns(UpdateEmailSendCodeResponse);
+service UserService {
+  rpc Find(FindUserRequest) returns (FindUserResponse) {
+    option (google.api.http) = {
+      get: "/v1/user"
+    };
+  }
+  rpc GetById(GetByIdRequest) returns (UserDetails) {
+    option (google.api.http) = {
+      get: "/v1/user/getById"
+    };
+  }
+  rpc GetByEmail(GetByEmailRequest) returns (UserDetails) {
+    option (google.api.http) = {
+        get: "/v1/user/getByEmail"
+    };
+  }
+  rpc GetByPhone(GetByPhoneRequest) returns (UserDetails) {
+    option (google.api.http) = {
+      get: "/v1/user/getByPhone"
+    };
+  }
+  rpc GetByToken(GetByTokenRequest) returns (UserDetails) {
+    option (google.api.http) = {
+      get: "/v1/user/getByToken"
+    };
+  }
+  rpc Create(CreateUserRequest) returns (UserDetails) {
+    option (google.api.http) = {
+      post: "/v1/user"
+    };
+  }
+  rpc Update(UpdateUserRequest) returns (UserDetails) {
+    option (google.api.http) = {
+      put: "/v1/user"
+    };
+  }
+  rpc Delete(GetByIdRequest) returns (UserDetails) {
+    option (google.api.http) = {
+      delete: "/v1/user"
+    };
+  }
+
+  rpc UpdateProfile(UpdateProfileRequest) returns(UserDetails) {
+    option (google.api.http) = {
+      put: "/v1/user/profile"
+    };
+  }
+  rpc UpdateLang(UpdateLangRequest) returns(UpdateLangResponse) {
+    option (google.api.http) = {
+      put: "/v1/user/lang"
+    };
+  }
+  rpc UpdateTheme(UpdateThemeRequest) returns(UpdateThemeResponse) {
+    option (google.api.http) = {
+      put: "/v1/user/theme"
+    };
+  }
+  rpc UpdateEmail(UpdateEmailRequest) returns(UpdateEmailResponse) {
+    option (google.api.http) = {
+      put: "/v1/user/email"
+    };
+  }
+  rpc UpdateEmailSendCode(UpdateEmailSendCodeRequest) returns(UpdateEmailSendCodeResponse) {
+    option (google.api.http) = {
+      put: "/v1/user/email/sendCode"
+    };
+  }
 }
 
 
 
-service UserRoleService{
-  rpc Roles(Empty) returns (Empty);
-  rpc Create(Empty) returns (Empty);
-  rpc Delete(Empty) returns (Empty);
+service UserRoleService {
+  rpc Roles(Empty) returns (Empty) {
+    option (google.api.http) = {
+      get: "/v1/user/roles"
+    };
+  }
+  rpc Create(Empty) returns (Empty) {
+    option (google.api.http) = {
+      post: "/v1/user/roles"
+    };
+  }
+  rpc Delete(Empty) returns (Empty) {
+    option (google.api.http) = {
+      delete: "/v1/user/roles"
+    };
+  }
 }
 
-service SubscriptionsService{
-  rpc SubscriptionsList(SubscriptionsListRequest) returns (SubscriptionsListResponse);
-  rpc SubscribersList(SubscribersListRequest) returns (SubscribersListResponse);
-  rpc Subscribe(SubscribeRequest) returns (Empty);
-  rpc Unsubscribe(UnsubscribeRequest) returns (Empty);
-  rpc Accept(AcceptRequest) returns (Empty);
-  rpc Decline(DeclineRequest) returns (Empty);
+service SubscriptionsService {
+  rpc SubscriptionsList(SubscriptionsListRequest) returns (SubscriptionsListResponse) {
+    option (google.api.http) = {
+      get: "/v1/subscriptions"
+    };
+  }
+  rpc SubscribersList(SubscribersListRequest) returns (SubscribersListResponse) {
+    option (google.api.http) = {
+      get: "/v1/subscribers"
+    };
+  }
+  rpc Subscribe(SubscribeRequest) returns (Empty) {
+    option (google.api.http) = {
+      post: "/v1/subscribe"
+    };
+  }
+  rpc Unsubscribe(UnsubscribeRequest) returns (Empty) {
+    option (google.api.http) = {
+      delete: "/v1/subscribe"
+    };
+  }
+  rpc Accept(AcceptRequest) returns (Empty) {
+    option (google.api.http) = {
+      post: "/v1/subscribe/accept"
+    };
+  }
+  rpc Decline(DeclineRequest) returns (Empty) {
+    option (google.api.http) = {
+      post: "/v1/subscribe/decline"
+    };
+  }
 }
 
