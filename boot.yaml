@@ -1,7 +1,7 @@
 grpc:
   - name: protos
     enabled: true
-    port: 50051
+    port: 80
     enableReflection: true
     enableRkGwOption: true
     commonService:
