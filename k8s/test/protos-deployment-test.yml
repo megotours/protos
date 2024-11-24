@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: protos
+  namespace: protos
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: protos
+  template:
+    metadata:
+      labels:
+        app: protos
+    spec:
+      imagePullSecrets:
+      - name: regcred
+      containers:
+      - image: registry.gitlab.com/mego.tours/backend/protos/main:latest
+        name: protos
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+          name: http
+
+---
+
+kind: Service 
+apiVersion: v1 
+metadata:
+  name: protos-service
+  namespace: protos
+spec:
+  type: NodePort
+  selector:
+    app: protos
+  ports:
+    - nodePort: 30029
+      port: 80
+      targetPort: 80
