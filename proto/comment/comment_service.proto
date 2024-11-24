@@ -1,12 +1,36 @@
 syntax = "proto3";
-import "comment_message.proto";
 package comment;
+import "proto/comment/comment_message.proto";
+
 option go_package = "proto/comment";
 
+import "google/api/annotations.proto";
+
 service CommentService{
-  rpc Find(FindRequest) returns (FindResponse);
-  rpc Create(Empty) returns (Empty);
-  rpc Delete(Empty) returns (Empty);
-  rpc Count(Empty) returns (Empty);
+  rpc Find(FindRequest) returns (FindResponse) {
+    option (google.api.http) = {
+      get: "/v1/comment"
+    };
+  }
+  rpc GetByAuthor(GetByAuthorRequest) returns (GetByAuthorResponse) {
+    option (google.api.http) = {
+      get: "/v1/comment/getByAuthor"
+    };
+  }
+  rpc Create(CreateRequest) returns (CreateResponse) {
+    option (google.api.http) = {
+      post: "/v1/comment"
+    };
+  }
+  rpc Delete(DeleteRequest) returns (DeleteResponse) {
+    option (google.api.http) = {
+      delete: "/v1/comment"
+    };
+  }
+  rpc Count(CountRequest) returns (CountResponse) {
+    option (google.api.http) = {
+      get: "/v1/comment/count"
+    };
+  }
 }
 
