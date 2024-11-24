@@ -22,7 +22,7 @@ import (
 func main() {
 	boot := rkboot.NewBoot()
 
-	grpcEntry := boot.GetEntry("protos").(*rkgrpc.GrpcEntry)
+	grpcEntry := rkgrpc.GetGrpcEntry("protos-api")
 
 	grpcEntry.AddRegFuncGrpc(
 		registerAuthService,

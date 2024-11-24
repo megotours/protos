@@ -20,7 +20,7 @@ message Avatar {
 }
 
 message UserDetails {
-  string id = 1;
+  int64 id = 1;
   string first_name = 2;
   string middle_name = 3;
   string last_name = 4;
@@ -59,7 +59,7 @@ message SubscriptionRequest {
 }
 
 message GetByIdRequest {
-  string id = 1;
+  int64 id = 1;
 }
 
 message GetByEmailRequest {
@@ -86,7 +86,7 @@ message CreateUserRequest {
 }
 
 message UpdateUserRequest {
-  string id = 1;
+  int64 id = 1;
   string first_name = 2;
   string middle_name = 3;
   string last_name = 4;
@@ -98,7 +98,7 @@ message UpdateUserRequest {
 }
 
 message UpdateProfileRequest{
-  string id = 1;
+  int64 id = 1;
   string FirstName = 2;
   string MiddleName = 3;
   string LastName = 4;
@@ -107,7 +107,7 @@ message UpdateProfileRequest{
 }
 
 message UpdateLangRequest{
-  string id = 1;
+  int64 id = 1;
   string lang = 2;
 }
 
@@ -116,7 +116,7 @@ message UpdateLangResponse{
 }
 
 message UpdateThemeRequest{
-  string id = 1;
+  int64 id = 1;
   string theme = 2;
 }
 
@@ -125,7 +125,7 @@ message UpdateThemeResponse{
 }
 
 message UpdateEmailRequest{
-  string user_id = 1;
+  int64 user_id = 1;
   string code = 2;
 }
 
@@ -134,7 +134,7 @@ message UpdateEmailResponse{
 }
 
 message UpdateEmailSendCodeRequest{
-  string user_id = 1;
+  int64 user_id = 1;
   string email = 2;
 }
 
