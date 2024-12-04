@@ -8,7 +8,7 @@ option go_package = "proto/post";
 
 //models
 message PostDetail {
-  string id = 1;
+  int64 id = 1;
   Author author = 2;
   string title = 3;
   string description = 4;
@@ -27,7 +27,7 @@ message PostDetail {
 }
 
 message Author {
-  string id = 1;
+  int64 id = 1;
   string first_name = 2;
   string middle_name = 3;
   string last_name = 4;
@@ -50,7 +50,7 @@ message File{
   string url = 3;
 }
 message Category{
-  string id = 1;
+  int64 id = 1;
   string name = 2;
   File icon = 3;
 }
@@ -72,7 +72,7 @@ message FindPostResponse{
 }
 
 message GetByAuthorRequest{
-  string author_id = 1;
+  int64 author_id = 1;
   int32 page_size = 2;
   string page_token = 3;
   string search = 4;
@@ -84,7 +84,7 @@ message GetByAuthorResponse{
 }
 
 message GetByIdRequest{
-  string id = 1;
+  int64 id = 1;
 }
 
 message PostContentCreateOrUpdate {
@@ -99,8 +99,8 @@ message FileCreateOrUpdate{
 }
 
 message CreatePostRequest{
-  string id = 1;
-  string author_id = 2;
+  int64 id = 1;
+  int64 author_id = 2;
   string title = 3;
   string description = 4;
   PostType type = 5;
@@ -109,8 +109,8 @@ message CreatePostRequest{
 }
 
 message UpdatePostRequest{
-  string id = 1;
-  string author_id = 2;
+  int64 id = 1;
+  int64 author_id = 2;
   string title = 3;
   string description = 4;
   PostType type = 5;
@@ -118,15 +118,15 @@ message UpdatePostRequest{
   PostContentCreateOrUpdate contents = 7;
 }
 message DeletePostRequest{
-  string id = 1;
-  string author_id = 2;
+  int64 id = 1;
+  int64 author_id = 2;
 }
 message DeletePostResponse{
 }
 
 message HidePostRequest{
-  string id = 1;
-  string author_id = 2;
+  int64 id = 1;
+  int64 author_id = 2;
 }
 message HidePostResponse{
 }
@@ -145,13 +145,13 @@ message CreateCategoryRequest{
   FileCreateOrUpdate icon = 2;
 }
 message UpdateCategoryRequest{
-  string id = 1;
+  int64 id = 1;
   string name = 2;
   FileCreateOrUpdate icon = 3;
 }
 
 message DeleteCategoryRequest{
-  string id = 1;
+  int64 id = 1;
 }
 
 message AddViewRequest {
