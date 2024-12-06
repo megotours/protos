@@ -104,8 +104,9 @@ message CreatePostRequest{
   string title = 3;
   string description = 4;
   PostType type = 5;
-  repeated string categories = 6;
-  PostContentCreateOrUpdate contents = 7;
+  FileCreateOrUpdate image = 6;
+  repeated int64 categories = 7;
+  repeated PostContentCreateOrUpdate contents = 8;
 }
 
 message UpdatePostRequest{
@@ -114,8 +115,9 @@ message UpdatePostRequest{
   string title = 3;
   string description = 4;
   PostType type = 5;
-  repeated Category categories = 6;
-  PostContentCreateOrUpdate contents = 7;
+  FileCreateOrUpdate image = 6;
+  repeated Category categories = 7;
+  repeated PostContentCreateOrUpdate contents = 8;
 }
 message DeletePostRequest{
   int64 id = 1;
