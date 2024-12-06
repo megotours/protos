@@ -9,6 +9,7 @@ import "google/api/annotations.proto";
 service AuthService{
   rpc LoginByEmail(LoginByEmailRequest) returns (LoginByEmailResponse) {
     option (google.api.http) = {
+
       post: "/v1/auth/loginByEmail"
     };
   }
