@@ -1,7 +1,7 @@
 syntax = "proto3";
 package post;
 
-import "proto/post/post_enum.proto";
+import "post_enum.proto";
 import "google/protobuf/timestamp.proto";
 
 option go_package = "proto/post";

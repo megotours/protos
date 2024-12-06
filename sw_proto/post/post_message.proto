@@ -1,0 +1,162 @@
+syntax = "proto3";
+package post;
+
+import "proto/post/post_enum.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "proto/post";
+
+//models
+message PostDetail {
+  string id = 1;
+  Author author = 2;
+  string title = 3;
+  string description = 4;
+  int32 like_count = 5;
+  int32 comment_count = 6;
+  int32 view_count = 7;
+  File image = 8;
+  repeated Category categories = 9;
+  repeated PostContent contents = 10;
+  PostType type = 11;
+  bool isLiked = 12; // request it from 'like' service `Exists` method
+  bool isFavorite = 13; // request it from 'favorite' service `Exists` method
+  google.protobuf.Timestamp created_at = 14;
+  google.protobuf.Timestamp updated_at = 15;
+  google.protobuf.Timestamp deleted_at = 16;
+}
+
+message Author {
+  string id = 1;
+  string first_name = 2;
+  string middle_name = 3;
+  string last_name = 4;
+  string email = 5;
+  string phone = 6;
+  Avatar avatar = 7;
+}
+message Avatar{
+  string file_name = 1;
+  string url = 2;
+}
+message PostContent {
+  string title = 1;
+  string description = 2;
+  File image = 3;
+}
+message File{
+  string file_name = 1;
+  string content_type = 2;
+  string url = 3;
+}
+message Category{
+  string id = 1;
+  string name = 2;
+  File icon = 3;
+}
+// requests and responses
+message FindPostRequest{
+  // when user_id is given, FindPost must request its subscriptions from user service and use GetByAuthor method to return posts
+  // and if SortOrder is not given, its default value must be NEWEST
+  int64 user_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+  string search = 4;
+  SortOrder sort_order = 5;
+  google.protobuf.Timestamp  date_from = 6;
+  google.protobuf.Timestamp  date_to = 7;
+}
+message FindPostResponse{
+  repeated PostDetail posts = 1;
+  string next_page_token = 2;
+}
+
+message GetByAuthorRequest{
+  string author_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+  string search = 4;
+  SortOrder sort_order = 5;
+}
+message GetByAuthorResponse{
+  repeated PostDetail posts = 1;
+  string next_page_token = 2;
+}
+
+message GetByIdRequest{
+  string id = 1;
+}
+
+message PostContentCreateOrUpdate {
+  string title = 1;
+  string description = 2;
+  FileCreateOrUpdate file = 3;
+}
+message FileCreateOrUpdate{
+  string file_name = 1;
+  string content_type = 2;
+  bytes data = 3;
+}
+
+message CreatePostRequest{
+  string id = 1;
+  string author_id = 2;
+  string title = 3;
+  string description = 4;
+  PostType type = 5;
+  repeated string categories = 6;
+  PostContentCreateOrUpdate contents = 7;
+}
+
+message UpdatePostRequest{
+  string id = 1;
+  string author_id = 2;
+  string title = 3;
+  string description = 4;
+  PostType type = 5;
+  repeated Category categories = 6;
+  PostContentCreateOrUpdate contents = 7;
+}
+message DeletePostRequest{
+  string id = 1;
+  string author_id = 2;
+}
+message DeletePostResponse{
+}
+
+message HidePostRequest{
+  string id = 1;
+  string author_id = 2;
+}
+message HidePostResponse{
+}
+
+
+
+message FindCategoryRequest{
+
+}
+
+message FindCategoryResponse{
+  repeated Category categories = 1;
+}
+message CreateCategoryRequest{
+  string name = 1;
+  FileCreateOrUpdate icon = 2;
+}
+message UpdateCategoryRequest{
+  string id = 1;
+  string name = 2;
+  FileCreateOrUpdate icon = 3;
+}
+
+message DeleteCategoryRequest{
+  string id = 1;
+}
+
+message AddViewRequest {
+  int64 post_id = 1;
+}
+
+message AddViewResponse {
+}

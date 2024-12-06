@@ -1,0 +1,31 @@
+syntax = "proto3";
+import "proto/resource/resource_message.proto";
+package resource;
+
+option go_package = "proto/resource";
+
+import "google/api/annotations.proto";
+
+service ResourceService{
+    rpc Find(FindRequest) returns (FindResponse) {
+        option (google.api.http) = {
+            get: "/v1/resource"
+        };
+    }
+    rpc Create(CreateRequest) returns (CreateResponse) {
+        option (google.api.http) = {
+            post: "/v1/resource"
+        };
+    }
+    rpc Update(UpdateRequest) returns (UpdateResponse) {
+        option (google.api.http) = {
+            put: "/v1/resource"
+        };
+    }
+    rpc Delete(DeleteRequest) returns (DeleteResponse) {
+        option (google.api.http) = {
+            delete: "/v1/resource"
+        };
+    }
+}
+

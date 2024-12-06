@@ -1,0 +1,44 @@
+syntax = "proto3";
+package resource;
+
+option go_package = "proto/resource";
+
+
+message FindRequest{
+
+}
+message FindResponse{
+  repeated Resource resources = 1;
+}
+message Resource{
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+message CreateRequest{
+  string name = 1;
+  string description = 2;
+}
+message CreateResponse{
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+message UpdateRequest{
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+message UpdateResponse{
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message DeleteRequest{
+  string id = 1;
+}
+
+message DeleteResponse{
+  string id = 1;
+}

@@ -1,0 +1,194 @@
+syntax = "proto3";
+package user;
+
+option go_package = "proto/user";
+import "google/protobuf/timestamp.proto";
+import "proto/user/user_enum.proto";
+
+message Empty{
+}
+
+message NewAvatar {
+  string file_name = 1;
+  string content_type = 2;
+  bytes data = 3;
+}
+
+message Avatar {
+  string file_name = 1;
+  string url = 2;
+}
+
+message UserDetails {
+  string id = 1;
+  string first_name = 2;
+  string middle_name = 3;
+  string last_name = 4;
+  string about = 5;
+  string theme = 6;
+  string email = 7;
+  string phone = 8;
+  Avatar avatar = 9;
+  string lang = 10;
+  bool is_private = 11;
+  google.protobuf.Timestamp created_at = 12;
+  google.protobuf.Timestamp updated_at = 13;
+  google.protobuf.Timestamp deleted_at = 14;
+
+  repeated string roles = 15;
+}
+
+message Subscriber {
+  int64 user_id = 1; // the user id
+  UserDetails subscriber = 2; // user's subscriber
+  google.protobuf.Timestamp created_at = 3;
+}
+
+message Subscription {
+  int64 user_id = 1; // the user id
+  UserDetails subscription = 2; // user's subscription on someone
+  google.protobuf.Timestamp created_at = 3;
+}
+
+message SubscriptionRequest {
+  int64 requester_id = 1;
+  int64 target_id = 2;
+  Status status = 3;
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
+}
+
+message GetByIdRequest {
+  string id = 1;
+}
+
+message GetByEmailRequest {
+  string email = 1;
+}
+
+message GetByPhoneRequest {
+  string phone = 1;
+}
+
+message GetByTokenRequest {
+  string token = 1;
+}
+
+message CreateUserRequest {
+  string first_name = 1;
+  string middle_name = 2;
+  string last_name = 3;
+  string email = 4;
+  string phone = 5;
+  string about = 6;
+  string theme = 7;
+  string lang = 8;
+}
+
+message UpdateUserRequest {
+  string id = 1;
+  string first_name = 2;
+  string middle_name = 3;
+  string last_name = 4;
+  string email = 5;
+  string phone = 6;
+  string about = 7;
+  string theme = 8;
+  string lang = 9;
+}
+
+message UpdateProfileRequest{
+  string id = 1;
+  string FirstName = 2;
+  string MiddleName = 3;
+  string LastName = 4;
+  string About = 5;
+  NewAvatar avatar = 6;
+}
+
+message UpdateLangRequest{
+  string id = 1;
+  string lang = 2;
+}
+
+message UpdateLangResponse{
+  bool success = 1;
+}
+
+message UpdateThemeRequest{
+  string id = 1;
+  string theme = 2;
+}
+
+message UpdateThemeResponse{
+  bool success = 1;
+}
+
+message UpdateEmailRequest{
+  string user_id = 1;
+  string code = 2;
+}
+
+message UpdateEmailResponse{
+  bool success = 1;
+}
+
+message UpdateEmailSendCodeRequest{
+  string user_id = 1;
+  string email = 2;
+}
+
+message UpdateEmailSendCodeResponse{
+  bool success = 1;
+}
+
+message FindUserRequest{
+  uint32 pageSize = 1;
+  string pageToken = 2;
+  SortOrder sort = 3;
+  string search = 4;
+}
+
+message FindUserResponse{
+  string nexPageToken = 3;
+  repeated UserDetails users = 4;
+}
+
+message SubscriptionsListRequest {
+  int64 user_id = 1;
+  uint32 pageSize = 2;
+  string pageToken = 3;
+}
+
+message SubscriptionsListResponse {
+  repeated Subscription subscriptions = 1;
+  string nextPageToken = 2;
+}
+
+message SubscribersListRequest {
+  int64 user_id = 1;
+  uint32 pageSize = 2;
+  string pageToken = 3;
+}
+
+message SubscribersListResponse {
+  repeated Subscriber subscriber = 1;
+  string nextPageToken = 2;
+}
+
+message SubscribeRequest {
+  SubscriptionRequest subscription = 1;
+}
+
+message UnsubscribeRequest {
+  int64 requester_id = 1;
+  int64 target_id = 2;
+}
+
+message AcceptRequest {
+  SubscriptionRequest subscription = 1;
+}
+
+message DeclineRequest {
+  SubscriptionRequest subscription = 1;
+}

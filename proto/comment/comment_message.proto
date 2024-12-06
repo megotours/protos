@@ -1,7 +1,7 @@
 syntax = "proto3";
 package comment;
 
-import "proto/comment/comment_enum.proto";
+import "comment_enum.proto";
 import "google/protobuf/timestamp.proto";
 
 option go_package = "proto/comment";

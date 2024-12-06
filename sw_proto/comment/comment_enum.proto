@@ -1,0 +1,10 @@
+syntax = "proto3";
+package comment;
+
+option go_package = "proto/comment";
+
+enum SortOrder {
+  NEWEST = 0;
+  OLDEST = 1;
+}
+

@@ -1,0 +1,43 @@
+syntax = "proto3";
+package permission;
+
+option go_package = "proto/permission";
+
+message FindRequest{
+
+}
+message FindResponse{
+  repeated Permission permissions = 1;
+}
+message Permission{
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+message CreateRequest{
+  string name = 1;
+  string description = 2;
+}
+message CreateResponse{
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+message UpdateRequest{
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+message UpdateResponse{
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message DeleteRequest{
+  string id = 1;
+}
+
+message DeleteResponse{
+  string id = 1;
+}

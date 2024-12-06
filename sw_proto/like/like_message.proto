@@ -1,0 +1,41 @@
+syntax = "proto3";
+package like;
+
+option go_package = "proto/like";
+
+message Like{
+  string user_id = 1;
+  string post_id = 2;
+}
+message ExistsRequest{
+  string user_id = 1;
+  string post_id = 2;
+}
+message ExistsResponse{
+  bool exists = 1;
+}
+message LikeRequest{
+  string user_id = 1;
+  string post_id = 2;
+  string comment_id = 3;
+}
+
+message LikeResponse{
+  string user_id = 1;
+  string post_id = 2;
+  string comment_id = 3;
+}
+message CountResponse{
+  int32 count = 1;
+}
+message CountRequest{
+  string post_id = 2;
+}
+message FindRequest{
+  int32 page_size = 1;
+  string page_token = 2;
+}
+message FindResponse{
+  repeated Like likes = 1;
+  string next_page_token = 2;
+}

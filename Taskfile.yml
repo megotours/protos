@@ -1,0 +1,28 @@
+version: '3'
+dotenv: ['./config/local.yaml']
+
+tasks:
+  all:
+    cmds:
+      - powershell.exe -File ./generate_protos.ps1
+    silent: true
+  proto:post:
+    cmds:
+      - protoc -I proto/post proto/post/*.proto --go_out=./gen/go/post --go_opt=paths=source_relative --go-grpc_out=./gen/go/post --go-grpc_opt=paths=source_relative
+    silent: true
+  proto:auth:
+    cmds:
+      - protoc -I proto/auth proto/auth/*.proto --go_out=./gen/go/auth --go_opt=paths=source_relative --go-grpc_out=./gen/go/auth --go-grpc_opt=paths=source_relative
+    silent: true
+  proto:user:
+    cmds:
+      - protoc -I proto/user proto/user/*.proto --go_out=./gen/go/user --go_opt=paths=source_relative --go-grpc_out=./gen/go/user --go-grpc_opt=paths=source_relative
+    silent: true
+  proto:role:
+    cmds:
+      - protoc -I proto/role proto/role/*.proto --go_out=./gen/go/role --go_opt=paths=source_relative --go-grpc_out=./gen/go/role --go-grpc_opt=paths=source_relative
+    silent: true
+  proto:permission:
+    cmds:
+      - protoc -I proto/role proto/role/*.proto --go_out=./gen/go/role --go_opt=paths=source_relative --go-grpc_out=./gen/go/role --go-grpc_opt=paths=source_relative
+    silent: true

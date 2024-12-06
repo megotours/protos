@@ -1,0 +1,36 @@
+syntax = "proto3";
+import "proto/like/like_message.proto";
+package like;
+
+option go_package = "proto/like";
+
+import "google/api/annotations.proto";
+
+service LikeService{
+  rpc Exists(ExistsRequest) returns (ExistsResponse) {
+    option (google.api.http) = {
+      get: "/v1/like/exists"
+    };
+  }
+  rpc Like(LikeRequest) returns (LikeResponse) {
+    option (google.api.http) = {
+      post: "/v1/like"
+    };
+  }
+  rpc UnLike(LikeRequest) returns (LikeResponse) {
+    option (google.api.http) = {
+      delete: "/v1/like"
+    };
+  }
+  rpc Count(CountRequest) returns (CountResponse) {
+    option (google.api.http) = {
+      get: "/v1/like/count"
+    };
+  }
+  rpc Find(FindRequest) returns (FindResponse) {
+    option (google.api.http) = {
+      get: "/v1/like"
+    };
+  }
+}
+

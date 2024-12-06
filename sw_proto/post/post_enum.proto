@@ -1,0 +1,21 @@
+syntax = "proto3";
+package post;
+option go_package = "proto/post";
+
+
+enum PostType {
+  TOURIST = 0;
+  GUIDE = 1;
+  OWNER = 2;
+}
+
+
+enum SortOrder {
+  NEWEST = 0;
+  OLDEST = 1;
+  MOST_LIKED = 2;
+  MOST_COMMENTED = 3;
+}
+
+
+

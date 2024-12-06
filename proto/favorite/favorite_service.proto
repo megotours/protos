@@ -1,35 +1,14 @@
 syntax = "proto3";
-import "proto/favorite/favorite_message.proto";
+import "favorite_message.proto";
 package favorite;
 
 option go_package = "proto/favorite";
 
-import "google/api/annotations.proto";
-
 service FavoriteService{
-  rpc Exists(ExistsRequest) returns (ExistsResponse) {
-    option (google.api.http) = {
-      get: "/v1/favorite/exists"
-    };
-  }
-  rpc Add(AddRequest) returns (AddResponse) {
-    option (google.api.http) = {
-      post: "/v1/favorite"
-    };
-  }
-  rpc Delete(DeleteRequest) returns (DeleteResponse) {
-    option (google.api.http) = {
-      delete: "/v1/favorite"
-    };
-  }
-  rpc Count(CountRequest) returns (CountResponse) {
-    option (google.api.http) = {
-      get: "/v1/favorite/count"
-    };
-  }
-  rpc Find(FindRequest) returns (FindResponse) {
-    option (google.api.http) = {
-      get: "/v1/favorite"
-    };
-  }
+  rpc Exists(ExistsRequest) returns (ExistsResponse);
+  rpc Add(AddRequest) returns (AddResponse) ;
+  rpc Delete(DeleteRequest) returns (DeleteResponse) ;
+  rpc Count(CountRequest) returns (CountResponse) ;
+  rpc Find(FindRequest) returns (FindResponse) ;
+
 }

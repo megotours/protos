@@ -1,0 +1,41 @@
+syntax = "proto3";
+package auth;
+
+option go_package = "proto/auth";
+
+//auth service
+
+message LoginByEmailRequest{
+    string email = 1;
+    string code =2;
+}
+
+message LoginByEmailResponse{
+    string token = 2;
+}
+message LoginByEmailSendCodeRequest{
+    string email = 1;
+}
+message LoginByEmailSendCodeResponse{
+    bool success = 1;
+}
+message LogoutRequest{
+    string token = 1;
+}
+
+message LogoutResponse{
+    bool success = 1;
+}
+
+message CheckRequest{
+    string token = 1;
+}
+message CheckResponse{
+    bool success = 1;
+}
+message ParseRequest {
+    string token = 1;
+}
+message ParseResponse {
+    string user_id = 2;
+}

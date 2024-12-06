@@ -1,53 +1,19 @@
 syntax = "proto3";
 package post;
 
-import "proto/post/post_message.proto";
+import "post_message.proto";
 
 option go_package = "proto/post";
 
-import "google/api/annotations.proto";
-
 service PostService{
-  rpc FindPost(FindPostRequest) returns (FindPostResponse) {
-    option (google.api.http) = {
-      get: "/v1/post"
-    };
-  }
-  rpc CreatePost(CreatePostRequest) returns (PostDetail) {
-    option (google.api.http) = {
-      post: "/v1/post"
-    };
-  }
-  rpc GetById(GetByIdRequest) returns (PostDetail) {
-    option (google.api.http) = {
-      get: "/v1/post/getById"
-    };
-  }
-  rpc GetByAuthor(GetByAuthorRequest) returns (GetByAuthorResponse) {
-    option (google.api.http) = {
-      get: "/v1/post/getByAuthor"
-    };
-  }
-  rpc UpdatePost(UpdatePostRequest) returns (PostDetail) {
-    option (google.api.http) = {
-      put: "/v1/post"
-    };
-  }
-  rpc DeletePost(DeletePostRequest) returns (DeletePostResponse) {
-    option (google.api.http) = {
-      delete: "/v1/post"
-    };
-  }
-  rpc HidePost(HidePostRequest) returns (HidePostResponse) {
-    option (google.api.http) = {
-      post: "/v1/post/hide"
-    };
-  }
-  rpc AddView(AddViewRequest) returns (AddViewResponse) {
-    option (google.api.http) = {
-      post: "/v1/post/addView"
-    };
-  }
+  rpc FindPost(FindPostRequest) returns (FindPostResponse);
+  rpc CreatePost(CreatePostRequest) returns (PostDetail);
+  rpc GetById(GetByIdRequest) returns (PostDetail);
+  rpc GetByAuthor(GetByAuthorRequest) returns (GetByAuthorResponse);
+  rpc UpdatePost(UpdatePostRequest) returns (PostDetail);
+  rpc DeletePost(DeletePostRequest) returns (DeletePostResponse);
+  rpc HidePost(HidePostRequest) returns (HidePostResponse);
+  rpc AddView(AddViewRequest) returns (AddViewResponse);
 
   //post likes list
   //post favorites list
@@ -55,24 +21,8 @@ service PostService{
 
 
   //category service
-  rpc FindCategory(FindCategoryRequest) returns (FindCategoryResponse) {
-    option (google.api.http) = {
-      get: "/v1/category"
-    };
-  }
-  rpc CreateCategory(CreateCategoryRequest) returns (Category) {
-    option (google.api.http) = {
-      post: "/v1/category"
-    };
-  }
-  rpc UpdateCategory(UpdateCategoryRequest) returns (Category) {
-    option (google.api.http) = {
-      put: "/v1/category"
-    };
-  }
-  rpc DeleteCategory(DeleteCategoryRequest) returns (Category) {
-    option (google.api.http) = {
-      delete: "/v1/category"
-    };
-  }
+  rpc FindCategory(FindCategoryRequest) returns (FindCategoryResponse) ;
+  rpc CreateCategory(CreateCategoryRequest) returns (Category);
+  rpc UpdateCategory(UpdateCategoryRequest) returns (Category);
+  rpc DeleteCategory(DeleteCategoryRequest) returns (Category);
 }
