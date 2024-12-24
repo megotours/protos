@@ -55,15 +55,12 @@ message Category{
 }
 // requests and responses
 message FindPostRequest{
-  // when user_id is given, FindPost must request its subscriptions from user service and use GetByAuthor method to return posts
-  // and if SortOrder is not given, its default value must be NEWEST
-  int64 user_id = 1;
-  int32 page_size = 2;
-  string page_token = 3;
-  string search = 4;
-  SortOrder sort_order = 5;
-  google.protobuf.Timestamp  date_from = 6;
-  google.protobuf.Timestamp  date_to = 7;
+  int32 page_size = 1;
+  string page_token = 2;
+  string search = 3;
+  SortOrder sort_order = 4;
+  google.protobuf.Timestamp  date_from = 5;
+  google.protobuf.Timestamp  date_to = 6;
 }
 message FindPostResponse{
   repeated PostDetail posts = 1;
