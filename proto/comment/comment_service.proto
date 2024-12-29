@@ -7,9 +7,8 @@ option go_package = "proto/comment";
 
 service CommentService{
   rpc Find(FindRequest) returns (FindResponse);
-  rpc GetByAuthor(GetByAuthorRequest) returns (GetByAuthorResponse) {}
+  rpc GetByAuthor(GetByAuthorRequest) returns (GetByAuthorResponse);
   rpc Create(CreateRequest) returns (CreateResponse);
   rpc Delete(DeleteRequest) returns (DeleteResponse);
   rpc Count(CountRequest) returns (CountResponse);
 }
-

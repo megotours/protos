@@ -761,6 +761,7 @@ const (
 	SubscriptionsService_Unsubscribe_FullMethodName       = "/user.SubscriptionsService/Unsubscribe"
 	SubscriptionsService_Accept_FullMethodName            = "/user.SubscriptionsService/Accept"
 	SubscriptionsService_Decline_FullMethodName           = "/user.SubscriptionsService/Decline"
+	SubscriptionsService_GetStatus_FullMethodName         = "/user.SubscriptionsService/GetStatus"
 )
 
 // SubscriptionsServiceClient is the client API for SubscriptionsService service.
@@ -773,6 +774,7 @@ type SubscriptionsServiceClient interface {
 	Unsubscribe(ctx context.Context, in *UnsubscribeRequest, opts ...grpc.CallOption) (*Empty, error)
 	Accept(ctx context.Context, in *AcceptRequest, opts ...grpc.CallOption) (*Empty, error)
 	Decline(ctx context.Context, in *DeclineRequest, opts ...grpc.CallOption) (*Empty, error)
+	GetStatus(ctx context.Context, in *GetStatusRequest, opts ...grpc.CallOption) (*GetStatusResponse, error)
 }
 
 type subscriptionsServiceClient struct {
@@ -843,6 +845,16 @@ func (c *subscriptionsServiceClient) Decline(ctx context.Context, in *DeclineReq
 	return out, nil
 }
 
+func (c *subscriptionsServiceClient) GetStatus(ctx context.Context, in *GetStatusRequest, opts ...grpc.CallOption) (*GetStatusResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetStatusResponse)
+	err := c.cc.Invoke(ctx, SubscriptionsService_GetStatus_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SubscriptionsServiceServer is the server API for SubscriptionsService service.
 // All implementations must embed UnimplementedSubscriptionsServiceServer
 // for forward compatibility.
@@ -853,6 +865,7 @@ type SubscriptionsServiceServer interface {
 	Unsubscribe(context.Context, *UnsubscribeRequest) (*Empty, error)
 	Accept(context.Context, *AcceptRequest) (*Empty, error)
 	Decline(context.Context, *DeclineRequest) (*Empty, error)
+	GetStatus(context.Context, *GetStatusRequest) (*GetStatusResponse, error)
 	mustEmbedUnimplementedSubscriptionsServiceServer()
 }
 
@@ -880,6 +893,9 @@ func (UnimplementedSubscriptionsServiceServer) Accept(context.Context, *AcceptRe
 }
 func (UnimplementedSubscriptionsServiceServer) Decline(context.Context, *DeclineRequest) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Decline not implemented")
+}
+func (UnimplementedSubscriptionsServiceServer) GetStatus(context.Context, *GetStatusRequest) (*GetStatusResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetStatus not implemented")
 }
 func (UnimplementedSubscriptionsServiceServer) mustEmbedUnimplementedSubscriptionsServiceServer() {}
 func (UnimplementedSubscriptionsServiceServer) testEmbeddedByValue()                              {}
@@ -1010,6 +1026,24 @@ func _SubscriptionsService_Decline_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SubscriptionsService_GetStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetStatusRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SubscriptionsServiceServer).GetStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SubscriptionsService_GetStatus_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SubscriptionsServiceServer).GetStatus(ctx, req.(*GetStatusRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // SubscriptionsService_ServiceDesc is the grpc.ServiceDesc for SubscriptionsService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1040,6 +1074,10 @@ var SubscriptionsService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Decline",
 			Handler:    _SubscriptionsService_Decline_Handler,
+		},
+		{
+			MethodName: "GetStatus",
+			Handler:    _SubscriptionsService_GetStatus_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
