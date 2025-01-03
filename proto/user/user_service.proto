@@ -37,5 +37,6 @@ service SubscriptionsService {
   rpc Unsubscribe(UnsubscribeRequest) returns (Empty);
   rpc Accept(AcceptRequest) returns (Empty);
   rpc Decline(DeclineRequest) returns (Empty);
+  rpc GetStatus(GetStatusRequest) returns (GetStatusResponse);
 }
 

@@ -68,10 +68,10 @@ message FindPostResponse{
 }
 
 message GetByAuthorRequest{
-  int64 author_id = 1;
-  int32 page_size = 2;
-  string page_token = 3;
-  string search = 4;
+  int32 page_size = 1;
+  string page_token = 2;
+  string search = 3;
+  int64 author_id = 4;
   SortOrder sort_order = 5;
 }
 message GetByAuthorResponse{
@@ -115,11 +115,13 @@ message UpdatePostRequest{
   repeated Category categories = 7;
   repeated PostContentCreateOrUpdate contents = 8;
 }
+
 message DeletePostRequest{
   int64 id = 1;
   int64 author_id = 2;
 }
 message DeletePostResponse{
+  bool success = 1;
 }
 
 message HidePostRequest{
@@ -127,21 +129,27 @@ message HidePostRequest{
   int64 author_id = 2;
 }
 message HidePostResponse{
+  bool success = 1;
 }
 
-
+// CATEGORY
 
 message FindCategoryRequest{
-
+  int32 page_size = 1;
+  string page_token = 2;
+  string search = 3;
+  SortOrder sort_order = 4;
 }
-
 message FindCategoryResponse{
   repeated Category categories = 1;
+  string next_page_token = 2;
 }
+
 message CreateCategoryRequest{
   string name = 1;
   FileCreateOrUpdate icon = 2;
 }
+
 message UpdateCategoryRequest{
   int64 id = 1;
   string name = 2;
@@ -152,9 +160,9 @@ message DeleteCategoryRequest{
   int64 id = 1;
 }
 
-message AddViewRequest {
+message AddViewRequest{
   int64 post_id = 1;
 }
 
-message AddViewResponse {
+message AddViewResponse{
 }

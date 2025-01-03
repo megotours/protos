@@ -38,24 +38,16 @@ message UserDetails {
   repeated string roles = 15;
 }
 
-message Subscriber {
-  int64 user_id = 1; // the user id
-  UserDetails subscriber = 2; // user's subscriber
-  google.protobuf.Timestamp created_at = 3;
+message FindUserRequest{
+  uint32 pageSize = 1;
+  string pageToken = 2;
+  SortOrder sort = 3;
+  string search = 4;
 }
 
-message Subscription {
-  int64 user_id = 1; // the user id
-  UserDetails subscription = 2; // user's subscription on someone
-  google.protobuf.Timestamp created_at = 3;
-}
-
-message SubscriptionRequest {
-  int64 requester_id = 1;
-  int64 target_id = 2;
-  Status status = 3;
-  google.protobuf.Timestamp created_at = 4;
-  google.protobuf.Timestamp updated_at = 5;
+message FindUserResponse{
+  repeated UserDetails users = 1;
+  string nexPageToken = 2;
 }
 
 message GetByIdRequest {
@@ -142,38 +134,46 @@ message UpdateEmailSendCodeResponse{
   bool success = 1;
 }
 
-message FindUserRequest{
-  uint32 pageSize = 1;
-  string pageToken = 2;
-  SortOrder sort = 3;
-  string search = 4;
+// SUB messages
+
+message Subscriber {
+  int64 user_id = 1; // the user id
+  UserDetails subscriber = 2; // user's subscriber
+  google.protobuf.Timestamp created_at = 3;
 }
 
-message FindUserResponse{
-  string nexPageToken = 3;
-  repeated UserDetails users = 4;
+message Subscription {
+  int64 user_id = 1; // the user id
+  UserDetails subscription = 2; // user's subscription on someone
+  google.protobuf.Timestamp created_at = 3;
 }
 
 message SubscriptionsListRequest {
-  int64 user_id = 1;
-  uint32 pageSize = 2;
-  string pageToken = 3;
+  int32 pageSize = 1;
+  string pageToken = 2;
+  int64 user_id = 3;
 }
-
 message SubscriptionsListResponse {
   repeated Subscription subscriptions = 1;
   string nextPageToken = 2;
 }
 
 message SubscribersListRequest {
-  int64 user_id = 1;
-  uint32 pageSize = 2;
-  string pageToken = 3;
+  int32 pageSize = 1;
+  string pageToken = 2;
+  int64 user_id = 3;
+}
+message SubscribersListResponse {
+  repeated Subscriber subscribers = 1;
+  string nextPageToken = 2;
 }
 
-message SubscribersListResponse {
-  repeated Subscriber subscriber = 1;
-  string nextPageToken = 2;
+message SubscriptionRequest {
+  int64 requester_id = 1;
+  int64 target_id = 2;
+  Status status = 3;
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
 }
 
 message SubscribeRequest {
@@ -186,9 +186,19 @@ message UnsubscribeRequest {
 }
 
 message AcceptRequest {
-  SubscriptionRequest subscription = 1;
+  SubscriptionRequest subscription = 1; // this must only change the Status -> ACCEPTED
 }
 
 message DeclineRequest {
-  SubscriptionRequest subscription = 1;
+  SubscriptionRequest subscription = 1; // this must only change the Status -> DECLINED
+}
+
+message GetStatusRequest {
+  int64 requester_id = 1;
+  int64 target_id = 2;
+  Status status = 3;
+}
+
+message GetStatusResponse {
+  Status status = 1;
 }
