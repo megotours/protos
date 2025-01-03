@@ -19,11 +19,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	LikeService_Exists_FullMethodName = "/like.LikeService/Exists"
-	LikeService_Like_FullMethodName   = "/like.LikeService/Like"
-	LikeService_UnLike_FullMethodName = "/like.LikeService/UnLike"
-	LikeService_Count_FullMethodName  = "/like.LikeService/Count"
-	LikeService_Find_FullMethodName   = "/like.LikeService/Find"
+	LikeService_Exists_FullMethodName         = "/like.LikeService/Exists"
+	LikeService_Like_FullMethodName           = "/like.LikeService/Like"
+	LikeService_Delete_FullMethodName         = "/like.LikeService/Delete"
+	LikeService_Count_FullMethodName          = "/like.LikeService/Count"
+	LikeService_FindByPosts_FullMethodName    = "/like.LikeService/FindByPosts"
+	LikeService_FindByComments_FullMethodName = "/like.LikeService/FindByComments"
 )
 
 // LikeServiceClient is the client API for LikeService service.
@@ -32,9 +33,10 @@ const (
 type LikeServiceClient interface {
 	Exists(ctx context.Context, in *ExistsRequest, opts ...grpc.CallOption) (*ExistsResponse, error)
 	Like(ctx context.Context, in *LikeRequest, opts ...grpc.CallOption) (*LikeResponse, error)
-	UnLike(ctx context.Context, in *LikeRequest, opts ...grpc.CallOption) (*LikeResponse, error)
+	Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*DeleteResponse, error)
 	Count(ctx context.Context, in *CountRequest, opts ...grpc.CallOption) (*CountResponse, error)
-	Find(ctx context.Context, in *FindRequest, opts ...grpc.CallOption) (*FindResponse, error)
+	FindByPosts(ctx context.Context, in *FindByPostsRequest, opts ...grpc.CallOption) (*FindResponse, error)
+	FindByComments(ctx context.Context, in *FindByCommentsRequest, opts ...grpc.CallOption) (*FindResponse, error)
 }
 
 type likeServiceClient struct {
@@ -65,10 +67,10 @@ func (c *likeServiceClient) Like(ctx context.Context, in *LikeRequest, opts ...g
 	return out, nil
 }
 
-func (c *likeServiceClient) UnLike(ctx context.Context, in *LikeRequest, opts ...grpc.CallOption) (*LikeResponse, error) {
+func (c *likeServiceClient) Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*DeleteResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(LikeResponse)
-	err := c.cc.Invoke(ctx, LikeService_UnLike_FullMethodName, in, out, cOpts...)
+	out := new(DeleteResponse)
+	err := c.cc.Invoke(ctx, LikeService_Delete_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -85,10 +87,20 @@ func (c *likeServiceClient) Count(ctx context.Context, in *CountRequest, opts ..
 	return out, nil
 }
 
-func (c *likeServiceClient) Find(ctx context.Context, in *FindRequest, opts ...grpc.CallOption) (*FindResponse, error) {
+func (c *likeServiceClient) FindByPosts(ctx context.Context, in *FindByPostsRequest, opts ...grpc.CallOption) (*FindResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(FindResponse)
-	err := c.cc.Invoke(ctx, LikeService_Find_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, LikeService_FindByPosts_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *likeServiceClient) FindByComments(ctx context.Context, in *FindByCommentsRequest, opts ...grpc.CallOption) (*FindResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(FindResponse)
+	err := c.cc.Invoke(ctx, LikeService_FindByComments_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -101,9 +113,10 @@ func (c *likeServiceClient) Find(ctx context.Context, in *FindRequest, opts ...g
 type LikeServiceServer interface {
 	Exists(context.Context, *ExistsRequest) (*ExistsResponse, error)
 	Like(context.Context, *LikeRequest) (*LikeResponse, error)
-	UnLike(context.Context, *LikeRequest) (*LikeResponse, error)
+	Delete(context.Context, *DeleteRequest) (*DeleteResponse, error)
 	Count(context.Context, *CountRequest) (*CountResponse, error)
-	Find(context.Context, *FindRequest) (*FindResponse, error)
+	FindByPosts(context.Context, *FindByPostsRequest) (*FindResponse, error)
+	FindByComments(context.Context, *FindByCommentsRequest) (*FindResponse, error)
 	mustEmbedUnimplementedLikeServiceServer()
 }
 
@@ -120,14 +133,17 @@ func (UnimplementedLikeServiceServer) Exists(context.Context, *ExistsRequest) (*
 func (UnimplementedLikeServiceServer) Like(context.Context, *LikeRequest) (*LikeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Like not implemented")
 }
-func (UnimplementedLikeServiceServer) UnLike(context.Context, *LikeRequest) (*LikeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UnLike not implemented")
+func (UnimplementedLikeServiceServer) Delete(context.Context, *DeleteRequest) (*DeleteResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 func (UnimplementedLikeServiceServer) Count(context.Context, *CountRequest) (*CountResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Count not implemented")
 }
-func (UnimplementedLikeServiceServer) Find(context.Context, *FindRequest) (*FindResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Find not implemented")
+func (UnimplementedLikeServiceServer) FindByPosts(context.Context, *FindByPostsRequest) (*FindResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FindByPosts not implemented")
+}
+func (UnimplementedLikeServiceServer) FindByComments(context.Context, *FindByCommentsRequest) (*FindResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FindByComments not implemented")
 }
 func (UnimplementedLikeServiceServer) mustEmbedUnimplementedLikeServiceServer() {}
 func (UnimplementedLikeServiceServer) testEmbeddedByValue()                     {}
@@ -186,20 +202,20 @@ func _LikeService_Like_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
-func _LikeService_UnLike_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(LikeRequest)
+func _LikeService_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LikeServiceServer).UnLike(ctx, in)
+		return srv.(LikeServiceServer).Delete(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: LikeService_UnLike_FullMethodName,
+		FullMethod: LikeService_Delete_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LikeServiceServer).UnLike(ctx, req.(*LikeRequest))
+		return srv.(LikeServiceServer).Delete(ctx, req.(*DeleteRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -222,20 +238,38 @@ func _LikeService_Count_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
-func _LikeService_Find_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(FindRequest)
+func _LikeService_FindByPosts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FindByPostsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LikeServiceServer).Find(ctx, in)
+		return srv.(LikeServiceServer).FindByPosts(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: LikeService_Find_FullMethodName,
+		FullMethod: LikeService_FindByPosts_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LikeServiceServer).Find(ctx, req.(*FindRequest))
+		return srv.(LikeServiceServer).FindByPosts(ctx, req.(*FindByPostsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LikeService_FindByComments_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FindByCommentsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LikeServiceServer).FindByComments(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: LikeService_FindByComments_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LikeServiceServer).FindByComments(ctx, req.(*FindByCommentsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -256,16 +290,20 @@ var LikeService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _LikeService_Like_Handler,
 		},
 		{
-			MethodName: "UnLike",
-			Handler:    _LikeService_UnLike_Handler,
+			MethodName: "Delete",
+			Handler:    _LikeService_Delete_Handler,
 		},
 		{
 			MethodName: "Count",
 			Handler:    _LikeService_Count_Handler,
 		},
 		{
-			MethodName: "Find",
-			Handler:    _LikeService_Find_Handler,
+			MethodName: "FindByPosts",
+			Handler:    _LikeService_FindByPosts_Handler,
+		},
+		{
+			MethodName: "FindByComments",
+			Handler:    _LikeService_FindByComments_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
